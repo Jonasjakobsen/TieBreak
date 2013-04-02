@@ -8,7 +8,7 @@ package BE;
  *
  * @author Stoffer
  */
-public class BEMedlem
+public class BEArrangement
 {
-    //aowuidhwud
+    
 }

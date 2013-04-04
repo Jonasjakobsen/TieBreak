@@ -21,6 +21,19 @@ public class BEMedlem
     private String email;
     private String fodselsdag;
     
+    /**
+     *
+     * @param id
+     * @param navn
+     * @param efternavn
+     * @param addresse1
+     * @param addresse2
+     * @param postnr
+     * @param tlfnr
+     * @param mobnr
+     * @param email
+     * @param fodselsdag
+     */
     public BEMedlem(int id, String navn, String efternavn, String addresse1,
                     String addresse2, String postnr, String tlfnr, String mobnr,
                     String email, String fodselsdag)

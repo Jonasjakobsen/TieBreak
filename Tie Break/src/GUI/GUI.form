@@ -22,10 +22,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jLabel1" pref="489" max="32767" attributes="0"/>
+          <Component id="jLabel1" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" pref="0" max="32767" attributes="0"/>
+              <Component id="jTabbedPane1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -257,7 +257,11 @@
             <Component class="javax.swing.JToggleButton" name="jToggleButton11">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tilf&#xf8;j"/>
+                <Property name="toolTipText" type="java.lang.String" value="Tryk her for at tilf&#xf8;je et medlem"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jToggleButton11MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

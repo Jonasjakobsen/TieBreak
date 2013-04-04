@@ -4,20 +4,24 @@
  */
 package GUI;
 
+import BE.BEMedlem;
+
 /**
  *
  * @author Stoffer
  */
-public class GUIMedlem extends javax.swing.JPanel
+public class GUIMedlemDialog extends javax.swing.JDialog
 {
+    private BEMedlem medlem = null;
 
     /**
-     * Creates new form GUIMedlem
+     * Creates new form GUIMedlemDialog
      */
-    public GUIMedlem()
+    public GUIMedlemDialog()
     {
         initComponents();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -220,7 +224,7 @@ public class GUIMedlem extends javax.swing.JPanel
 
     private void btnAfbrydActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAfbrydActionPerformed
     {//GEN-HEADEREND:event_btnAfbrydActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnAfbrydActionPerformed
 
     private void txtNavnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtNavnActionPerformed

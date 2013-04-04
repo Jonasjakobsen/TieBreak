@@ -10,5 +10,31 @@ package BE;
  */
 public class BEMedlem
 {
-    //aowuidhwud
+    private final int id;
+    private String navn;
+    private String efternavn;
+    private String addresse1;
+    private String addresse2;
+    private String postnr;
+    private String tlfnr;
+    private String mobnr;
+    private String email;
+    private String fodselsdag;
+    
+    public BEMedlem(int id, String navn, String efternavn, String addresse1,
+                    String addresse2, String postnr, String tlfnr, String mobnr,
+                    String email, String fodselsdag)
+    {
+        this.id = id;
+        this.navn = navn;
+        this.efternavn = efternavn;
+        this.addresse1 = addresse1;
+        this.addresse2 = addresse2;
+        this.postnr = postnr;
+        this.tlfnr = tlfnr;
+        this.mobnr = mobnr;
+        this.email = email;
+        this.fodselsdag = fodselsdag;
+        
+    }
 }

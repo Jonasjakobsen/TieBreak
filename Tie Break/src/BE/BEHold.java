@@ -25,15 +25,7 @@ public class BEHold
         this.medlemsnr = medlemsnr;
     }
     
-      
-//    /**
-//     *
-//     * @return overrides the default text format and prints out properly.
-//     */
-//    @Override
-//    public String toString()
-//    {
-//        return String.format("%-6s %-30s ", getId());
+
     }
 
 

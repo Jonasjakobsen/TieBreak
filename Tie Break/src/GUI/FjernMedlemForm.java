@@ -5,20 +5,22 @@
 package GUI;
 
 import BE.BEMedlem;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Stoffer
  */
-public class GUIMedlemDialog extends javax.swing.JDialog
+public class FjernMedlemForm extends javax.swing.JDialog
 {
     private BEMedlem medlem = null;
 
     /**
      * Creates new form GUIMedlemDialog
      */
-    public GUIMedlemDialog()
+    public FjernMedlemForm(java.awt.Frame parent, boolean modal)
     {
+        super(parent, modal);
         initComponents();
     }
 
@@ -30,12 +32,10 @@ public class GUIMedlemDialog extends javax.swing.JDialog
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        lblTilfojMedlem = new javax.swing.JLabel();
         lblNavn = new javax.swing.JLabel();
         txtNavn = new javax.swing.JTextField();
         lblEfterNavn = new javax.swing.JLabel();
@@ -61,70 +61,55 @@ public class GUIMedlemDialog extends javax.swing.JDialog
 
         jLabel2.setText("Navn:");
 
-        lblTilfojMedlem.setText("Tilføj et medlem");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Fjern medlem");
+        setLocationByPlatform(true);
+        setMinimumSize(new java.awt.Dimension(288, 279));
+        setModal(true);
+        setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        setResizable(false);
+        setType(java.awt.Window.Type.POPUP);
 
         lblNavn.setText("Navn");
 
-        txtNavn.setText("Skriv navn ...");
-        txtNavn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtNavn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNavnActionPerformed(evt);
             }
         });
 
         lblEfterNavn.setText("Efternavn:");
 
-        txtEfterNavn.setText("jTextField8");
-
         lblAddresse1.setText("Addresse 1:");
-
-        txtAddresse1.setText("jTextField7");
 
         lblAddresse2.setText("Addresse 2:");
 
-        txtAddresse2.setText("jTextField6");
-
         lblPostNr.setText("Postnr :");
-
-        txtPostNr.setText("jTextField5");
 
         lblTlfNr.setText("Tlfnr:");
 
-        txtTlfNr.setText("jTextField4");
-
         lblMobilNr.setText("Mobilnr:");
-
-        txtMobilNr.setText("jTextField3");
 
         lblEmail.setText("Email:");
 
-        txtEmail.setText("jTextField2");
-
         lblFodselsdag.setText("Fødselsdag:");
-
-        txtFodselsdag.setText("jTextField1");
 
         btnOk.setText("Ok");
 
         btnAfbryd.setText("Afbryd");
-        btnAfbryd.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAfbrydActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTilfojMedlem)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblAddresse2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -177,8 +162,6 @@ public class GUIMedlemDialog extends javax.swing.JDialog
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTilfojMedlem)
-                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNavn))
@@ -245,7 +228,6 @@ public class GUIMedlemDialog extends javax.swing.JDialog
     private javax.swing.JLabel lblMobilNr;
     private javax.swing.JLabel lblNavn;
     private javax.swing.JLabel lblPostNr;
-    private javax.swing.JLabel lblTilfojMedlem;
     private javax.swing.JLabel lblTlfNr;
     private javax.swing.JTextField txtAddresse1;
     private javax.swing.JTextField txtAddresse2;

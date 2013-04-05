@@ -4,6 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="TieBreak"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -23,9 +24,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="PanelMedlemmer" linkSize="15" alignment="0" min="-2" max="-2" attributes="0"/>
-          <Component id="PanelHold" linkSize="15" alignment="1" min="-2" max="-2" attributes="0"/>
-          <Component id="PanelBooking" linkSize="15" alignment="0" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="PanelMedlemmer" max="32767" attributes="0"/>
+                  <Component id="PanelHold" alignment="1" max="32767" attributes="0"/>
+                  <Component id="PanelBooking" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -66,7 +72,9 @@
                   <Component id="btnMedlemRediger" linkSize="1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnMedlemFjern" linkSize="1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButton1" linkSize="1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -77,6 +85,7 @@
                       <Component id="btnMedlemTilføj" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnMedlemRediger" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnMedlemFjern" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
               </Group>
@@ -122,6 +131,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMedlemFjernActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vis"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="PanelHold">
@@ -147,7 +164,9 @@
                   <Component id="btnHoldRediger" linkSize="11" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnHoldFjern" linkSize="11" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButton2" linkSize="11" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -158,6 +177,7 @@
                       <Component id="btnHoldTilføj" linkSize="12" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnHoldRediger" linkSize="12" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnHoldFjern" linkSize="12" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
               </Group>
@@ -178,6 +198,11 @@
         <Component class="javax.swing.JButton" name="btnHoldFjern">
           <Properties>
             <Property name="text" type="java.lang.String" value="Fjern"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vis"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -205,7 +230,9 @@
                   <Component id="btnBookingRediger" linkSize="13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnBookingFjern" linkSize="13" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButton3" linkSize="13" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -216,6 +243,7 @@
                       <Component id="btnBookingTilføj" linkSize="14" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnBookingRediger" linkSize="14" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnBookingFjern" linkSize="14" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
               </Group>
@@ -236,6 +264,11 @@
         <Component class="javax.swing.JButton" name="btnBookingFjern">
           <Properties>
             <Property name="text" type="java.lang.String" value="Fjern"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vis"/>
           </Properties>
         </Component>
       </SubComponents>

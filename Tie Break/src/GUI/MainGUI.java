@@ -24,47 +24,67 @@ public class MainGUI extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         PanelMedlemmer = new javax.swing.JPanel();
         btnMedlemTilføj = new javax.swing.JButton();
         btnMedlemRediger = new javax.swing.JButton();
         btnMedlemFjern = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         PanelHold = new javax.swing.JPanel();
         btnHoldTilføj = new javax.swing.JButton();
         btnHoldRediger = new javax.swing.JButton();
         btnHoldFjern = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         PanelBooking = new javax.swing.JPanel();
         btnBookingTilføj = new javax.swing.JButton();
         btnBookingRediger = new javax.swing.JButton();
         btnBookingFjern = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TieBreak");
+        setResizable(false);
 
         PanelMedlemmer.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Medlemmer", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         btnMedlemTilføj.setText("Tilføj");
         btnMedlemTilføj.setMaximumSize(null);
-        btnMedlemTilføj.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMedlemTilføj.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnMedlemTilføjActionPerformed(evt);
             }
         });
 
         btnMedlemRediger.setText("Rediger");
         btnMedlemRediger.setMaximumSize(null);
-        btnMedlemRediger.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMedlemRediger.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnMedlemRedigerActionPerformed(evt);
             }
         });
 
         btnMedlemFjern.setText("Fjern");
         btnMedlemFjern.setMaximumSize(null);
-        btnMedlemFjern.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMedlemFjern.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnMedlemFjernActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Vis");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -78,10 +98,12 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(btnMedlemRediger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMedlemFjern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        PanelMedlemmerLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMedlemFjern, btnMedlemRediger, btnMedlemTilføj});
+        PanelMedlemmerLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMedlemFjern, btnMedlemRediger, btnMedlemTilføj, jButton1});
 
         PanelMedlemmerLayout.setVerticalGroup(
             PanelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +111,8 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGroup(PanelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMedlemTilføj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMedlemRediger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMedlemFjern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnMedlemFjern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -105,6 +128,8 @@ public class MainGUI extends javax.swing.JFrame {
 
         btnHoldFjern.setText("Fjern");
 
+        jButton2.setText("Vis");
+
         javax.swing.GroupLayout PanelHoldLayout = new javax.swing.GroupLayout(PanelHold);
         PanelHold.setLayout(PanelHoldLayout);
         PanelHoldLayout.setHorizontalGroup(
@@ -115,10 +140,12 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(btnHoldRediger)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnHoldFjern)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        PanelHoldLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHoldFjern, btnHoldRediger, btnHoldTilføj});
+        PanelHoldLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHoldFjern, btnHoldRediger, btnHoldTilføj, jButton2});
 
         PanelHoldLayout.setVerticalGroup(
             PanelHoldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +153,8 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGroup(PanelHoldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHoldTilføj)
                     .addComponent(btnHoldRediger)
-                    .addComponent(btnHoldFjern))
+                    .addComponent(btnHoldFjern)
+                    .addComponent(jButton2))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -140,6 +168,8 @@ public class MainGUI extends javax.swing.JFrame {
 
         btnBookingFjern.setText("Fjern");
 
+        jButton3.setText("Vis");
+
         javax.swing.GroupLayout PanelBookingLayout = new javax.swing.GroupLayout(PanelBooking);
         PanelBooking.setLayout(PanelBookingLayout);
         PanelBookingLayout.setHorizontalGroup(
@@ -150,10 +180,12 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(btnBookingRediger)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBookingFjern)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        PanelBookingLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnBookingFjern, btnBookingRediger, btnBookingTilføj});
+        PanelBookingLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnBookingFjern, btnBookingRediger, btnBookingTilføj, jButton3});
 
         PanelBookingLayout.setVerticalGroup(
             PanelBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +193,8 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGroup(PanelBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBookingTilføj)
                     .addComponent(btnBookingRediger)
-                    .addComponent(btnBookingFjern))
+                    .addComponent(btnBookingFjern)
+                    .addComponent(jButton3))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -171,13 +204,13 @@ public class MainGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelMedlemmer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(PanelHold, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(PanelBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelMedlemmer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelHold, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelBooking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {PanelBooking, PanelHold, PanelMedlemmer});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -215,6 +248,11 @@ public class MainGUI extends javax.swing.JFrame {
         medForm.pack();
         medForm.setVisible(true);
     }//GEN-LAST:event_btnMedlemFjernActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,5 +301,8 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnMedlemFjern;
     private javax.swing.JButton btnMedlemRediger;
     private javax.swing.JButton btnMedlemTilføj;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables
 }

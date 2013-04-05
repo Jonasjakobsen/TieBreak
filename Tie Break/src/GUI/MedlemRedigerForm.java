@@ -10,14 +10,14 @@ import BE.BEMedlem;
  *
  * @author Stoffer
  */
-public class RedigerMedlemForm extends javax.swing.JDialog
+public class MedlemRedigerForm extends javax.swing.JDialog
 {
     private BEMedlem medlem = null;
 
     /**
      * Creates new form GUIMedlemDialog
      */
-    public RedigerMedlemForm(java.awt.Frame parent, boolean modal)
+    public MedlemRedigerForm(java.awt.Frame parent, boolean modal)
     {
         super(parent, modal);
         initComponents();
@@ -31,7 +31,8 @@ public class RedigerMedlemForm extends javax.swing.JDialog
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -70,8 +71,10 @@ public class RedigerMedlemForm extends javax.swing.JDialog
 
         lblNavn.setText("Navn");
 
-        txtNavn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtNavn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtNavnActionPerformed(evt);
             }
         });
@@ -95,8 +98,10 @@ public class RedigerMedlemForm extends javax.swing.JDialog
         btnOk.setText("Ok");
 
         btnAfbryd.setText("Afbryd");
-        btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAfbryd.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAfbrydActionPerformed(evt);
             }
         });

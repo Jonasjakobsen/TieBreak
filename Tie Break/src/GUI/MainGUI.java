@@ -31,7 +31,7 @@ public class MainGUI extends javax.swing.JFrame {
         btnMedlemTilføj = new javax.swing.JButton();
         btnMedlemRediger = new javax.swing.JButton();
         btnMedlemFjern = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnMedlemVis = new javax.swing.JButton();
         PanelHold = new javax.swing.JPanel();
         btnHoldTilføj = new javax.swing.JButton();
         btnHoldRediger = new javax.swing.JButton();
@@ -79,12 +79,12 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Vis");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        btnMedlemVis.setText("Vis");
+        btnMedlemVis.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                btnMedlemVisActionPerformed(evt);
             }
         });
 
@@ -99,11 +99,11 @@ public class MainGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMedlemFjern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnMedlemVis)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        PanelMedlemmerLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMedlemFjern, btnMedlemRediger, btnMedlemTilføj, jButton1});
+        PanelMedlemmerLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMedlemFjern, btnMedlemRediger, btnMedlemTilføj, btnMedlemVis});
 
         PanelMedlemmerLayout.setVerticalGroup(
             PanelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +112,7 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(btnMedlemTilføj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMedlemRediger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMedlemFjern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnMedlemVis))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -229,30 +229,33 @@ public class MainGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMedlemTilføjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedlemTilføjActionPerformed
-        AddMedlemForm medForm = new AddMedlemForm(this, true);
+        MedlemAddForm medForm = new MedlemAddForm(this, true);
         medForm.setLocationRelativeTo(this);
         medForm.pack();
         medForm.setVisible(true);
     }//GEN-LAST:event_btnMedlemTilføjActionPerformed
 
     private void btnMedlemRedigerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedlemRedigerActionPerformed
-        RedigerMedlemForm medForm = new RedigerMedlemForm(this, true);
+        MedlemRedigerForm medForm = new MedlemRedigerForm(this, true);
         medForm.setLocationRelativeTo(this);
         medForm.pack();
         medForm.setVisible(true);
     }//GEN-LAST:event_btnMedlemRedigerActionPerformed
 
     private void btnMedlemFjernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedlemFjernActionPerformed
-        FjernMedlemForm medForm = new FjernMedlemForm(this, true);
+        MedlemFjernForm medForm = new MedlemFjernForm(this, true);
         medForm.setLocationRelativeTo(this);
         medForm.pack();
         medForm.setVisible(true);
     }//GEN-LAST:event_btnMedlemFjernActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnMedlemVisActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnMedlemVisActionPerformed
+    {//GEN-HEADEREND:event_btnMedlemVisActionPerformed
+        MedlemVisForm medForm = new MedlemVisForm(this, true);
+        medForm.setLocationRelativeTo(this);
+        medForm.pack();
+        medForm.setVisible(true);
+    }//GEN-LAST:event_btnMedlemVisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,7 +304,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnMedlemFjern;
     private javax.swing.JButton btnMedlemRediger;
     private javax.swing.JButton btnMedlemTilføj;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnMedlemVis;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables

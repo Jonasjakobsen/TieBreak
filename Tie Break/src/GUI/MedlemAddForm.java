@@ -12,14 +12,14 @@ import javax.swing.JOptionPane;
  *
  * @author Stoffer
  */
-public class AddMedlemForm extends javax.swing.JDialog
+public class MedlemAddForm extends javax.swing.JDialog
 {
     private BEMedlem medlem = null;
 
     /**
      * Creates new form addMedlemForm
      */
-    public AddMedlemForm(java.awt.Frame parent, boolean modal)
+    public MedlemAddForm(java.awt.Frame parent, boolean modal)
     {
         super(parent, modal);
         initComponents();
@@ -33,7 +33,8 @@ public class AddMedlemForm extends javax.swing.JDialog
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -71,8 +72,10 @@ public class AddMedlemForm extends javax.swing.JDialog
 
         lblNavn.setText("Navn");
 
-        txtNavn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtNavn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtNavnActionPerformed(evt);
             }
         });
@@ -94,15 +97,19 @@ public class AddMedlemForm extends javax.swing.JDialog
         lblFodselsdag.setText("Fødselsdag:");
 
         btnOk.setText("Ok");
-        btnOk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnOk.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnOkActionPerformed(evt);
             }
         });
 
         btnAfbryd.setText("Afbryd");
-        btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAfbryd.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAfbrydActionPerformed(evt);
             }
         });

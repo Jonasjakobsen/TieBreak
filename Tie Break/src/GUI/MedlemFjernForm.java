@@ -11,14 +11,14 @@ import javax.swing.JOptionPane;
  *
  * @author Stoffer
  */
-public class FjernMedlemForm extends javax.swing.JDialog
+public class MedlemFjernForm extends javax.swing.JDialog
 {
     private BEMedlem medlem = null;
 
     /**
      * Creates new form GUIMedlemDialog
      */
-    public FjernMedlemForm(java.awt.Frame parent, boolean modal)
+    public MedlemFjernForm(java.awt.Frame parent, boolean modal)
     {
         super(parent, modal);
         initComponents();
@@ -32,7 +32,8 @@ public class FjernMedlemForm extends javax.swing.JDialog
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -72,8 +73,10 @@ public class FjernMedlemForm extends javax.swing.JDialog
 
         lblNavn.setText("Navn");
 
-        txtNavn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtNavn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtNavnActionPerformed(evt);
             }
         });
@@ -97,8 +100,10 @@ public class FjernMedlemForm extends javax.swing.JDialog
         btnOk.setText("Ok");
 
         btnAfbryd.setText("Afbryd");
-        btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAfbryd.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAfbrydActionPerformed(evt);
             }
         });

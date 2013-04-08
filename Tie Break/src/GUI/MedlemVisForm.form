@@ -116,7 +116,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -124,14 +124,12 @@
                               <Component id="lblNavn" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblEfternavn" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="chkKontingent" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtNavn" max="32767" attributes="0"/>
-                                  <Component id="txtMedlemsNr" min="-2" pref="50" max="-2" attributes="0"/>
-                                  <Component id="txtEfternavn" alignment="0" pref="150" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="txtMedlemsNr" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="txtEfternavn" linkSize="2" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="txtNavn" linkSize="2" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -140,7 +138,7 @@
                           <Component id="btnFjern" linkSize="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="351" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -155,12 +153,12 @@
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblNavn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNavn" alignment="3" max="32767" attributes="0"/>
+                      <Component id="txtNavn" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblEfternavn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtEfternavn" alignment="3" max="32767" attributes="0"/>
+                      <Component id="txtEfternavn" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Component id="chkKontingent" min="-2" max="-2" attributes="0"/>

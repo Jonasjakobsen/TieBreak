@@ -17,7 +17,7 @@ public class MedlemVisForm extends javax.swing.JDialog
 {
     private BLLMedlemManager medmgr;
     private MedlemTableModel medmodel;
-//    private BEMedlem medlem = null;
+    private BEMedlem medlem = null;
 
     /**
      * Creates new form GUIMedlemDialog
@@ -51,20 +51,20 @@ public class MedlemVisForm extends javax.swing.JDialog
             }
 
             private void visMedlemDetaljer()
-            {
+                {
                 // Does the selection work correctly here?
                 BEMedlem e = medmodel.getMedlemByRow(tblMedlem.getSelectedRow());
 
-                txtId.setText("" + e.getId());
-                txtName.setText(e.getNavn());
+                txtMedlemsNr.setText("" + e.getId());
+                txtNavn.setText(e.getNavn());
                 txtEfternavn.setText(e.getEfternavn());
                 chkKontingent.setSelected(e.harBetalt());
 
-                btnUpdateEmployee.setEnabled(true);
-                btnRemoveEmployee.setEnabled(true);
-                    }
-                });
-            }
+                btnOpdater.setEnabled(true);
+                btnFjern.setEnabled(true);
+                }
+            });
+        }
 
 
     /**
@@ -148,18 +148,19 @@ public class MedlemVisForm extends javax.swing.JDialog
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chkKontingent)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNavn)
-                                .addComponent(txtMedlemsNr, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEfternavn, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))))
+                            .addComponent(txtMedlemsNr, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEfternavn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNavn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnOpdater)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnFjern)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(351, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnFjern, btnOpdater});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtEfternavn, txtNavn});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,11 +172,11 @@ public class MedlemVisForm extends javax.swing.JDialog
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNavn)
-                    .addComponent(txtNavn))
+                    .addComponent(txtNavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEfternavn)
-                    .addComponent(txtEfternavn))
+                    .addComponent(txtEfternavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chkKontingent)
                 .addGap(22, 22, 22)
@@ -184,6 +185,8 @@ public class MedlemVisForm extends javax.swing.JDialog
                     .addComponent(btnFjern))
                 .addContainerGap())
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtEfternavn, txtNavn});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,27 +226,17 @@ public class MedlemVisForm extends javax.swing.JDialog
     private javax.swing.JButton btnAfbryd;
     private javax.swing.JButton btnFjern;
     private javax.swing.JButton btnOpdater;
-    private javax.swing.JButton btnRemoveEmployee;
-    private javax.swing.JButton btnUpdateEmployee;
     private javax.swing.JCheckBox chkKontingent;
-    private javax.swing.JCheckBox chkQualified;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblEfternavn;
-    private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblMedlemsNr;
-    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNavn;
-    private javax.swing.JLabel lblSalary;
-    private javax.swing.JPanel panelEmployeeDetails;
     private javax.swing.JTable tblMedlem;
     private javax.swing.JTextField txtEfternavn;
-    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtMedlemsNr;
-    private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNavn;
-    private javax.swing.JTextField txtSalary;
     // End of variables declaration//GEN-END:variables
 }

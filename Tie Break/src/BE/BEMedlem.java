@@ -66,6 +66,14 @@ public class BEMedlem
         this.email = email;
         this.kontingent = kontingent;
     }
+    
+    public BEMedlem(int id, String navn, String efternavn, Boolean kontingent)
+    {
+        this.id = id;
+        this.navn = navn;
+        this.efternavn = efternavn;
+        this.kontingent = kontingent;
+    }
 
     /**
      * @return the id

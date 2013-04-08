@@ -6,6 +6,8 @@ package GUI;
 
 import BE.BEMedlem;
 import BLL.BLLMedlemManager;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -13,9 +15,9 @@ import BLL.BLLMedlemManager;
  */
 public class MedlemVisForm extends javax.swing.JDialog
 {
-    private BLLMedlemManager empMgr;
-    private MedlemTableModel empModel;
-    private BEMedlem medlem = null;
+    private BLLMedlemManager medmgr;
+    private MedlemTableModel medmodel;
+//    private BEMedlem medlem = null;
 
     /**
      * Creates new form GUIMedlemDialog
@@ -24,13 +26,45 @@ public class MedlemVisForm extends javax.swing.JDialog
     {
         super(parent, modal);
         initComponents();
-                // Reference for the BLL layer.
-        empMgr = new BLLMedlemManager();
+        
+        // disable update and remove buttons
+        btnOpdater.setEnabled(false);
+        btnFjern.setEnabled(false);
+        
+        // Reference for the BLL layer.
+        medmgr = new BLLMedlemManager();
         
         // Set the table model for the JTable
-        empModel = new MedlemTableModel(empMgr.visMedlemmer());
-        tblMedlem.setModel(empModel);
-    }
+        medmodel = new MedlemTableModel(medmgr.visMedlemmer());
+        tblMedlem.setModel(medmodel);
+        
+        // ADD A LISTSELECTIONLISTENER TO THE SELECTIONMODEL OF THE JTABLE HERRE
+        tblMedlem.getSelectionModel().addListSelectionListener(new ListSelectionListener()
+        {
+            @Override
+            public void valueChanged(ListSelectionEvent evt)
+            {
+               if (!evt.getValueIsAdjusting())
+                {
+                    visMedlemDetaljer();
+                }
+            }
+
+            private void visMedlemDetaljer()
+            {
+                // Does the selection work correctly here?
+                BEMedlem e = medmodel.getMedlemByRow(tblMedlem.getSelectedRow());
+
+                txtId.setText("" + e.getId());
+                txtName.setText(e.getNavn());
+                txtEfternavn.setText(e.getEfternavn());
+                chkKontingent.setSelected(e.harBetalt());
+
+                btnUpdateEmployee.setEnabled(true);
+                btnRemoveEmployee.setEnabled(true);
+                    }
+                });
+            }
 
 
     /**
@@ -48,6 +82,16 @@ public class MedlemVisForm extends javax.swing.JDialog
         btnAfbryd = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblMedlem = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        lblMedlemsNr = new javax.swing.JLabel();
+        txtMedlemsNr = new javax.swing.JTextField();
+        lblNavn = new javax.swing.JLabel();
+        txtNavn = new javax.swing.JTextField();
+        lblEfternavn = new javax.swing.JLabel();
+        txtEfternavn = new javax.swing.JTextField();
+        chkKontingent = new javax.swing.JCheckBox();
+        btnOpdater = new javax.swing.JButton();
+        btnFjern = new javax.swing.JButton();
 
         jLabel3.setText("Efternavn:");
 
@@ -73,28 +117,101 @@ public class MedlemVisForm extends javax.swing.JDialog
 
         jScrollPane2.setViewportView(tblMedlem);
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Detaljer om Medlemmet")));
+
+        lblMedlemsNr.setText("MedlemsNr:");
+
+        txtMedlemsNr.setEditable(false);
+
+        lblNavn.setText("Navn:");
+
+        lblEfternavn.setText("Efternavn:");
+
+        chkKontingent.setText("Har betalt kontingent");
+
+        btnOpdater.setText("Opdater medlem");
+
+        btnFjern.setText("Fjern medlem");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMedlemsNr)
+                            .addComponent(lblNavn)
+                            .addComponent(lblEfternavn))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkKontingent)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNavn)
+                                .addComponent(txtMedlemsNr, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEfternavn, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnOpdater)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnFjern)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnFjern, btnOpdater});
+
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMedlemsNr)
+                    .addComponent(txtMedlemsNr, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNavn)
+                    .addComponent(txtNavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEfternavn)
+                    .addComponent(txtEfternavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(chkKontingent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOpdater)
+                    .addComponent(btnFjern))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAfbryd)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAfbryd)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(btnAfbryd)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAfbryd))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel1.getAccessibleContext().setAccessibleName("Detaljer om Medlemmet");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAfbrydActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAfbrydActionPerformed
@@ -104,9 +221,29 @@ public class MedlemVisForm extends javax.swing.JDialog
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAfbryd;
+    private javax.swing.JButton btnFjern;
+    private javax.swing.JButton btnOpdater;
+    private javax.swing.JButton btnRemoveEmployee;
+    private javax.swing.JButton btnUpdateEmployee;
+    private javax.swing.JCheckBox chkKontingent;
+    private javax.swing.JCheckBox chkQualified;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblEfternavn;
+    private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblMedlemsNr;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblNavn;
+    private javax.swing.JLabel lblSalary;
+    private javax.swing.JPanel panelEmployeeDetails;
     private javax.swing.JTable tblMedlem;
+    private javax.swing.JTextField txtEfternavn;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtMedlemsNr;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtNavn;
+    private javax.swing.JTextField txtSalary;
     // End of variables declaration//GEN-END:variables
 }

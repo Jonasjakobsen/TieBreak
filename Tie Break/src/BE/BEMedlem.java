@@ -20,6 +20,7 @@ public class BEMedlem
     private String mobnr;
     private String email;
     private String fodselsdag;
+    private boolean kontingent;
     
     /**
      *
@@ -36,7 +37,7 @@ public class BEMedlem
      */
     public BEMedlem(int id, String navn, String efternavn, String addresse1,
                     String addresse2, String postnr, String tlfnr, String mobnr,
-                    String email, String fodselsdag)
+                    String email, String fodselsdag, Boolean kontingent)
     {
         this.id = id;
         this.navn = navn;
@@ -48,10 +49,12 @@ public class BEMedlem
         this.mobnr = mobnr;
         this.email = email;
         this.fodselsdag = fodselsdag;
+        this.kontingent = kontingent;
     }
     
     public BEMedlem(int id, String navn, String efternavn, String addresse1,
-                    String fodselsdag, String mobnr, String tlfnr, String email)
+                    String fodselsdag, String mobnr, String tlfnr, String email,
+                    Boolean kontingent)
     {
         this.id = id;
         this.navn = navn;
@@ -61,6 +64,7 @@ public class BEMedlem
         this.mobnr = mobnr;
         this.tlfnr = tlfnr;
         this.email = email;
+        this.kontingent = kontingent;
     }
 
     /**
@@ -213,5 +217,21 @@ public class BEMedlem
     public void setFodselsdag(String fodselsdag)
     {
         this.fodselsdag = fodselsdag;
+    }
+
+    /**
+     * @return the isQualified
+     */
+    public boolean harBetalt()
+    {
+        return kontingent;
+    }
+
+    /**
+     * @param isQualified the isQualified to set
+     */
+    public void setHarBetalt(boolean kontingent)
+    {
+        this.kontingent = kontingent;
     }
 }

@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Jrjakobsen
@@ -251,10 +254,17 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void btnMedlemVisActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnMedlemVisActionPerformed
     {//GEN-HEADEREND:event_btnMedlemVisActionPerformed
-        MedlemVisForm medForm = new MedlemVisForm(this, true);
-        medForm.setLocationRelativeTo(this);
-        medForm.pack();
-        medForm.setVisible(true);
+        try
+        {
+            MedlemVisForm medForm = new MedlemVisForm(this, true);
+            medForm.setLocationRelativeTo(this);
+            medForm.pack();
+            medForm.setVisible(true);
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnMedlemVisActionPerformed
 
     /**

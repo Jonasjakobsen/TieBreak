@@ -48,7 +48,19 @@ public class BEMedlem
         this.mobnr = mobnr;
         this.email = email;
         this.fodselsdag = fodselsdag;
-        
+    }
+    
+    public BEMedlem(int id, String navn, String efternavn, String addresse1,
+                    String fodselsdag, String mobnr, String tlfnr, String email)
+    {
+        this.id = id;
+        this.navn = navn;
+        this.efternavn = efternavn;
+        this.addresse1 = addresse1;
+        this.fodselsdag = fodselsdag;
+        this.mobnr = mobnr;
+        this.tlfnr = tlfnr;
+        this.email = email;
     }
 
     /**

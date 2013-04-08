@@ -4,7 +4,11 @@
  */
 package BLL;
 
+import BE.BEMedlem;
 import DAL.DALMedlemDBManager;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,5 +31,10 @@ public class BLLMedlemManager
             instance = new BLLMedlemManager();
         }
         return instance;
+    }
+
+    public ArrayList<BEMedlem> visMedlemmer() throws SQLServerException, SQLException
+    {
+        return db.showAll();
     }
 }

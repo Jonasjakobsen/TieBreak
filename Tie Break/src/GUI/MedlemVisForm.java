@@ -5,7 +5,7 @@
 package GUI;
 
 import BE.BEMedlem;
-import javax.swing.JOptionPane;
+import BLL.BLLMedlemManager;
 
 /**
  *
@@ -13,15 +13,23 @@ import javax.swing.JOptionPane;
  */
 public class MedlemVisForm extends javax.swing.JDialog
 {
+    private BLLMedlemManager empMgr;
+    private MedlemTableModel empModel;
     private BEMedlem medlem = null;
 
     /**
      * Creates new form GUIMedlemDialog
      */
-    public MedlemVisForm(java.awt.Frame parent, boolean modal)
+    public MedlemVisForm(java.awt.Frame parent, boolean modal) throws Exception
     {
         super(parent, modal);
         initComponents();
+                // Reference for the BLL layer.
+        empMgr = new BLLMedlemManager();
+        
+        // Set the table model for the JTable
+        empModel = new MedlemTableModel(empMgr.visMedlemmer());
+        tblMedlem.setModel(empModel);
     }
 
 
@@ -38,8 +46,8 @@ public class MedlemVisForm extends javax.swing.JDialog
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnAfbryd = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblMedlem = new javax.swing.JTable();
 
         jLabel3.setText("Efternavn:");
 
@@ -63,27 +71,27 @@ public class MedlemVisForm extends javax.swing.JDialog
             }
         });
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane2.setViewportView(tblMedlem);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAfbryd))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAfbryd)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(btnAfbryd)
                 .addContainerGap())
         );
@@ -98,7 +106,7 @@ public class MedlemVisForm extends javax.swing.JDialog
     private javax.swing.JButton btnAfbryd;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList jList1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblMedlem;
     // End of variables declaration//GEN-END:variables
 }

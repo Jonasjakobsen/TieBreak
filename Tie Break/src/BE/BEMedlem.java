@@ -14,13 +14,17 @@ public class BEMedlem
     private String navn;
     private String efternavn;
     private String addresse1;
-    private String addresse2;
     private String postnr;
     private String tlfnr;
     private String mobnr;
     private String email;
     private String fodselsdag;
     private boolean kontingent;
+    
+   public BEMedlem (String navn, String efternavn, String adresse1, String postnr, String tlfnr, String mobnr, String email, String fodselsdag, Boolean kontingent)
+    {
+        this(-1, navn, efternavn, adresse1, postnr, tlfnr, mobnr, email, fodselsdag, kontingent);
+    }
     
     /**
      *
@@ -36,14 +40,13 @@ public class BEMedlem
      * @param fodselsdag
      */
     public BEMedlem(int id, String navn, String efternavn, String addresse1,
-                    String addresse2, String postnr, String tlfnr, String mobnr,
+                    String postnr, String tlfnr, String mobnr,
                     String email, String fodselsdag, Boolean kontingent)
     {
         this.id = id;
         this.navn = navn;
         this.efternavn = efternavn;
         this.addresse1 = addresse1;
-        this.addresse2 = addresse2;
         this.postnr = postnr;
         this.tlfnr = tlfnr;
         this.mobnr = mobnr;
@@ -67,6 +70,8 @@ public class BEMedlem
         this.kontingent = kontingent;
     }
     
+
+    
     public BEMedlem(int id, String navn, String efternavn, Boolean kontingent)
     {
         this.id = id;
@@ -74,6 +79,8 @@ public class BEMedlem
         this.efternavn = efternavn;
         this.kontingent = kontingent;
     }
+    
+    
 
     /**
      * @return the id

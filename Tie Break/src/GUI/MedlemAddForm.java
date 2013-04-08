@@ -5,8 +5,9 @@
 package GUI;
 
 import BE.BEMedlem;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
+import BLL.BLLMedlemManager;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.sql.SQLException;
 
 /**
  *
@@ -14,15 +15,19 @@ import javax.swing.JOptionPane;
  */
 public class MedlemAddForm extends javax.swing.JDialog
 {
+    private BLLMedlemManager medmgr;
+    private MedlemTableModel medmodel;
     private BEMedlem medlem = null;
 
     /**
      * Creates new form addMedlemForm
      */
-    public MedlemAddForm(java.awt.Frame parent, boolean modal)
+    public MedlemAddForm(java.awt.Frame parent, boolean modal) throws SQLServerException, SQLException
     {
         super(parent, modal);
         initComponents();
+        
+        medmodel = new MedlemTableModel(medmgr.visMedlemmer());
     }
 
 
@@ -33,8 +38,7 @@ public class MedlemAddForm extends javax.swing.JDialog
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -44,8 +48,6 @@ public class MedlemAddForm extends javax.swing.JDialog
         txtEfterNavn = new javax.swing.JTextField();
         lblAddresse1 = new javax.swing.JLabel();
         txtAddresse1 = new javax.swing.JTextField();
-        lblAddresse2 = new javax.swing.JLabel();
-        txtAddresse2 = new javax.swing.JTextField();
         lblPostNr = new javax.swing.JLabel();
         txtPostNr = new javax.swing.JTextField();
         lblTlfNr = new javax.swing.JLabel();
@@ -58,6 +60,7 @@ public class MedlemAddForm extends javax.swing.JDialog
         txtFodselsdag = new javax.swing.JTextField();
         btnOk = new javax.swing.JButton();
         btnAfbryd = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         jLabel3.setText("Efternavn:");
 
@@ -72,19 +75,15 @@ public class MedlemAddForm extends javax.swing.JDialog
 
         lblNavn.setText("Navn");
 
-        txtNavn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtNavn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNavnActionPerformed(evt);
             }
         });
 
         lblEfterNavn.setText("Efternavn:");
 
-        lblAddresse1.setText("Addresse 1:");
-
-        lblAddresse2.setText("Addresse 2:");
+        lblAddresse1.setText("Addresse:");
 
         lblPostNr.setText("Postnr :");
 
@@ -97,22 +96,20 @@ public class MedlemAddForm extends javax.swing.JDialog
         lblFodselsdag.setText("Fødselsdag:");
 
         btnOk.setText("Ok");
-        btnOk.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOkActionPerformed(evt);
             }
         });
 
         btnAfbryd.setText("Afbryd");
-        btnAfbryd.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAfbrydActionPerformed(evt);
             }
         });
+
+        jCheckBox1.setText("Har betalt kontingent");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,52 +119,51 @@ public class MedlemAddForm extends javax.swing.JDialog
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAddresse2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtAddresse2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(lblPostNr)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtPostNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(lblTlfNr)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtTlfNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFodselsdag)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(68, 68, 68)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jCheckBox1)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnOk)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnAfbryd))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtFodselsdag, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(lblMobilNr)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtMobilNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(lblEmail)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(lblFodselsdag)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtFodselsdag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblEmail))
+                        .addGap(23, 23, 23))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAddresse1)
                             .addComponent(lblEfterNavn)
-                            .addComponent(lblNavn))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(lblNavn)
+                            .addComponent(lblPostNr)
+                            .addComponent(lblTlfNr))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEfterNavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAddresse1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNavn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnOk)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAfbryd)
-                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtNavn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTlfNr, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPostNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAddresse1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMobilNr, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEfterNavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAddresse1, txtAddresse2, txtEfterNavn, txtEmail, txtFodselsdag, txtMobilNr, txtNavn, txtPostNr, txtTlfNr});
-
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAfbryd, btnOk});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAddresse1, txtEfterNavn, txtEmail, txtFodselsdag, txtMobilNr, txtNavn, txtPostNr, txtTlfNr});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,34 +182,35 @@ public class MedlemAddForm extends javax.swing.JDialog
                     .addComponent(txtAddresse1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAddresse2)
-                    .addComponent(txtAddresse2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPostNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPostNr))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPostNr)
-                    .addComponent(txtPostNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTlfNr)
-                    .addComponent(txtTlfNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblMobilNr)
-                    .addComponent(txtMobilNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblEmail)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTlfNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTlfNr))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFodselsdag)
-                    .addComponent(txtFodselsdag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtMobilNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMobilNr))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmail))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFodselsdag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFodselsdag))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBox1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAfbryd)
                     .addComponent(btnOk))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAddresse1, txtEfterNavn, txtEmail, txtFodselsdag, txtMobilNr, txtNavn, txtPostNr, txtTlfNr});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAfbrydActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAfbrydActionPerformed
@@ -227,42 +224,32 @@ public class MedlemAddForm extends javax.swing.JDialog
     }//GEN-LAST:event_txtNavnActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-//        try
-//        {
-//            int id = new Scanner(txtNavn.getText().trim()).nextInt();
-//            
-//            String name = txtNavn.getText().trim();
-//            if (name.isEmpty())
-//            {
-//                throw new RuntimeException("Name is required.");
-//            }
-//            
-//            String efternavn = txtEfterNavn.getText().trim();
-//            if (efternavn.isEmpty())
-//            {
-//                throw new RuntimeException("Efternavn is required.");
-//            }
-//            
-//            double salary = new Scanner(txtSalary.getText().trim()).nextDouble();
-//            boolean isQualified = chkQualified.isSelected();
-//            
-//            employee = new Employee(id, name, salary, isQualified);
-//            
-//            dispose();
-//        }
-//        catch (Exception e)
-//        {
-//            JOptionPane.showMessageDialog(this, e.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
-//        }
+
+        BEMedlem e = new BEMedlem(e.getNavn(), e.getEfternavn(), e.getAddresse1(), e.getPostnr(), e.getTlfnr(), e.getMobnr(), e.getEmail(), e.getFodselsdag(), e.harBetalt());
+
+        
+        e.setNavn(txtNavn.getText());
+        e.setEfternavn(txtEfterNavn.getText());
+        e.setAddresse1(txtAddresse1.getText());
+        e.setPostnr(txtPostNr.getText());
+        e.setTlfnr(txtTlfNr.getText());
+        e.setMobnr(txtMobilNr.getText());
+        e.setEmail(txtEmail.getText());
+        txtEfternavn.setText(e.getEfternavn());
+        chkKontingent.setSelected(e.harBetalt());                
+
+        btnOpdater.setEnabled(true);
+        btnFjern.setEnabled(true);
+        
     }//GEN-LAST:event_btnOkActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAfbryd;
     private javax.swing.JButton btnOk;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblAddresse1;
-    private javax.swing.JLabel lblAddresse2;
     private javax.swing.JLabel lblEfterNavn;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFodselsdag;
@@ -271,7 +258,6 @@ public class MedlemAddForm extends javax.swing.JDialog
     private javax.swing.JLabel lblPostNr;
     private javax.swing.JLabel lblTlfNr;
     private javax.swing.JTextField txtAddresse1;
-    private javax.swing.JTextField txtAddresse2;
     private javax.swing.JTextField txtEfterNavn;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFodselsdag;

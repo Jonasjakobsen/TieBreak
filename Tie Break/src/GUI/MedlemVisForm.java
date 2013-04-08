@@ -58,7 +58,7 @@ public class MedlemVisForm extends javax.swing.JDialog
                 txtMedlemsNr.setText("" + e.getId());
                 txtNavn.setText(e.getNavn());
                 txtEfternavn.setText(e.getEfternavn());
-                chkKontingent.setSelected(e.harBetalt());
+                chkKontingent.setSelected(e.harBetalt());                
 
                 btnOpdater.setEnabled(true);
                 btnFjern.setEnabled(true);

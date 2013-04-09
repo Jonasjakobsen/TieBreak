@@ -6,6 +6,7 @@ package DAL;
 
 import BE.BEMedlem;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.lang.reflect.Member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -67,6 +68,39 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
             }
         }
         return null;
+    }
+
+    public BEMedlem addMember(BEMedlem e) throws SQLServerException, SQLException 
+    {
+        Connection con = ds.getConnection();
+
+        String sql = "INSERT INTO Medlem(Fornavn, Efternavn, Adresse1, PostNr, TlfNr, Mobnr, Email, Fodselsdag, Kontigent)"
+                + "VALUES(?,?,?,?,?,?,?,?,?)";
+
+        PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+        ps.setString(1, e.getNavn());
+        ps.setString(2, e.getEfternavn());
+        ps.setString(3, e.getAddresse1());
+        ps.setString(4, e.getPostnr());
+        ps.setString(5, e.getTlfnr());
+        ps.setString(6, e.getMobnr());
+        ps.setString(7, e.getEmail());
+        ps.setString(8, e.getFodselsdag());
+        ps.setBoolean(9, e.harBetalt());
+        
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to add Member");
+        }
+
+        ResultSet keys = ps.getGeneratedKeys();
+        keys.next();
+        int id = keys.getInt(1);
+
+        return new BEMedlem(id, e);
+
     }
 }
 

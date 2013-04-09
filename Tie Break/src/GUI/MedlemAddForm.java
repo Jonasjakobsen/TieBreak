@@ -8,6 +8,8 @@ import BE.BEMedlem;
 import BLL.BLLMedlemManager;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,7 +29,7 @@ public class MedlemAddForm extends javax.swing.JDialog
         super(parent, modal);
         initComponents();
         
-        medmodel = new MedlemTableModel(medmgr.visMedlemmer());
+//        medmodel = new MedlemTableModel(medmgr.visMedlemmer());
     }
 
 
@@ -60,7 +62,7 @@ public class MedlemAddForm extends javax.swing.JDialog
         txtFodselsdag = new javax.swing.JTextField();
         btnOk = new javax.swing.JButton();
         btnAfbryd = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        chkKontingent = new javax.swing.JCheckBox();
 
         jLabel3.setText("Efternavn:");
 
@@ -109,7 +111,7 @@ public class MedlemAddForm extends javax.swing.JDialog
             }
         });
 
-        jCheckBox1.setText("Har betalt kontingent");
+        chkKontingent.setText("Har betalt kontingent");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,7 +128,7 @@ public class MedlemAddForm extends javax.swing.JDialog
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(68, 68, 68)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jCheckBox1)
+                                            .addComponent(chkKontingent)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(btnOk)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -201,7 +203,7 @@ public class MedlemAddForm extends javax.swing.JDialog
                     .addComponent(txtFodselsdag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFodselsdag))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(chkKontingent)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAfbryd)
@@ -224,29 +226,21 @@ public class MedlemAddForm extends javax.swing.JDialog
     }//GEN-LAST:event_txtNavnActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-
-        BEMedlem e = new BEMedlem(e.getNavn(), e.getEfternavn(), e.getAddresse1(), e.getPostnr(), e.getTlfnr(), e.getMobnr(), e.getEmail(), e.getFodselsdag(), e.harBetalt());
-
-        
-        e.setNavn(txtNavn.getText());
-        e.setEfternavn(txtEfterNavn.getText());
-        e.setAddresse1(txtAddresse1.getText());
-        e.setPostnr(txtPostNr.getText());
-        e.setTlfnr(txtTlfNr.getText());
-        e.setMobnr(txtMobilNr.getText());
-        e.setEmail(txtEmail.getText());
-        txtEfternavn.setText(e.getEfternavn());
-        chkKontingent.setSelected(e.harBetalt());                
-
-        btnOpdater.setEnabled(true);
-        btnFjern.setEnabled(true);
-        
+        try {
+            BEMedlem e = new BEMedlem(-1, txtNavn.toString(), txtEfterNavn.toString(), txtAddresse1.toString(), 
+                                      txtPostNr.toString(), txtTlfNr.toString(), txtMobilNr.toString(), txtEmail.toString(), 
+                                      chkKontingent.isSelected() );
+            e = medmgr.addMember(e);
+            //        BEMedlem e = new BEMedlem(-1, Navn, Efternavn, Addresse1, Postnr, Tlfnr, Mobnr, Email, Fodselsdag, harBetalt);
+        } catch (SQLException ex) {
+            Logger.getLogger(MedlemAddForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnOkActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAfbryd;
     private javax.swing.JButton btnOk;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox chkKontingent;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblAddresse1;

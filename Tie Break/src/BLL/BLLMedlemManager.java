@@ -7,6 +7,7 @@ package BLL;
 import BE.BEMedlem;
 import DAL.DALMedlemDBManager;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.lang.reflect.Member;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -36,5 +37,9 @@ public class BLLMedlemManager
     public ArrayList<BEMedlem> visMedlemmer() throws SQLServerException, SQLException
     {
         return db.showAll();
+    }
+    public BEMedlem addMember(BEMedlem e) throws SQLException
+    {
+        return db.addMember(e);
     }
 }

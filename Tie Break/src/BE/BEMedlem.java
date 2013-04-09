@@ -31,8 +31,7 @@ public class BEMedlem
      * @param id
      * @param navn
      * @param efternavn
-     * @param addresse1
-     * @param addresse2
+     * @param addresse1     
      * @param postnr
      * @param tlfnr
      * @param mobnr
@@ -78,6 +77,11 @@ public class BEMedlem
         this.navn = navn;
         this.efternavn = efternavn;
         this.kontingent = kontingent;
+    }
+    
+    public BEMedlem(int id, BEMedlem e)
+    {
+        this(id, e.navn, e.efternavn, e.addresse1, e.postnr, e.tlfnr, e.mobnr, e.email, e.fodselsdag, e.kontingent);
     }
     
     
@@ -138,21 +142,6 @@ public class BEMedlem
         this.addresse1 = addresse1;
     }
 
-    /**
-     * @return the addresse2
-     */
-    public String getAddresse2()
-    {
-        return addresse2;
-    }
-
-    /**
-     * @param addresse2 the addresse2 to set
-     */
-    public void setAddresse2(String addresse2)
-    {
-        this.addresse2 = addresse2;
-    }
 
     /**
      * @return the postnr

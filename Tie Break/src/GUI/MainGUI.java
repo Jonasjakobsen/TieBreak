@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -232,10 +234,16 @@ public class MainGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMedlemTilføjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedlemTilføjActionPerformed
-        MedlemAddForm medForm = new MedlemAddForm(this, true);
-        medForm.setLocationRelativeTo(this);
-        medForm.pack();
-        medForm.setVisible(true);
+        try {
+            MedlemAddForm medForm = new MedlemAddForm(this, true);
+            medForm.setLocationRelativeTo(this);
+            medForm.pack();
+            medForm.setVisible(true);
+        } catch (SQLServerException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnMedlemTilføjActionPerformed
 
     private void btnMedlemRedigerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedlemRedigerActionPerformed

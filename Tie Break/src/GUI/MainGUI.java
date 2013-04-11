@@ -30,7 +30,8 @@ public class MainGUI extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         btnMedlemTilføj = new javax.swing.JButton();
@@ -56,8 +57,10 @@ public class MainGUI extends javax.swing.JFrame {
         btnMedlemTilføj.setText("Tilføj");
         btnMedlemTilføj.setMaximumSize(null);
         btnMedlemTilføj.setMinimumSize(new java.awt.Dimension(25, 0));
-        btnMedlemTilføj.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMedlemTilføj.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnMedlemTilføjActionPerformed(evt);
             }
         });
@@ -67,8 +70,10 @@ public class MainGUI extends javax.swing.JFrame {
 
         btnMedlemVis.setText("Oversigt");
         btnMedlemVis.setMinimumSize(new java.awt.Dimension(25, 0));
-        btnMedlemVis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMedlemVis.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnMedlemVisActionPerformed(evt);
             }
         });
@@ -119,7 +124,7 @@ public class MainGUI extends javax.swing.JFrame {
         btnHoldTilføj.setBounds(200, 290, 95, 23);
         jLayeredPane1.add(btnHoldTilføj, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/TieBreak.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/img/TieBreak.jpg"))); // NOI18N
         jLabel1.setBounds(-90, 0, 640, 450);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

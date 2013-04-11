@@ -74,24 +74,24 @@ public class MedlemVisForm extends javax.swing.JDialog
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnAfbryd = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblMedlem = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        lblMedlemsNr = new javax.swing.JLabel();
-        txtMedlemsNr = new javax.swing.JTextField();
-        lblNavn = new javax.swing.JLabel();
-        txtNavn = new javax.swing.JTextField();
-        lblEfternavn = new javax.swing.JLabel();
-        txtEfternavn = new javax.swing.JTextField();
-        chkKontingent = new javax.swing.JCheckBox();
+        btnAfbryd = new javax.swing.JButton();
         btnOpdater = new javax.swing.JButton();
+        chkKontingent = new javax.swing.JCheckBox();
+        lblEfternavn = new javax.swing.JLabel();
+        lblNavn = new javax.swing.JLabel();
+        lblMedlemsNr = new javax.swing.JLabel();
+        txtEfternavn = new javax.swing.JTextField();
+        txtMedlemsNr = new javax.swing.JTextField();
+        txtNavn = new javax.swing.JTextField();
         btnFjern = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jLabel3.setText("Efternavn:");
 
@@ -106,115 +106,71 @@ public class MedlemVisForm extends javax.swing.JDialog
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 
+        jScrollPane2.setViewportView(tblMedlem);
+
+        jScrollPane2.setBounds(10, 10, 820, 325);
+        jLayeredPane1.add(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         btnAfbryd.setText("Afbryd");
-        btnAfbryd.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAfbrydActionPerformed(evt);
             }
         });
-
-        jScrollPane2.setViewportView(tblMedlem);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Detaljer om Medlemmet")));
-
-        lblMedlemsNr.setText("MedlemsNr:");
-
-        txtMedlemsNr.setEditable(false);
-
-        lblNavn.setText("Navn:");
-
-        lblEfternavn.setText("Efternavn:");
-
-        chkKontingent.setText("Har betalt kontingent");
+        btnAfbryd.setBounds(750, 470, 65, 23);
+        jLayeredPane1.add(btnAfbryd, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnOpdater.setText("Opdater medlem");
+        btnOpdater.setBounds(630, 470, 111, 23);
+        jLayeredPane1.add(btnOpdater, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        chkKontingent.setText("Har betalt kontingent");
+        chkKontingent.setBounds(120, 470, 160, 23);
+        jLayeredPane1.add(chkKontingent, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lblEfternavn.setText("Efternavn:");
+        lblEfternavn.setBounds(40, 440, 70, 14);
+        jLayeredPane1.add(lblEfternavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lblNavn.setText("Navn:");
+        lblNavn.setBounds(40, 410, 50, 14);
+        jLayeredPane1.add(lblNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lblMedlemsNr.setText("MedlemsNr:");
+        lblMedlemsNr.setBounds(40, 370, 70, 14);
+        jLayeredPane1.add(lblMedlemsNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        txtEfternavn.setBounds(110, 430, 300, 30);
+        jLayeredPane1.add(txtEfternavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        txtMedlemsNr.setEditable(false);
+        txtMedlemsNr.setBounds(110, 360, 50, 30);
+        jLayeredPane1.add(txtMedlemsNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        txtNavn.setBounds(110, 400, 300, 30);
+        jLayeredPane1.add(txtNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnFjern.setText("Fjern medlem");
+        btnFjern.setBounds(510, 470, 110, 23);
+        jLayeredPane1.add(btnFjern, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMedlemsNr)
-                            .addComponent(lblNavn)
-                            .addComponent(lblEfternavn))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkKontingent)
-                            .addComponent(txtMedlemsNr, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEfternavn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNavn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnOpdater)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnFjern)))
-                .addContainerGap(351, Short.MAX_VALUE))
-        );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnFjern, btnOpdater});
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtEfternavn, txtNavn});
-
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMedlemsNr)
-                    .addComponent(txtMedlemsNr))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNavn)
-                    .addComponent(txtNavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEfternavn)
-                    .addComponent(txtEfternavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chkKontingent)
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOpdater)
-                    .addComponent(btnFjern))
-                .addContainerGap())
-        );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtEfternavn, txtNavn});
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/img/bg.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setBounds(0, 0, 850, 510);
+        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAfbryd)))
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
+                .addGap(1, 1, 1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAfbryd))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-
-        jPanel1.getAccessibleContext().setAccessibleName("Detaljer om Medlemmet");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAfbrydActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAfbrydActionPerformed
@@ -227,9 +183,10 @@ public class MedlemVisForm extends javax.swing.JDialog
     private javax.swing.JButton btnFjern;
     private javax.swing.JButton btnOpdater;
     private javax.swing.JCheckBox chkKontingent;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblEfternavn;
     private javax.swing.JLabel lblMedlemsNr;

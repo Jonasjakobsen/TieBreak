@@ -43,25 +43,27 @@ public class MedlemAddForm extends javax.swing.JDialog
 
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        lblNavn = new javax.swing.JLabel();
-        txtNavn = new javax.swing.JTextField();
-        lblEfterNavn = new javax.swing.JLabel();
-        txtEfterNavn = new javax.swing.JTextField();
-        lblAddresse1 = new javax.swing.JLabel();
-        txtAddresse1 = new javax.swing.JTextField();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         lblPostNr = new javax.swing.JLabel();
-        txtPostNr = new javax.swing.JTextField();
+        txtAddresse1 = new javax.swing.JTextField();
+        btnOk = new javax.swing.JButton();
+        lblEfterNavn = new javax.swing.JLabel();
+        txtFodselsdag = new javax.swing.JTextField();
+        txtNavn = new javax.swing.JTextField();
+        lblFodselsdag = new javax.swing.JLabel();
+        lblAddresse1 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        txtEfterNavn = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        lblNavn = new javax.swing.JLabel();
         lblTlfNr = new javax.swing.JLabel();
         txtTlfNr = new javax.swing.JTextField();
         lblMobilNr = new javax.swing.JLabel();
         txtMobilNr = new javax.swing.JTextField();
-        lblEmail = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        lblFodselsdag = new javax.swing.JLabel();
-        txtFodselsdag = new javax.swing.JTextField();
-        btnOk = new javax.swing.JButton();
         btnAfbryd = new javax.swing.JButton();
         chkKontingent = new javax.swing.JCheckBox();
+        txtPostNr = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         jLabel3.setText("Efternavn:");
 
@@ -74,27 +76,11 @@ public class MedlemAddForm extends javax.swing.JDialog
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         setType(java.awt.Window.Type.POPUP);
 
-        lblNavn.setText("Navn");
-
-        txtNavn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNavnActionPerformed(evt);
-            }
-        });
-
-        lblEfterNavn.setText("Efternavn:");
-
-        lblAddresse1.setText("Addresse:");
-
         lblPostNr.setText("Postnr :");
-
-        lblTlfNr.setText("Tlfnr:");
-
-        lblMobilNr.setText("Mobilnr:");
-
-        lblEmail.setText("Email:");
-
-        lblFodselsdag.setText("Fødselsdag:");
+        lblPostNr.setBounds(220, 70, 38, 14);
+        jLayeredPane1.add(lblPostNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        txtAddresse1.setBounds(120, 70, 92, 20);
+        jLayeredPane1.add(txtAddresse1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnOk.setText("Ok");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +88,54 @@ public class MedlemAddForm extends javax.swing.JDialog
                 btnOkActionPerformed(evt);
             }
         });
+        btnOk.setBounds(150, 250, 65, 23);
+        jLayeredPane1.add(btnOk, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lblEfterNavn.setText("Efternavn:");
+        lblEfterNavn.setBounds(30, 40, 70, 14);
+        jLayeredPane1.add(lblEfterNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        txtFodselsdag.setBounds(120, 190, 200, 20);
+        jLayeredPane1.add(txtFodselsdag, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        txtNavn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNavnActionPerformed(evt);
+            }
+        });
+        txtNavn.setBounds(120, 10, 200, 20);
+        jLayeredPane1.add(txtNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lblFodselsdag.setText("Fødselsdag:");
+        lblFodselsdag.setBounds(20, 190, 80, 14);
+        jLayeredPane1.add(lblFodselsdag, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lblAddresse1.setText("Addresse:");
+        lblAddresse1.setBounds(30, 70, 70, 14);
+        jLayeredPane1.add(lblAddresse1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        txtEmail.setBounds(120, 160, 200, 20);
+        jLayeredPane1.add(txtEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        txtEfterNavn.setBounds(120, 40, 200, 20);
+        jLayeredPane1.add(txtEfterNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lblEmail.setText("Email:");
+        lblEmail.setBounds(50, 160, 50, 14);
+        jLayeredPane1.add(lblEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lblNavn.setText("Navn");
+        lblNavn.setBounds(40, 10, 50, 14);
+        jLayeredPane1.add(lblNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lblTlfNr.setText("Tlfnr:");
+        lblTlfNr.setBounds(60, 110, 50, 14);
+        jLayeredPane1.add(lblTlfNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        txtTlfNr.setBounds(120, 100, 200, 20);
+        jLayeredPane1.add(txtTlfNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lblMobilNr.setText("Mobilnr:");
+        lblMobilNr.setBounds(40, 140, 60, 14);
+        jLayeredPane1.add(lblMobilNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        txtMobilNr.setBounds(120, 130, 200, 20);
+        jLayeredPane1.add(txtMobilNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnAfbryd.setText("Afbryd");
         btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
@@ -109,109 +143,30 @@ public class MedlemAddForm extends javax.swing.JDialog
                 btnAfbrydActionPerformed(evt);
             }
         });
+        btnAfbryd.setBounds(230, 250, 65, 23);
+        jLayeredPane1.add(btnAfbryd, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         chkKontingent.setText("Har betalt kontingent");
+        chkKontingent.setBounds(190, 220, 127, 23);
+        jLayeredPane1.add(chkKontingent, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        txtPostNr.setBounds(260, 70, 60, 20);
+        jLayeredPane1.add(txtPostNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/img/bg.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setBounds(0, 0, 380, 310);
+        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblFodselsdag)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(68, 68, 68)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(chkKontingent)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnOk)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnAfbryd))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtFodselsdag, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(lblMobilNr)
-                            .addComponent(lblEmail))
-                        .addGap(23, 23, 23))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAddresse1)
-                            .addComponent(lblEfterNavn)
-                            .addComponent(lblNavn)
-                            .addComponent(lblPostNr)
-                            .addComponent(lblTlfNr))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtNavn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTlfNr, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPostNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAddresse1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtMobilNr, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEfterNavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAfbryd, btnOk});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAddresse1, txtEfterNavn, txtEmail, txtFodselsdag, txtMobilNr, txtNavn, txtPostNr, txtTlfNr});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNavn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEfterNavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEfterNavn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAddresse1)
-                    .addComponent(txtAddresse1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPostNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPostNr))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTlfNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTlfNr))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMobilNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMobilNr))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmail))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFodselsdag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFodselsdag))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chkKontingent)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAfbryd)
-                    .addComponent(btnOk))
-                .addContainerGap())
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAddresse1, txtEfterNavn, txtEmail, txtFodselsdag, txtMobilNr, txtNavn, txtPostNr, txtTlfNr});
-
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAfbrydActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAfbrydActionPerformed
@@ -253,8 +208,10 @@ public class MedlemAddForm extends javax.swing.JDialog
     private javax.swing.JButton btnAfbryd;
     private javax.swing.JButton btnOk;
     private javax.swing.JCheckBox chkKontingent;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lblAddresse1;
     private javax.swing.JLabel lblEfterNavn;
     private javax.swing.JLabel lblEmail;

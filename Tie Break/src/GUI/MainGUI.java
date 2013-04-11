@@ -29,206 +29,109 @@ public class MainGUI extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
-        PanelMedlemmer = new javax.swing.JPanel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         btnMedlemTilføj = new javax.swing.JButton();
-        btnMedlemRediger = new javax.swing.JButton();
-        btnMedlemFjern = new javax.swing.JButton();
         btnMedlemVis = new javax.swing.JButton();
-        PanelHold = new javax.swing.JPanel();
-        btnHoldTilføj = new javax.swing.JButton();
-        btnHoldRediger = new javax.swing.JButton();
-        btnHoldFjern = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        PanelBooking = new javax.swing.JPanel();
-        btnBookingTilføj = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         btnBookingRediger = new javax.swing.JButton();
         btnBookingFjern = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnBookingTilføj = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        btnHoldRediger = new javax.swing.JButton();
+        btnHoldFjern = new javax.swing.JButton();
+        btnHoldTilføj = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TieBreak");
+        setBackground(new java.awt.Color(0, 0, 0));
         setResizable(false);
-
-        PanelMedlemmer.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Medlemmer", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         btnMedlemTilføj.setText("Tilføj");
         btnMedlemTilføj.setMaximumSize(null);
-        btnMedlemTilføj.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnMedlemTilføj.setMinimumSize(new java.awt.Dimension(25, 0));
+        btnMedlemTilføj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMedlemTilføjActionPerformed(evt);
             }
         });
+        btnMedlemTilføj.setBounds(80, 290, 95, 23);
+        jLayeredPane1.add(btnMedlemTilføj, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        btnMedlemTilføj.getAccessibleContext().setAccessibleParent(this);
 
-        btnMedlemRediger.setText("Rediger");
-        btnMedlemRediger.setMaximumSize(null);
-        btnMedlemRediger.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnMedlemRedigerActionPerformed(evt);
-            }
-        });
-
-        btnMedlemFjern.setText("Fjern");
-        btnMedlemFjern.setMaximumSize(null);
-        btnMedlemFjern.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnMedlemFjernActionPerformed(evt);
-            }
-        });
-
-        btnMedlemVis.setText("Vis");
-        btnMedlemVis.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnMedlemVis.setText("Oversigt");
+        btnMedlemVis.setMinimumSize(new java.awt.Dimension(25, 0));
+        btnMedlemVis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMedlemVisActionPerformed(evt);
             }
         });
+        btnMedlemVis.setBounds(80, 260, 95, 23);
+        jLayeredPane1.add(btnMedlemVis, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout PanelMedlemmerLayout = new javax.swing.GroupLayout(PanelMedlemmer);
-        PanelMedlemmer.setLayout(PanelMedlemmerLayout);
-        PanelMedlemmerLayout.setHorizontalGroup(
-            PanelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelMedlemmerLayout.createSequentialGroup()
-                .addComponent(btnMedlemTilføj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMedlemRediger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMedlemFjern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMedlemVis)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jLabel2.setText("Medlemmer");
+        jLabel2.setBounds(90, 240, 80, 14);
+        jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        PanelMedlemmerLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMedlemFjern, btnMedlemRediger, btnMedlemTilføj, btnMedlemVis});
+        jLabel3.setText("Booking");
+        jLabel3.setBounds(340, 180, 56, 14);
+        jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        PanelMedlemmerLayout.setVerticalGroup(
-            PanelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelMedlemmerLayout.createSequentialGroup()
-                .addGroup(PanelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMedlemTilføj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMedlemRediger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMedlemFjern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMedlemVis))
-                .addGap(0, 11, Short.MAX_VALUE))
-        );
-
-        PanelMedlemmerLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnMedlemFjern, btnMedlemRediger, btnMedlemTilføj});
-
-        btnMedlemTilføj.getAccessibleContext().setAccessibleParent(this);
-
-        PanelHold.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Hold", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-
-        btnHoldTilføj.setText("Tilføj");
-
-        btnHoldRediger.setText("Rediger");
-
-        btnHoldFjern.setText("Fjern");
-
-        jButton2.setText("Vis");
-
-        javax.swing.GroupLayout PanelHoldLayout = new javax.swing.GroupLayout(PanelHold);
-        PanelHold.setLayout(PanelHoldLayout);
-        PanelHoldLayout.setHorizontalGroup(
-            PanelHoldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelHoldLayout.createSequentialGroup()
-                .addComponent(btnHoldTilføj)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnHoldRediger)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnHoldFjern)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        PanelHoldLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHoldFjern, btnHoldRediger, btnHoldTilføj, jButton2});
-
-        PanelHoldLayout.setVerticalGroup(
-            PanelHoldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelHoldLayout.createSequentialGroup()
-                .addGroup(PanelHoldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnHoldTilføj)
-                    .addComponent(btnHoldRediger)
-                    .addComponent(btnHoldFjern)
-                    .addComponent(jButton2))
-                .addGap(0, 11, Short.MAX_VALUE))
-        );
-
-        PanelHoldLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnHoldFjern, btnHoldRediger, btnHoldTilføj});
-
-        PanelBooking.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Booking", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-
-        btnBookingTilføj.setText("Tilføj");
+        jButton3.setText("Oversigt");
+        jButton3.setBounds(320, 200, 95, 23);
+        jLayeredPane1.add(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnBookingRediger.setText("Rediger");
+        btnBookingRediger.setBounds(320, 230, 95, 23);
+        jLayeredPane1.add(btnBookingRediger, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnBookingFjern.setText("Fjern");
+        btnBookingFjern.setBounds(320, 260, 95, 23);
+        jLayeredPane1.add(btnBookingFjern, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton3.setText("Vis");
+        btnBookingTilføj.setText("Tilføj");
+        btnBookingTilføj.setBounds(320, 290, 95, 23);
+        jLayeredPane1.add(btnBookingTilføj, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout PanelBookingLayout = new javax.swing.GroupLayout(PanelBooking);
-        PanelBooking.setLayout(PanelBookingLayout);
-        PanelBookingLayout.setHorizontalGroup(
-            PanelBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelBookingLayout.createSequentialGroup()
-                .addComponent(btnBookingTilføj)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBookingRediger)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBookingFjern)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jLabel4.setText("Hold");
+        jLabel4.setBounds(240, 180, 40, 14);
+        jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        PanelBookingLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnBookingFjern, btnBookingRediger, btnBookingTilføj, jButton3});
+        jButton2.setText("Oversigt");
+        jButton2.setBounds(200, 200, 95, 23);
+        jLayeredPane1.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        PanelBookingLayout.setVerticalGroup(
-            PanelBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelBookingLayout.createSequentialGroup()
-                .addGroup(PanelBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBookingTilføj)
-                    .addComponent(btnBookingRediger)
-                    .addComponent(btnBookingFjern)
-                    .addComponent(jButton3))
-                .addGap(0, 11, Short.MAX_VALUE))
-        );
+        btnHoldRediger.setText("Rediger");
+        btnHoldRediger.setBounds(200, 230, 95, 23);
+        jLayeredPane1.add(btnHoldRediger, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        PanelBookingLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnBookingFjern, btnBookingRediger, btnBookingTilføj});
+        btnHoldFjern.setText("Fjern");
+        btnHoldFjern.setBounds(200, 260, 95, 23);
+        jLayeredPane1.add(btnHoldFjern, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        btnHoldTilføj.setText("Tilføj");
+        btnHoldTilføj.setBounds(200, 290, 95, 23);
+        jLayeredPane1.add(btnHoldTilføj, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/TieBreak.jpg"))); // NOI18N
+        jLabel1.setBounds(-90, 0, 640, 450);
+        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelMedlemmer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelHold, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelBooking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(PanelMedlemmer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelHold, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {PanelBooking, PanelHold, PanelMedlemmer});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -245,20 +148,6 @@ public class MainGUI extends javax.swing.JFrame {
             Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnMedlemTilføjActionPerformed
-
-    private void btnMedlemRedigerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedlemRedigerActionPerformed
-        MedlemRedigerForm medForm = new MedlemRedigerForm(this, true);
-        medForm.setLocationRelativeTo(this);
-        medForm.pack();
-        medForm.setVisible(true);
-    }//GEN-LAST:event_btnMedlemRedigerActionPerformed
-
-    private void btnMedlemFjernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedlemFjernActionPerformed
-        MedlemFjernForm medForm = new MedlemFjernForm(this, true);
-        medForm.setLocationRelativeTo(this);
-        medForm.pack();
-        medForm.setVisible(true);
-    }//GEN-LAST:event_btnMedlemFjernActionPerformed
 
     private void btnMedlemVisActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnMedlemVisActionPerformed
     {//GEN-HEADEREND:event_btnMedlemVisActionPerformed
@@ -310,20 +199,20 @@ public class MainGUI extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelBooking;
-    private javax.swing.JPanel PanelHold;
-    private javax.swing.JPanel PanelMedlemmer;
     private javax.swing.JButton btnBookingFjern;
     private javax.swing.JButton btnBookingRediger;
     private javax.swing.JButton btnBookingTilføj;
     private javax.swing.JButton btnHoldFjern;
     private javax.swing.JButton btnHoldRediger;
     private javax.swing.JButton btnHoldTilføj;
-    private javax.swing.JButton btnMedlemFjern;
-    private javax.swing.JButton btnMedlemRediger;
     private javax.swing.JButton btnMedlemTilføj;
     private javax.swing.JButton btnMedlemVis;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
 }

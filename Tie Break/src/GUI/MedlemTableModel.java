@@ -21,11 +21,11 @@ public class MedlemTableModel extends AbstractTableModel
     private BLLMedlemManager mm;
     private final String[] header =
     {
-        "Id", "Name", "Efternavn", "Adresse", "Fødselsdag", "Mobil Nr", "Tlf nr", "Email", "Kontingent"
+        "Id", "Name", "Efternavn", "Adresse", "PostNr", "Fødselsdag", "Mobil Nr", "Tlf nr", "Email", "Kontingent"
     };
     private final Class[] columnTypes =
     {
-        int.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, Boolean.class
+        int.class, String.class, String.class, String.class,  String.class, String.class, String.class, String.class, String.class, Boolean.class
     };
     private ArrayList<BEMedlem> medlemmer;
 
@@ -74,15 +74,18 @@ public class MedlemTableModel extends AbstractTableModel
                 case 3:
                     return m.getAddresse1();
                 case 4:
-                    return m.getFodselsdag();
+                    return m.getPostnr();
                 case 5:
-                    return m.getMobnr();
+                    return m.getFodselsdag();
                 case 6:
-                    return m.getTlfnr();
+                    return m.getMobnr();
                 case 7:
-                    return m.getEmail();
+                    return m.getTlfnr();
                 case 8:
+                    return m.getEmail();
+                case 9:
                     return m.harBetalt();
+
             }
             return null;
         }

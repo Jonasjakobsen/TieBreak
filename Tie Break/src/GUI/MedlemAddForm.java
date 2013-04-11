@@ -17,7 +17,6 @@ import java.util.logging.Logger;
  */
 public class MedlemAddForm extends javax.swing.JDialog
 {
-    private BLLMedlemManager medmgr;
     private MedlemTableModel medmodel;
     private BEMedlem medlem = null;
 
@@ -226,15 +225,28 @@ public class MedlemAddForm extends javax.swing.JDialog
     }//GEN-LAST:event_txtNavnActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        try {
-            BEMedlem e = new BEMedlem(-1, txtNavn.toString(), txtEfterNavn.toString(), txtAddresse1.toString(), 
-                                      txtPostNr.toString(), txtTlfNr.toString(), txtMobilNr.toString(), txtEmail.toString(), 
-                                      chkKontingent.isSelected() );
-            e = medmgr.addMember(e);
-            //        BEMedlem e = new BEMedlem(-1, Navn, Efternavn, Addresse1, Postnr, Tlfnr, Mobnr, Email, Fodselsdag, harBetalt);
-        } catch (SQLException ex) {
+        try
+        {
+            String navn = txtNavn.getText();
+            String efternavn = txtEfterNavn.getText();
+            String addresse = txtAddresse1.getText();
+            String postnr = txtPostNr.getText();
+            String tlfnr = txtTlfNr.getText();
+            String mobnr = txtMobilNr.getText();
+            String email = txtEmail.getText();
+            String fodselsdag = txtFodselsdag.getText();
+            Boolean kontingent = chkKontingent.isSelected();
+        
+            BEMedlem m = new BEMedlem(-1, navn, efternavn, addresse, postnr, tlfnr, mobnr, email, fodselsdag, kontingent );
+            BLLMedlemManager.getInstance().addMember(m);
+        }
+        catch (Exception ex)
+        {
             Logger.getLogger(MedlemAddForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+
+
     }//GEN-LAST:event_btnOkActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

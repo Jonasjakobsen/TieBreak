@@ -38,8 +38,8 @@ public class BLLMedlemManager
     {
         return db.showAll();
     }
-    public BEMedlem addMember(BEMedlem e) throws SQLException
+    public BEMedlem addMember(BEMedlem m) throws SQLException
     {
-        return db.addMember(e);
+        return db.addMember(m);
     }
 }

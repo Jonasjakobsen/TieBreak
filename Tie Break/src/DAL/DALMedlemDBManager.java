@@ -70,23 +70,23 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
         return null;
     }
 
-    public BEMedlem addMember(BEMedlem e) throws SQLServerException, SQLException 
+    public BEMedlem addMember(BEMedlem m) throws SQLServerException, SQLException 
     {
         Connection con = ds.getConnection();
 
-        String sql = "INSERT INTO Medlem(Fornavn, Efternavn, Adresse1, PostNr, TlfNr, Mobnr, Email, Fodselsdag, Kontigent)"
+        String sql = "INSERT INTO Medlem(Fornavn, Efternavn, Addresse1, PostNr, TlfNr, Mobnr, Email, Fodselsdag, Kontingent)"
                 + "VALUES(?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-        ps.setString(1, e.getNavn());
-        ps.setString(2, e.getEfternavn());
-        ps.setString(3, e.getAddresse1());
-        ps.setString(4, e.getPostnr());
-        ps.setString(5, e.getTlfnr());
-        ps.setString(6, e.getMobnr());
-        ps.setString(7, e.getEmail());
-        ps.setString(8, e.getFodselsdag());
-        ps.setBoolean(9, e.harBetalt());
+        ps.setString(1, m.getNavn());
+        ps.setString(2, m.getEfternavn());
+        ps.setString(3, m.getAddresse1());
+        ps.setString(4, m.getPostnr());
+        ps.setString(5, m.getTlfnr());
+        ps.setString(6, m.getMobnr());
+        ps.setString(7, m.getEmail());
+        ps.setString(8, m.getFodselsdag());
+        ps.setBoolean(9, m.harBetalt());
         
 
         int affectedRows = ps.executeUpdate();
@@ -99,7 +99,7 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
         keys.next();
         int id = keys.getInt(1);
 
-        return new BEMedlem(id, e);
+        return new BEMedlem(id, m);
 
     }
 }

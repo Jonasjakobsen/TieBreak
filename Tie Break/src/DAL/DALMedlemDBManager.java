@@ -106,8 +106,7 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
     
     public BEMedlem updateMember(BEMedlem m) throws SQLException
     {
-             Connection con = ds.getConnection();
-
+        Connection con = ds.getConnection();
         String sql = "UPDATE Medlem SET Fornavn = ?, Efternavn = ?, Kontingent = ? WHERE MedlemsNr = ?";
 
 
@@ -130,6 +129,22 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
 
         return new BEMedlem(id, m);
     }
+    
+    public void deleteMember(int id) throws SQLException
+    {
+        Connection con = ds.getConnection();
+        String sql = "DELETE Medlem WHERE MedlemsNr = ?";
+                
+        PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, id);
+        
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to delete Member");
+        }
+    }
+    
 }
 
 

@@ -199,7 +199,15 @@ public class MedlemVisForm extends javax.swing.JDialog
 
     private void btnFjernActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnFjernActionPerformed
     {//GEN-HEADEREND:event_btnFjernActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            int id = Integer.parseInt(txtMedlemsNr.getText());
+            BLLMedlemManager.getInstance().deleteMember(id);
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(MedlemVisForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnFjernActionPerformed
 
     private void btnOpdaterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnOpdaterActionPerformed

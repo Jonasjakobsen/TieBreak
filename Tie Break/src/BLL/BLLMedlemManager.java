@@ -47,4 +47,9 @@ public class BLLMedlemManager
     {
         return db.updateMember(m);
     }
+    
+    public void deleteMember(int id) throws SQLException
+    {
+        db.deleteMember(id);
+    }
 }

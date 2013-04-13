@@ -42,4 +42,9 @@ public class BLLMedlemManager
     {
         return db.addMember(m);
     }
+    
+    public BEMedlem updateMember(BEMedlem m) throws SQLException
+    {
+        return db.updateMember(m);
+    }
 }

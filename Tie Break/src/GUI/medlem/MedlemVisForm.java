@@ -2,10 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package GUI.medlem;
 
 import BE.BEMedlem;
 import BLL.BLLMedlemManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -74,7 +76,8 @@ public class MedlemVisForm extends javax.swing.JDialog
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -112,8 +115,10 @@ public class MedlemVisForm extends javax.swing.JDialog
         jLayeredPane1.add(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnAfbryd.setText("Afbryd");
-        btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAfbryd.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAfbrydActionPerformed(evt);
             }
         });
@@ -121,6 +126,13 @@ public class MedlemVisForm extends javax.swing.JDialog
         jLayeredPane1.add(btnAfbryd, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnOpdater.setText("Opdater medlem");
+        btnOpdater.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnOpdaterActionPerformed(evt);
+            }
+        });
         btnOpdater.setBounds(630, 470, 111, 23);
         jLayeredPane1.add(btnOpdater, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -149,6 +161,13 @@ public class MedlemVisForm extends javax.swing.JDialog
         jLayeredPane1.add(txtNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnFjern.setText("Fjern medlem");
+        btnFjern.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnFjernActionPerformed(evt);
+            }
+        });
         btnFjern.setBounds(510, 470, 110, 23);
         jLayeredPane1.add(btnFjern, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -177,6 +196,29 @@ public class MedlemVisForm extends javax.swing.JDialog
     {//GEN-HEADEREND:event_btnAfbrydActionPerformed
         dispose();
     }//GEN-LAST:event_btnAfbrydActionPerformed
+
+    private void btnFjernActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnFjernActionPerformed
+    {//GEN-HEADEREND:event_btnFjernActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFjernActionPerformed
+
+    private void btnOpdaterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnOpdaterActionPerformed
+    {//GEN-HEADEREND:event_btnOpdaterActionPerformed
+        try
+        {
+            int id = Integer.parseInt(txtMedlemsNr.getText());
+            String navn = txtNavn.getText();
+            String efternavn = txtEfternavn.getText();
+            Boolean kontingent = chkKontingent.isSelected();
+            
+            BEMedlem m = new BEMedlem(id, navn, efternavn, kontingent);
+            BLLMedlemManager.getInstance().updateMember(m);
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(MedlemVisForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnOpdaterActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAfbryd;

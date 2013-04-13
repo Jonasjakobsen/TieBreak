@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package GUI.medlem;
 
 import BE.BEMedlem;
 import BLL.BLLMedlemManager;
@@ -21,7 +21,7 @@ public class MedlemTableModel extends AbstractTableModel
     private BLLMedlemManager mm;
     private final String[] header =
     {
-        "Id", "Name", "Efternavn", "Adresse", "PostNr", "Fødselsdag", "Mobil Nr", "Tlf nr", "Email", "Kontingent"
+        "MedlemsNr", "Name", "Efternavn", "Adresse", "PostNr", "Fødselsdag", "Mobil Nr", "Tlf nr", "Email", "Kontingent"
     };
     private final Class[] columnTypes =
     {

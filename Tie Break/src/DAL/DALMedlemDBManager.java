@@ -43,13 +43,14 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
                 String navn = rs.getString("Fornavn");
                 String efternavn = rs.getString("Efternavn");
                 String addresse1 = rs.getString("Addresse1");
+                String postnr = rs.getString("PostNr");
                 String fodselsdag = rs.getString("Fodselsdag");
                 String mobnr = rs.getString("Mobnr");
                 String tlfnr = rs.getString("Tlfnr");
                 String email = rs.getString("Email");
                 Boolean kontingent = rs.getBoolean("Kontingent");
 
-                BEMedlem m = new BEMedlem(id, navn, efternavn, addresse1, fodselsdag, mobnr, tlfnr, email, kontingent);
+                BEMedlem m = new BEMedlem(id, navn, efternavn, addresse1, postnr, fodselsdag, mobnr, tlfnr, email, kontingent);
                 members.add(m);
             }
             return members;
@@ -101,6 +102,33 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
 
         return new BEMedlem(id, m);
 
+    }
+    
+    public BEMedlem updateMember(BEMedlem m) throws SQLException
+    {
+             Connection con = ds.getConnection();
+
+        String sql = "UPDATE Medlem SET Fornavn = ?, Efternavn = ?, Kontingent = ? WHERE MedlemsNr = ?";
+
+
+        PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+        ps.setString(1, m.getNavn());
+        ps.setString(2, m.getEfternavn());
+        ps.setBoolean(3, m.harBetalt());
+        ps.setInt(4, m.getId());
+        
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to update Member");
+        }
+
+        ResultSet keys = ps.getGeneratedKeys();
+        keys.next();
+        int id = keys.getInt(1);
+
+        return new BEMedlem(id, m);
     }
 }
 

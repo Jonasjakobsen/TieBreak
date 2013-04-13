@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import GUI.medlem.MedlemAddForm;
+import GUI.medlem.MedlemVisForm;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -37,16 +39,6 @@ public class MainGUI extends javax.swing.JFrame {
         btnMedlemTilføj = new javax.swing.JButton();
         btnMedlemVis = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        btnBookingRediger = new javax.swing.JButton();
-        btnBookingFjern = new javax.swing.JButton();
-        btnBookingTilføj = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        btnHoldRediger = new javax.swing.JButton();
-        btnHoldFjern = new javax.swing.JButton();
-        btnHoldTilføj = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,46 +75,6 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel2.setText("Medlemmer");
         jLabel2.setBounds(90, 240, 80, 14);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jLabel3.setText("Booking");
-        jLabel3.setBounds(340, 180, 56, 14);
-        jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jButton3.setText("Oversigt");
-        jButton3.setBounds(320, 200, 95, 23);
-        jLayeredPane1.add(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        btnBookingRediger.setText("Rediger");
-        btnBookingRediger.setBounds(320, 230, 95, 23);
-        jLayeredPane1.add(btnBookingRediger, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        btnBookingFjern.setText("Fjern");
-        btnBookingFjern.setBounds(320, 260, 95, 23);
-        jLayeredPane1.add(btnBookingFjern, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        btnBookingTilføj.setText("Tilføj");
-        btnBookingTilføj.setBounds(320, 290, 95, 23);
-        jLayeredPane1.add(btnBookingTilføj, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jLabel4.setText("Hold");
-        jLabel4.setBounds(240, 180, 40, 14);
-        jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jButton2.setText("Oversigt");
-        jButton2.setBounds(200, 200, 95, 23);
-        jLayeredPane1.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        btnHoldRediger.setText("Rediger");
-        btnHoldRediger.setBounds(200, 230, 95, 23);
-        jLayeredPane1.add(btnHoldRediger, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        btnHoldFjern.setText("Fjern");
-        btnHoldFjern.setBounds(200, 260, 95, 23);
-        jLayeredPane1.add(btnHoldFjern, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        btnHoldTilføj.setText("Tilføj");
-        btnHoldTilføj.setBounds(200, 290, 95, 23);
-        jLayeredPane1.add(btnHoldTilføj, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/img/TieBreak.jpg"))); // NOI18N
         jLabel1.setBounds(-90, 0, 640, 450);
@@ -206,20 +158,10 @@ public class MainGUI extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBookingFjern;
-    private javax.swing.JButton btnBookingRediger;
-    private javax.swing.JButton btnBookingTilføj;
-    private javax.swing.JButton btnHoldFjern;
-    private javax.swing.JButton btnHoldRediger;
-    private javax.swing.JButton btnHoldTilføj;
     private javax.swing.JButton btnMedlemTilføj;
     private javax.swing.JButton btnMedlemVis;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
 }

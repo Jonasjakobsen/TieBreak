@@ -35,4 +35,5 @@ public abstract class DALTieBreakDBManager
         ds.setUser(props.getProperty("USER"));
         ds.setPassword(props.getProperty("PASSWORD"));
     }
+    
 }

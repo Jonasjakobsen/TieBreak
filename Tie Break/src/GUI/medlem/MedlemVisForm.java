@@ -28,6 +28,7 @@ public class MedlemVisForm extends javax.swing.JDialog
     {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
         
         // disable update and remove buttons
         btnOpdater.setEnabled(false);
@@ -122,7 +123,7 @@ public class MedlemVisForm extends javax.swing.JDialog
                 btnAfbrydActionPerformed(evt);
             }
         });
-        btnAfbryd.setBounds(750, 470, 65, 23);
+        btnAfbryd.setBounds(760, 530, 65, 23);
         jLayeredPane1.add(btnAfbryd, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnOpdater.setText("Opdater medlem");
@@ -133,7 +134,7 @@ public class MedlemVisForm extends javax.swing.JDialog
                 btnOpdaterActionPerformed(evt);
             }
         });
-        btnOpdater.setBounds(630, 470, 111, 23);
+        btnOpdater.setBounds(110, 520, 111, 23);
         jLayeredPane1.add(btnOpdater, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         chkKontingent.setText("Har betalt kontingent");
@@ -168,12 +169,12 @@ public class MedlemVisForm extends javax.swing.JDialog
                 btnFjernActionPerformed(evt);
             }
         });
-        btnFjern.setBounds(510, 470, 110, 23);
+        btnFjern.setBounds(240, 520, 110, 23);
         jLayeredPane1.add(btnFjern, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/img/bg.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jLabel1.setBounds(0, 0, 850, 510);
+        jLabel1.setBounds(0, 0, 850, 720);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -186,9 +187,7 @@ public class MedlemVisForm extends javax.swing.JDialog
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

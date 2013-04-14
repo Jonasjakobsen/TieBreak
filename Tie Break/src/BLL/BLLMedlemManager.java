@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author Stoffer
  */
-public class BLLMedlemManager
+public class BLLMedlemManager extends BLLTieBreakManager
 {
     private static BLLMedlemManager instance = null;
     private DALMedlemDBManager db = null;

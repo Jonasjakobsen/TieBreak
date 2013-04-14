@@ -143,6 +143,7 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
         {
             throw new SQLException("Unable to delete Member");
         }
+        
     }
     
 }

@@ -27,7 +27,7 @@ public class MedlemVisForm extends javax.swing.JDialog
     {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(this);
         
         // disable update and remove buttons
         btnOpdater.setEnabled(false);
@@ -173,7 +173,7 @@ public class MedlemVisForm extends javax.swing.JDialog
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/img/bg.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jLabel1.setBounds(0, 0, 850, 720);
+        jLabel1.setBounds(0, 0, 850, 570);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

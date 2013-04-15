@@ -41,8 +41,8 @@ public class MainGUI extends javax.swing.JFrame {
         btnMedlemVis = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnVisEvent = new javax.swing.JButton();
         btnAddEvent = new javax.swing.JButton();
+        btnVisEvent = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,8 +81,12 @@ public class MainGUI extends javax.swing.JFrame {
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setText("Events");
-        jLabel3.setBounds(210, 240, 34, 14);
+        jLabel3.setBounds(220, 240, 50, 14);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        btnAddEvent.setText("Tilføj");
+        btnAddEvent.setBounds(200, 290, 95, 23);
+        jLayeredPane1.add(btnAddEvent, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnVisEvent.setText("Oversigt");
         btnVisEvent.addActionListener(new java.awt.event.ActionListener()
@@ -92,26 +96,22 @@ public class MainGUI extends javax.swing.JFrame {
                 btnVisEventActionPerformed(evt);
             }
         });
-        btnVisEvent.setBounds(200, 260, 73, 23);
+        btnVisEvent.setBounds(200, 260, 95, 23);
         jLayeredPane1.add(btnVisEvent, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        btnAddEvent.setText("Tilføj");
-        btnAddEvent.setBounds(200, 290, 55, 23);
-        jLayeredPane1.add(btnAddEvent, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/img/TieBreak.jpg"))); // NOI18N
-        jLabel1.setBounds(-90, 0, 640, 450);
+        jLabel1.setBounds(-80, -10, 620, 440);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -120,7 +120,7 @@ public class MainGUI extends javax.swing.JFrame {
     private void btnMedlemTilføjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedlemTilføjActionPerformed
         try {
             MedlemAddForm medForm = new MedlemAddForm(this, true);
-            medForm.setLocationRelativeTo(this);
+//            medForm.setLocationRelativeTo(null);
             medForm.pack();
             medForm.setVisible(true);
         } catch (SQLServerException ex) {
@@ -135,7 +135,7 @@ public class MainGUI extends javax.swing.JFrame {
         try
         {
             MedlemVisForm medForm = new MedlemVisForm(this, true);
-            medForm.setLocationRelativeTo(this);
+//            medForm.setLocationRelativeTo(null);
             medForm.pack();
             medForm.setVisible(true);
         }
@@ -150,7 +150,7 @@ public class MainGUI extends javax.swing.JFrame {
         try
         {
             EventVisForm evtForm = new EventVisForm(this, true);
-            evtForm.setLocationRelativeTo(this);
+//            evtForm.setLocationRelativeTo(null);
             evtForm.pack();
             evtForm.setVisible(true);
         }

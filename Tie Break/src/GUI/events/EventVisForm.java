@@ -4,8 +4,11 @@
  */
 package GUI.events;
 
+import BE.BEEvent;
 import BE.BEMedlem;
 import BLL.BLLEventManager;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -14,7 +17,7 @@ import BLL.BLLEventManager;
 public class EventVisForm extends javax.swing.JDialog
 {
 
-     private BLLEventManager evtmgr;
+    private BLLEventManager evtmgr;
     private EventTableModel evtmodel;
     private BEMedlem medlem = null;
 
@@ -31,36 +34,38 @@ public class EventVisForm extends javax.swing.JDialog
         evtmgr = new BLLEventManager();
         
         // Set the table model for the JTable
-        evtmodel = new EventTableModel(evtmgr.visMedlemmer());
+        evtmodel = new EventTableModel(evtmgr.visEvents());
         tblEvent.setModel(evtmodel);
         
-//        // ADD A LISTSELECTIONLISTENER TO THE SELECTIONMODEL OF THE JTABLE HERRE
-//        tblEvent.getSelectionModel().addListSelectionListener(new ListSelectionListener()
-//        {
-//            @Override
-//            public void valueChanged(ListSelectionEvent evt)
-//            {
-//               if (!evt.getValueIsAdjusting())
-//                {
-//                    visMedlemDetaljer();
-//                }
-//            }
-//
-//            private void visMedlemDetaljer()
-//                {
-//                // Does the selection work correctly here?
-//                BEMedlem e = evtmodel.getMedlemByRow(tblMedlem.getSelectedRow());
-//
-//                txtMedlemsNr.setText("" + e.getId());
-//                txtNavn.setText(e.getNavn());
-//                txtEfternavn.setText(e.getEfternavn());
-//                chkKontingent.setSelected(e.harBetalt());                
-//
-//                btnOpdater.setEnabled(true);
-//                btnFjern.setEnabled(true);
-//                }
-//            });
-   }
+        btnOpdater.setEnabled(false);
+        btnFjern.setEnabled(false);
+        btnTilmeld.setEnabled(false);
+        
+        // ADD A LISTSELECTIONLISTENER TO THE SELECTIONMODEL OF THE JTABLE HERRE
+        tblEvent.getSelectionModel().addListSelectionListener(new ListSelectionListener()
+        {
+            @Override
+            public void valueChanged(ListSelectionEvent evt)
+            {
+               if (!evt.getValueIsAdjusting())
+                {
+                    visMedlemDetaljer();
+                }
+            }
+
+            private void visMedlemDetaljer()
+                {
+                // Does the selection work correctly here?
+                BEEvent e = evtmodel.getEventByRow(tblEvent.getSelectedRow());
+                
+                jtxtBeskrivelse.setText(e.getArrangementbeskrivelse());              
+
+                btnOpdater.setEnabled(true);
+                btnFjern.setEnabled(true);
+                btnTilmeld.setEnabled(true);
+                }
+            });
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,17 +78,43 @@ public class EventVisForm extends javax.swing.JDialog
     {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        tblEvent = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jscrEvent = new javax.swing.JScrollPane();
+        tblEvent = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtxtBeskrivelse = new javax.swing.JTextPane();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        btnFjern = new javax.swing.JButton();
+        btnTilmeld = new javax.swing.JButton();
         btnAfbryd = new javax.swing.JButton();
+        btnOpdater = new javax.swing.JButton();
         lblImg = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jscrEvent.setViewportView(tblEvent);
 
-        tblEvent.setViewportView(jTable1);
+        jscrEvent.setBounds(20, 50, 230, 130);
+        jLayeredPane1.add(jscrEvent, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        tblEvent.setBounds(10, 10, 750, 420);
-        jLayeredPane1.add(tblEvent, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jScrollPane1.setViewportView(jtxtBeskrivelse);
+
+        jScrollPane1.setBounds(270, 50, 330, 130);
+        jLayeredPane1.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel1.setText("Arrangements Beskrivelse");
+        jLabel1.setBounds(280, 30, 270, 14);
+        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel2.setText("Vælg et arrangement fra listen");
+        jLabel2.setBounds(20, 30, 170, 14);
+        jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        btnFjern.setText("Fjern");
+        btnFjern.setBounds(620, 90, 73, 23);
+        jLayeredPane1.add(btnFjern, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        btnTilmeld.setText("Tilmeld");
+        btnTilmeld.setBounds(620, 130, 73, 23);
+        jLayeredPane1.add(btnTilmeld, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnAfbryd.setText("Afbryd");
         btnAfbryd.addActionListener(new java.awt.event.ActionListener()
@@ -93,27 +124,27 @@ public class EventVisForm extends javax.swing.JDialog
                 btnAfbrydActionPerformed(evt);
             }
         });
-        btnAfbryd.setBounds(710, 500, 65, 23);
+        btnAfbryd.setBounds(620, 180, 73, 23);
         jLayeredPane1.add(btnAfbryd, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        btnOpdater.setText("Opdater");
+        btnOpdater.setBounds(620, 50, 73, 23);
+        jLayeredPane1.add(btnOpdater, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/img/bg.jpg"))); // NOI18N
         lblImg.setText("jLabel1");
-        lblImg.setBounds(0, 0, 800, 550);
+        lblImg.setBounds(0, 0, 710, 410);
         jLayeredPane1.add(lblImg, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 51, Short.MAX_VALUE))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 28, Short.MAX_VALUE))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -123,60 +154,67 @@ public class EventVisForm extends javax.swing.JDialog
     {//GEN-HEADEREND:event_btnAfbrydActionPerformed
         dispose();
     }//GEN-LAST:event_btnAfbrydActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[])
-    {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try
-        {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if ("Nimbus".equals(info.getName()))
-                {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        }
-        catch (ClassNotFoundException ex)
-        {
-            java.util.logging.Logger.getLogger(EventVisForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        catch (InstantiationException ex)
-        {
-            java.util.logging.Logger.getLogger(EventVisForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        catch (IllegalAccessException ex)
-        {
-            java.util.logging.Logger.getLogger(EventVisForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        catch (javax.swing.UnsupportedLookAndFeelException ex)
-        {
-            java.util.logging.Logger.getLogger(EventVisForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
-                new EventVisForm().setVisible(true);
-            }
-        });
-    }
+//
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[])
+//    {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try
+//        {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+//            {
+//                if ("Nimbus".equals(info.getName()))
+//                {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        }
+//        catch (ClassNotFoundException ex)
+//        {
+//            java.util.logging.Logger.getLogger(EventVisForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        catch (InstantiationException ex)
+//        {
+//            java.util.logging.Logger.getLogger(EventVisForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        catch (IllegalAccessException ex)
+//        {
+//            java.util.logging.Logger.getLogger(EventVisForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        catch (javax.swing.UnsupportedLookAndFeelException ex)
+//        {
+//            java.util.logging.Logger.getLogger(EventVisForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable()
+//        {
+//            public void run()
+//            {
+//                new EventVisForm().setVisible(true);
+//            }
+//        });
+//    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAfbryd;
+    private javax.swing.JButton btnFjern;
+    private javax.swing.JButton btnOpdater;
+    private javax.swing.JButton btnTilmeld;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jscrEvent;
+    private javax.swing.JTextPane jtxtBeskrivelse;
     private javax.swing.JLabel lblImg;
-    private javax.swing.JScrollPane tblEvent;
+    private javax.swing.JTable tblEvent;
     // End of variables declaration//GEN-END:variables
 }

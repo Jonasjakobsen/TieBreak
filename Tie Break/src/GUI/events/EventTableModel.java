@@ -5,7 +5,6 @@
 package GUI.events;
 
 import BE.BEEvent;
-import BE.BEMedlem;
 import BLL.BLLEventManager;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,7 +19,7 @@ public class EventTableModel extends AbstractTableModel
     private BLLEventManager em;
     private final String[] header =
     {
-        "ArrangementID", "Arrangementdag", "Arrangement beskrivelse"
+        "ArrangementID", "Arrangementdag"
     };
     private final Class[] columnTypes =
     {
@@ -33,7 +32,7 @@ public class EventTableModel extends AbstractTableModel
     {
         try
         {
-            em = BLLEventManager();
+            em = new BLLEventManager();
         }
         catch (Exception ex)
         {
@@ -41,7 +40,7 @@ public class EventTableModel extends AbstractTableModel
         }
     }
     
-    MedlemTableModel(ArrayList<BEEvent> AllEvents)
+    EventTableModel(ArrayList<BEEvent> AllEvents)
     {
         fireTableDataChanged();
         events = AllEvents;
@@ -49,7 +48,7 @@ public class EventTableModel extends AbstractTableModel
 @Override
     public int getRowCount()
     {
-        return medlemmer.size();
+        return events.size();
     }
 
     @Override
@@ -62,29 +61,13 @@ public class EventTableModel extends AbstractTableModel
     public Object getValueAt(int row, int col)
     {
         {
-            BEMedlem m = medlemmer.get(row);
+            BEEvent e = events.get(row);
             switch (col)
             {
                 case 0:
-                    return m.getId();
+                    return e.getId();
                 case 1:
-                    return m.getNavn();
-                case 2:
-                    return m.getEfternavn();
-                case 3:
-                    return m.getAddresse1();
-                case 4:
-                    return m.getPostnr();
-                case 5:
-                    return m.getFodselsdag();
-                case 6:
-                    return m.getMobnr();
-                case 7:
-                    return m.getTlfnr();
-                case 8:
-                    return m.getEmail();
-                case 9:
-                    return m.harBetalt();
+                    return e.getArrangementdag();
 
             }
             return null;
@@ -109,15 +92,15 @@ public class EventTableModel extends AbstractTableModel
         return (false);
     }
     
-    public void setCollection(Collection<BEMedlem> list)
+    public void setCollection(Collection<BEEvent> list)
     {
-        medlemmer = new ArrayList<>(list);
+        events = new ArrayList<>(list);
         fireTableDataChanged();
     }
 
-    BEMedlem getMedlemByRow(int row)
+    BEEvent getEventByRow(int row)
     {
-        return medlemmer.get(row);
+        return events.get(row);
     }
 }
 

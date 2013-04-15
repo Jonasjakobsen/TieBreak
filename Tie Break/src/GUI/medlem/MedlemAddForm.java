@@ -8,8 +8,7 @@ import BE.BEMedlem;
 import BLL.BLLMedlemManager;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,7 +26,7 @@ public class MedlemAddForm extends javax.swing.JDialog
     {
         super(parent, modal);
         initComponents();
-        
+        setLocationRelativeTo(null);
 //        medmodel = new MedlemTableModel(medmgr.visMedlemmer());
     }
 
@@ -45,23 +44,23 @@ public class MedlemAddForm extends javax.swing.JDialog
         jLabel2 = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         lblPostNr = new javax.swing.JLabel();
-        txtAddresse1 = new javax.swing.JTextField();
         btnOk = new javax.swing.JButton();
         lblEfterNavn = new javax.swing.JLabel();
-        txtFodselsdag = new javax.swing.JTextField();
-        txtNavn = new javax.swing.JTextField();
         lblFodselsdag = new javax.swing.JLabel();
         lblAddresse1 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        txtEfterNavn = new javax.swing.JTextField();
         lblEmail = new javax.swing.JLabel();
         lblNavn = new javax.swing.JLabel();
         lblTlfNr = new javax.swing.JLabel();
-        txtTlfNr = new javax.swing.JTextField();
         lblMobilNr = new javax.swing.JLabel();
-        txtMobilNr = new javax.swing.JTextField();
         btnAfbryd = new javax.swing.JButton();
         chkKontingent = new javax.swing.JCheckBox();
+        txtEmail = new javax.swing.JTextField();
+        txtFodselsdag = new javax.swing.JTextField();
+        txtEfterNavn = new javax.swing.JTextField();
+        txtMobilNr = new javax.swing.JTextField();
+        txtNavn = new javax.swing.JTextField();
+        txtTlfNr = new javax.swing.JTextField();
+        txtAddresse1 = new javax.swing.JTextField();
         txtPostNr = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
@@ -77,10 +76,8 @@ public class MedlemAddForm extends javax.swing.JDialog
         setType(java.awt.Window.Type.POPUP);
 
         lblPostNr.setText("Postnr :");
-        lblPostNr.setBounds(220, 70, 38, 14);
+        lblPostNr.setBounds(190, 70, 50, 14);
         jLayeredPane1.add(lblPostNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        txtAddresse1.setBounds(120, 70, 92, 20);
-        jLayeredPane1.add(txtAddresse1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnOk.setText("Ok");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -88,54 +85,36 @@ public class MedlemAddForm extends javax.swing.JDialog
                 btnOkActionPerformed(evt);
             }
         });
-        btnOk.setBounds(150, 250, 65, 23);
+        btnOk.setBounds(120, 270, 65, 23);
         jLayeredPane1.add(btnOk, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lblEfterNavn.setText("Efternavn:");
-        lblEfterNavn.setBounds(30, 40, 70, 14);
+        lblEfterNavn.setBounds(20, 40, 70, 14);
         jLayeredPane1.add(lblEfterNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        txtFodselsdag.setBounds(120, 190, 200, 20);
-        jLayeredPane1.add(txtFodselsdag, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        txtNavn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNavnActionPerformed(evt);
-            }
-        });
-        txtNavn.setBounds(120, 10, 200, 20);
-        jLayeredPane1.add(txtNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lblFodselsdag.setText("Fødselsdag:");
-        lblFodselsdag.setBounds(20, 190, 80, 14);
+        lblFodselsdag.setBounds(10, 190, 80, 14);
         jLayeredPane1.add(lblFodselsdag, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lblAddresse1.setText("Addresse:");
-        lblAddresse1.setBounds(30, 70, 70, 14);
+        lblAddresse1.setBounds(20, 70, 70, 14);
         jLayeredPane1.add(lblAddresse1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        txtEmail.setBounds(120, 160, 200, 20);
-        jLayeredPane1.add(txtEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        txtEfterNavn.setBounds(120, 40, 200, 20);
-        jLayeredPane1.add(txtEfterNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lblEmail.setText("Email:");
-        lblEmail.setBounds(50, 160, 50, 14);
+        lblEmail.setBounds(40, 160, 50, 14);
         jLayeredPane1.add(lblEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        lblNavn.setText("Navn");
+        lblNavn.setText("Navn:");
         lblNavn.setBounds(40, 10, 50, 14);
         jLayeredPane1.add(lblNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lblTlfNr.setText("Tlfnr:");
-        lblTlfNr.setBounds(60, 110, 50, 14);
+        lblTlfNr.setBounds(40, 100, 50, 14);
         jLayeredPane1.add(lblTlfNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        txtTlfNr.setBounds(120, 100, 200, 20);
-        jLayeredPane1.add(txtTlfNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lblMobilNr.setText("Mobilnr:");
-        lblMobilNr.setBounds(40, 140, 60, 14);
+        lblMobilNr.setBounds(30, 130, 60, 14);
         jLayeredPane1.add(lblMobilNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        txtMobilNr.setBounds(120, 130, 200, 20);
-        jLayeredPane1.add(txtMobilNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnAfbryd.setText("Afbryd");
         btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
@@ -143,29 +122,66 @@ public class MedlemAddForm extends javax.swing.JDialog
                 btnAfbrydActionPerformed(evt);
             }
         });
-        btnAfbryd.setBounds(230, 250, 65, 23);
+        btnAfbryd.setBounds(200, 270, 65, 23);
         jLayeredPane1.add(btnAfbryd, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         chkKontingent.setText("Har betalt kontingent");
-        chkKontingent.setBounds(190, 220, 127, 23);
+        chkKontingent.setBounds(90, 230, 127, 23);
         jLayeredPane1.add(chkKontingent, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        txtPostNr.setBounds(260, 70, 60, 20);
+
+        txtEmail.setPreferredSize(new java.awt.Dimension(6, 25));
+        txtEmail.setBounds(90, 160, 210, 25);
+        jLayeredPane1.add(txtEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        txtFodselsdag.setPreferredSize(new java.awt.Dimension(6, 25));
+        txtFodselsdag.setBounds(90, 190, 210, 25);
+        jLayeredPane1.add(txtFodselsdag, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        txtEfterNavn.setPreferredSize(new java.awt.Dimension(6, 25));
+        txtEfterNavn.setBounds(90, 40, 210, 25);
+        jLayeredPane1.add(txtEfterNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        txtMobilNr.setPreferredSize(new java.awt.Dimension(6, 25));
+        txtMobilNr.setBounds(90, 130, 210, 25);
+        jLayeredPane1.add(txtMobilNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        txtNavn.setPreferredSize(new java.awt.Dimension(6, 25));
+        txtNavn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNavnActionPerformed(evt);
+            }
+        });
+        txtNavn.setBounds(90, 10, 210, 25);
+        jLayeredPane1.add(txtNavn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        txtTlfNr.setPreferredSize(new java.awt.Dimension(6, 25));
+        txtTlfNr.setBounds(90, 100, 210, 25);
+        jLayeredPane1.add(txtTlfNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        txtAddresse1.setMinimumSize(new java.awt.Dimension(6, 25));
+        txtAddresse1.setPreferredSize(new java.awt.Dimension(6, 25));
+        txtAddresse1.setBounds(90, 70, 92, 25);
+        jLayeredPane1.add(txtAddresse1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        txtPostNr.setMinimumSize(new java.awt.Dimension(6, 25));
+        txtPostNr.setPreferredSize(new java.awt.Dimension(6, 25));
+        txtPostNr.setBounds(240, 70, 60, 25);
         jLayeredPane1.add(txtPostNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/img/bg.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jLabel1.setBounds(0, 0, 380, 310);
+        jLabel1.setBounds(0, 0, 320, 310);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -194,10 +210,13 @@ public class MedlemAddForm extends javax.swing.JDialog
         
             BEMedlem m = new BEMedlem(-1, navn, efternavn, addresse, postnr, tlfnr, mobnr, email, fodselsdag, kontingent );
             BLLMedlemManager.getInstance().addMember(m);
+            JOptionPane.showMessageDialog(this, "Medlem tilføjet til databasen");
+            dispose();
         }
-        catch (Exception ex)
+        catch (Exception e)
         {
-            Logger.getLogger(MedlemAddForm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, e.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+            System.out.println("ERROR" + e.getMessage());
         }
         
 

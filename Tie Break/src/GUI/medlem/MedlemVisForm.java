@@ -6,8 +6,7 @@ package GUI.medlem;
 
 import BE.BEMedlem;
 import BLL.BLLMedlemManager;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -202,11 +201,14 @@ public class MedlemVisForm extends javax.swing.JDialog
         {
             int id = Integer.parseInt(txtMedlemsNr.getText());
             BLLMedlemManager.getInstance().deleteMember(id);
+            JOptionPane.showMessageDialog(this, "Medlem fjernet");
         }
         catch (Exception ex)
         {
-            Logger.getLogger(MedlemVisForm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+            System.out.println("ERROR - " + ex.getMessage());
         }
+        
     }//GEN-LAST:event_btnFjernActionPerformed
 
     private void btnOpdaterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnOpdaterActionPerformed
@@ -220,10 +222,12 @@ public class MedlemVisForm extends javax.swing.JDialog
             
             BEMedlem m = new BEMedlem(id, navn, efternavn, kontingent);
             BLLMedlemManager.getInstance().updateMember(m);
+            JOptionPane.showMessageDialog(this, "Medlem opdateret");
         }
         catch (Exception ex)
         {
-            Logger.getLogger(MedlemVisForm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+            System.out.println("ERROR - " + ex.getMessage());
         }
     }//GEN-LAST:event_btnOpdaterActionPerformed
 

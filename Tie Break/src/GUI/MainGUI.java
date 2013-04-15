@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import GUI.events.EventVisForm;
 import GUI.medlem.MedlemAddForm;
 import GUI.medlem.MedlemVisForm;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
@@ -39,6 +40,9 @@ public class MainGUI extends javax.swing.JFrame {
         btnMedlemTilføj = new javax.swing.JButton();
         btnMedlemVis = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btnVisEvent = new javax.swing.JButton();
+        btnAddEvent = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,6 +79,25 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel2.setText("Medlemmer");
         jLabel2.setBounds(90, 240, 80, 14);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel3.setText("Events");
+        jLabel3.setBounds(210, 240, 34, 14);
+        jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        btnVisEvent.setText("Oversigt");
+        btnVisEvent.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnVisEventActionPerformed(evt);
+            }
+        });
+        btnVisEvent.setBounds(200, 260, 73, 23);
+        jLayeredPane1.add(btnVisEvent, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        btnAddEvent.setText("Tilføj");
+        btnAddEvent.setBounds(200, 290, 55, 23);
+        jLayeredPane1.add(btnAddEvent, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/img/TieBreak.jpg"))); // NOI18N
         jLabel1.setBounds(-90, 0, 640, 450);
@@ -122,6 +145,21 @@ public class MainGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnMedlemVisActionPerformed
 
+    private void btnVisEventActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnVisEventActionPerformed
+    {//GEN-HEADEREND:event_btnVisEventActionPerformed
+        try
+        {
+            EventVisForm evtForm = new EventVisForm(this, true);
+            evtForm.setLocationRelativeTo(this);
+            evtForm.pack();
+            evtForm.setVisible(true);
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnVisEventActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -158,10 +196,13 @@ public class MainGUI extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddEvent;
     private javax.swing.JButton btnMedlemTilføj;
     private javax.swing.JButton btnMedlemVis;
+    private javax.swing.JButton btnVisEvent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
 }

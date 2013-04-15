@@ -2,10 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI.medlem;
+package GUI.events;
 
+import BE.BEEvent;
 import BE.BEMedlem;
-import BLL.BLLMedlemManager;
+import BLL.BLLEventManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.table.AbstractTableModel;
@@ -14,38 +15,38 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Stoffer
  */
-public class MedlemTableModel extends AbstractTableModel
+public class EventTableModel extends AbstractTableModel
 {
-
-    private BLLMedlemManager mm;
+    private BLLEventManager em;
     private final String[] header =
     {
-        "MedlemsNr", "Name", "Efternavn", "Adresse", "PostNr", "Fødselsdag", "Mobil Nr", "Tlf nr", "Email", "Kontingent"
+        "ArrangementID", "Arrangementdag", "Arrangement beskrivelse"
     };
     private final Class[] columnTypes =
     {
-        int.class, String.class, String.class, String.class,  String.class, String.class, String.class, String.class, String.class, Boolean.class
+        int.class, String.class, String.class
     };
-    private ArrayList<BEMedlem> medlemmer;
-
-    public MedlemTableModel()
+    
+    private ArrayList<BEEvent> events;
+    
+    public EventTableModel()
     {
         try
         {
-            mm = new BLLMedlemManager();
+            em = BLLEventManager();
         }
         catch (Exception ex)
         {
-            System.out.println("lol");
+            System.out.println("ERROR - " + ex.getMessage());
         }
     }
-    MedlemTableModel(ArrayList<BEMedlem> AllPersons)
+    
+    MedlemTableModel(ArrayList<BEEvent> AllEvents)
     {
         fireTableDataChanged();
-        medlemmer = AllPersons;
+        events = AllEvents;
     }
-
-    @Override
+@Override
     public int getRowCount()
     {
         return medlemmer.size();
@@ -119,3 +120,4 @@ public class MedlemTableModel extends AbstractTableModel
         return medlemmer.get(row);
     }
 }
+

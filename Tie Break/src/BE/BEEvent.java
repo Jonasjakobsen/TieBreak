@@ -8,12 +8,17 @@ package BE;
  *
  * @author Stoffer
  */
-public class BEArrangement {
+public class BEEvent {
 
     private final int id;
     private String arrangementbeskrivelse;
     private String arrangementdag;
     private int medlemsnr;
+    
+    public BEEvent(String arrangementbeskrivelse, String arrangementdag)
+    {
+        this(-1, arrangementbeskrivelse, arrangementdag);
+    }
 
     /**
      *
@@ -22,7 +27,7 @@ public class BEArrangement {
      * @param arrangementdag
      * @param medlemsnr
      */
-    public BEArrangement(int id, String arrangementbeskrivelse,
+    public BEEvent(int id, String arrangementbeskrivelse,
             String arrangementdag, int medlemsnr)
 {
     this.id = id;
@@ -30,7 +35,29 @@ public class BEArrangement {
     this.arrangementdag = arrangementdag;
     this.medlemsnr = medlemsnr;
 }
+    
+    public BEEvent(int id, String arrangementbeskrivelse, String arrangementdag)
+    {
+        this.id = id;
+        this.arrangementbeskrivelse = arrangementbeskrivelse;
+        this.arrangementdag = arrangementdag;
+    }
+    
+    
+    public BEEvent(int id, BEEvent e)
+    {
+        this(id, e.arrangementbeskrivelse, e.arrangementdag);
+    }
 
+    /**
+    * @return the id
+    */
+    public int getId()
+    {
+        return id;
+    }
+
+    
     /**
      * @return the arrangementbeskrivelse
      */

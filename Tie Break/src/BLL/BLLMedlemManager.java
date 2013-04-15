@@ -52,4 +52,5 @@ public class BLLMedlemManager extends BLLTieBreakManager
     {
         db.deleteMember(id);
     }
+    
 }

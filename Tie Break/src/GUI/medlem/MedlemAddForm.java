@@ -7,6 +7,9 @@ package GUI.medlem;
 import BE.BEMedlem;
 import BLL.BLLMedlemManager;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -27,7 +30,7 @@ public class MedlemAddForm extends javax.swing.JDialog
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-//        medmodel = new MedlemTableModel(medmgr.visMedlemmer());
+        addEnterKeyListeners();
     }
 
 
@@ -219,7 +222,7 @@ public class MedlemAddForm extends javax.swing.JDialog
                 BEMedlem m = new BEMedlem(-1, navn, efternavn, addresse, postnr, tlfnr, mobnr, email, fodselsdag, kontingent );
                 BLLMedlemManager.getInstance().addMember(m);
                 JOptionPane.showMessageDialog(this, "Medlem tilføjet til databasen");
-                dispose();
+                clearFields();
             }
             catch (Exception e)
             {
@@ -271,6 +274,42 @@ public class MedlemAddForm extends javax.swing.JDialog
         }
         return errorMessage;
     }
+    
+    private void clearFields()
+    {
+        txtNavn.setText("");
+        txtEfterNavn.setText("");
+        txtAddresse1.setText("");
+        txtPostNr.setText("");
+        txtTlfNr.setText("");
+        txtMobilNr.setText("");
+        txtEmail.setText("");
+        txtFodselsdag.setText("");
+    }
+    
+    private void addEnterKeyListeners()
+    {
+        KeyListener enterListener = new KeyAdapter()
+        {
+            @Override
+            public void keyPressed(KeyEvent ke)
+            {
+                if (ke.getKeyCode() == KeyEvent.VK_ENTER)
+                {
+                    btnOk.doClick();
+                }
+            }
+        };
+        txtNavn.addKeyListener(enterListener);
+        txtEfterNavn.addKeyListener(enterListener);
+        txtAddresse1.addKeyListener(enterListener);
+        txtPostNr.addKeyListener(enterListener);
+        txtTlfNr.addKeyListener(enterListener);
+        txtMobilNr.addKeyListener(enterListener);
+        txtEmail.addKeyListener(enterListener);
+        txtFodselsdag.addKeyListener(enterListener);
+    }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAfbryd;

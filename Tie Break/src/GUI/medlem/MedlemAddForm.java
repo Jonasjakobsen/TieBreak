@@ -62,6 +62,7 @@ public class MedlemAddForm extends javax.swing.JDialog
         txtTlfNr = new javax.swing.JTextField();
         txtAddresse1 = new javax.swing.JTextField();
         txtPostNr = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel3.setText("Efternavn:");
@@ -126,7 +127,7 @@ public class MedlemAddForm extends javax.swing.JDialog
         jLayeredPane1.add(btnAfbryd, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         chkKontingent.setText("Har betalt kontingent");
-        chkKontingent.setBounds(90, 230, 127, 23);
+        chkKontingent.setBounds(90, 230, 160, 23);
         jLayeredPane1.add(chkKontingent, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         txtEmail.setPreferredSize(new java.awt.Dimension(6, 25));
@@ -168,6 +169,10 @@ public class MedlemAddForm extends javax.swing.JDialog
         txtPostNr.setBounds(240, 70, 60, 25);
         jLayeredPane1.add(txtPostNr, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel4.setText("(ÅÅÅÅ)");
+        jLabel4.setBounds(20, 210, 50, 14);
+        jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/img/bg.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setBounds(0, 0, 320, 310);
@@ -196,33 +201,77 @@ public class MedlemAddForm extends javax.swing.JDialog
     }//GEN-LAST:event_txtNavnActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        try
+        String errorMessage = validateRequiredFields();
+        if ("".equals(errorMessage))
         {
-            String navn = txtNavn.getText();
-            String efternavn = txtEfterNavn.getText();
-            String addresse = txtAddresse1.getText();
-            String postnr = txtPostNr.getText();
-            String tlfnr = txtTlfNr.getText();
-            String mobnr = txtMobilNr.getText();
-            String email = txtEmail.getText();
-            String fodselsdag = txtFodselsdag.getText();
-            Boolean kontingent = chkKontingent.isSelected();
-        
-            BEMedlem m = new BEMedlem(-1, navn, efternavn, addresse, postnr, tlfnr, mobnr, email, fodselsdag, kontingent );
-            BLLMedlemManager.getInstance().addMember(m);
-            JOptionPane.showMessageDialog(this, "Medlem tilføjet til databasen");
-            dispose();
+            try
+            {
+                String navn = txtNavn.getText().trim();
+                String efternavn = txtEfterNavn.getText().trim();
+                String addresse = txtAddresse1.getText().trim();
+                String postnr = txtPostNr.getText().trim();
+                String tlfnr = txtTlfNr.getText().trim();
+                String mobnr = txtMobilNr.getText().trim();
+                String email = txtEmail.getText().trim();
+                String fodselsdag = txtFodselsdag.getText().trim();
+                Boolean kontingent = chkKontingent.isSelected();
+
+                BEMedlem m = new BEMedlem(-1, navn, efternavn, addresse, postnr, tlfnr, mobnr, email, fodselsdag, kontingent );
+                BLLMedlemManager.getInstance().addMember(m);
+                JOptionPane.showMessageDialog(this, "Medlem tilføjet til databasen");
+                dispose();
+            }
+            catch (Exception e)
+            {
+                JOptionPane.showMessageDialog(this, e.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+                System.out.println("ERROR" + e.getMessage());
+            }
         }
-        catch (Exception e)
+        else
         {
-            JOptionPane.showMessageDialog(this, e.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
-            System.out.println("ERROR" + e.getMessage());
+            JOptionPane.showMessageDialog(this, errorMessage, getTitle(), JOptionPane.ERROR_MESSAGE);
         }
-        
-
-
     }//GEN-LAST:event_btnOkActionPerformed
 
+        
+    private String validateRequiredFields()
+    {
+        String errorMessage = "";
+        if (txtNavn == null || txtNavn.getText().trim().isEmpty())
+        {
+            errorMessage += "Du mangler at udfylde navn\n";
+        }
+        if (txtEfterNavn == null || txtEfterNavn.getText().trim().isEmpty())
+        {
+            errorMessage += "Du mangler at udfylde efternavn\n";
+        }
+        if (txtAddresse1 == null || txtAddresse1.getText().trim().isEmpty())
+        {
+            errorMessage += "Du mangler at udfylde addresse\n";
+        }
+        if (txtPostNr == null || txtPostNr.getText().trim().isEmpty())
+        {
+            errorMessage += "Du mangler at udfylde postnr\n";
+        }
+        if (txtTlfNr == null || txtTlfNr.getText().trim().isEmpty())
+        {
+            errorMessage += "Du mangler at udfylde tlfnr\n";
+        }
+        if (txtMobilNr == null || txtMobilNr.getText().trim().isEmpty())
+        {
+            errorMessage += "Du mangler at udfylde mobilnr\n";
+        }
+        if (txtEmail == null || txtEmail.getText().trim().isEmpty())
+        {
+            errorMessage += "Du mangler at udfylde email\n";
+        }
+        if (txtFodselsdag == null || txtFodselsdag.getText().trim().isEmpty())
+        {
+            errorMessage += "Du mangler at udfylde fødselsår\n";
+        }
+        return errorMessage;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAfbryd;
     private javax.swing.JButton btnOk;
@@ -230,6 +279,7 @@ public class MedlemAddForm extends javax.swing.JDialog
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lblAddresse1;
     private javax.swing.JLabel lblEfterNavn;

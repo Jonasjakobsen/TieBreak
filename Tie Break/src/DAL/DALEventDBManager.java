@@ -5,7 +5,6 @@
 package DAL;
 
 import BE.BEEvent;
-import BE.BEMedlem;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

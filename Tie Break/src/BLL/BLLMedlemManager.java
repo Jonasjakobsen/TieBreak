@@ -7,7 +7,6 @@ package BLL;
 import BE.BEMedlem;
 import DAL.DALMedlemDBManager;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import java.lang.reflect.Member;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

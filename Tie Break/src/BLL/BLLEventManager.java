@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author Stoffer
  */
-public class BLLEventManager extends BLLTieBreakManager
+public class BLLEventManager
 {
      private static BLLEventManager instance = null;
     private DALEventDBManager db = null;

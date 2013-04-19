@@ -7,6 +7,7 @@ package GUI.events;
 import BE.BEEvent;
 import BE.BEMedlem;
 import BLL.BLLEventManager;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -109,6 +110,13 @@ public class EventVisForm extends javax.swing.JDialog
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnFjern.setText("Fjern");
+        btnFjern.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnFjernActionPerformed(evt);
+            }
+        });
         btnFjern.setBounds(620, 90, 73, 23);
         jLayeredPane1.add(btnFjern, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -128,6 +136,13 @@ public class EventVisForm extends javax.swing.JDialog
         jLayeredPane1.add(btnAfbryd, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnOpdater.setText("Opdater");
+        btnOpdater.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnOpdaterActionPerformed(evt);
+            }
+        });
         btnOpdater.setBounds(620, 50, 73, 23);
         jLayeredPane1.add(btnOpdater, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -154,6 +169,30 @@ public class EventVisForm extends javax.swing.JDialog
     {//GEN-HEADEREND:event_btnAfbrydActionPerformed
         dispose();
     }//GEN-LAST:event_btnAfbrydActionPerformed
+
+    private void btnOpdaterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnOpdaterActionPerformed
+    {//GEN-HEADEREND:event_btnOpdaterActionPerformed
+        try
+        {
+            BEEvent e = evtmodel.getEventByRow(tblEvent.getSelectedRow());
+            int id = e.getId();
+            String arrangementbeskrivelse = e.getArrangementbeskrivelse();
+            
+            BEEvent m = new BEEvent(id, arrangementbeskrivelse);
+            BLLEventManager.getInstance().updateEvent(m);
+            JOptionPane.showMessageDialog(this, "Arrangementsbeskrivelse opdateret");
+        }
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+            System.out.println("ERROR - " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnOpdaterActionPerformed
+
+    private void btnFjernActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnFjernActionPerformed
+    {//GEN-HEADEREND:event_btnFjernActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFjernActionPerformed
 //
 //    /**
 //     * @param args the command line arguments

@@ -51,4 +51,27 @@ public class DALEventDBManager extends DALTieBreakDBManager
         }
         
     }
+
+    public BEEvent updateEvent(BEEvent m) throws SQLServerException, SQLException
+    {
+         Connection con = ds.getConnection();
+        String sql = "UPDATE Arrangement SET ArrBeskrivelse = ? WHERE ArrID = ?";
+
+
+        PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+        ps.setString(1, m.getArrangementbeskrivelse());
+        ps.setInt(2, m.getId());
+        
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to update Member");
+        }
+
+        ResultSet keys = ps.getGeneratedKeys();
+        keys.next();
+        int id = keys.getInt(1);
+
+        return new BEEvent(id, m);
+    }
 }

@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class BLLEventManager extends BLLTieBreakManager
 {
-    private static BLLEventManager instance = null;
+     private static BLLEventManager instance = null;
     private DALEventDBManager db = null;
     
     public BLLEventManager() throws Exception
@@ -24,7 +24,7 @@ public class BLLEventManager extends BLLTieBreakManager
         db = new DALEventDBManager();
     }
     
-    private static BLLEventManager getInstance() throws Exception
+    public static BLLEventManager getInstance() throws Exception
     {
         if (instance == null)
         {
@@ -36,5 +36,10 @@ public class BLLEventManager extends BLLTieBreakManager
     public ArrayList<BEEvent> visEvents() throws SQLServerException, SQLException
     {
        return db.showAll(); 
+    }
+    
+    public BEEvent updateEvent(BEEvent m) throws SQLException
+    {
+        return db.updateEvent(m);
     }
 }

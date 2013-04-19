@@ -15,9 +15,9 @@ public class BEEvent {
     private String arrangementdag;
     private int medlemsnr;
     
-    public BEEvent(String arrangementbeskrivelse, String arrangementdag)
+    public BEEvent(String arrangementbeskrivelse)
     {
-        this(-1, arrangementbeskrivelse, arrangementdag);
+        this(-1, arrangementbeskrivelse);
     }
 
     /**
@@ -36,6 +36,12 @@ public class BEEvent {
     this.medlemsnr = medlemsnr;
 }
     
+    public BEEvent( int id, String arrangementbeskrivelse)
+    {
+        this.id = id;
+        this.arrangementbeskrivelse = arrangementbeskrivelse;
+    }
+    
     public BEEvent(int id, String arrangementbeskrivelse, String arrangementdag)
     {
         this.id = id;
@@ -46,7 +52,7 @@ public class BEEvent {
     
     public BEEvent(int id, BEEvent e)
     {
-        this(id, e.arrangementbeskrivelse, e.arrangementdag);
+        this(id, e.arrangementbeskrivelse);
     }
 
     /**

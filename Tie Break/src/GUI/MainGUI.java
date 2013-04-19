@@ -11,6 +11,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -188,10 +189,30 @@ public class MainGUI extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
+        String username =
+                JOptionPane.showInputDialog("Brugernavn:");
+        String password =
+                JOptionPane.showInputDialog("Kodeord:");
+        
+        if (
+                username != null &&
+                password != null &&
+                (
+                    (username.equals("admin") &&
+                    password.equals("1234"))
+                )
+            )
+        {
+            JOptionPane.showMessageDialog(null, "Du er nu logget ind.");
+            new MainGUI().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Dit brugernavn eller kode er forkert.");
+        }
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainGUI().setVisible(true);
             }
         });
     }

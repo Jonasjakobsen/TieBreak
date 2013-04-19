@@ -6,7 +6,6 @@ package DAL;
 
 import BE.BEMedlem;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import java.lang.reflect.Member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -59,17 +58,6 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
         
     }
      
-    public BEMedlem getById(int id)
-    {
-        for (BEMedlem e : medlemmer)
-        {
-            if (e.getId() == id)
-            {
-                return e;
-            }
-        }
-        return null;
-    }
 
     public BEMedlem addMember(BEMedlem m) throws SQLServerException, SQLException 
     {

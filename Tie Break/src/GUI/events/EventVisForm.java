@@ -176,7 +176,7 @@ public class EventVisForm extends javax.swing.JDialog
         {
             BEEvent e = evtmodel.getEventByRow(tblEvent.getSelectedRow());
             int id = e.getId();
-            String arrangementbeskrivelse = e.getArrangementbeskrivelse();
+            String arrangementbeskrivelse = jtxtBeskrivelse.getText();
             
             BEEvent m = new BEEvent(id, arrangementbeskrivelse);
             BLLEventManager.getInstance().updateEvent(m);
@@ -191,7 +191,18 @@ public class EventVisForm extends javax.swing.JDialog
 
     private void btnFjernActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnFjernActionPerformed
     {//GEN-HEADEREND:event_btnFjernActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            BEEvent e = evtmodel.getEventByRow(tblEvent.getSelectedRow());
+            int id = e.getId();
+            BLLEventManager.getInstance().deleteEvent(id);
+            JOptionPane.showMessageDialog(this, "Event fjernet");
+        }
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+            System.out.println("ERROR - " + ex.getMessage());
+        }
     }//GEN-LAST:event_btnFjernActionPerformed
 //
 //    /**

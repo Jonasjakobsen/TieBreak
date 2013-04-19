@@ -65,7 +65,7 @@ public class DALEventDBManager extends DALTieBreakDBManager
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
         {
-            throw new SQLException("Unable to update Member");
+            throw new SQLException("Unable to update Arrangement");
         }
 
         ResultSet keys = ps.getGeneratedKeys();
@@ -73,5 +73,21 @@ public class DALEventDBManager extends DALTieBreakDBManager
         int id = keys.getInt(1);
 
         return new BEEvent(id, m);
+    }
+    
+    public void deleteEvent(int id) throws SQLException
+    {
+        Connection con = ds.getConnection();
+        String sql = "DELETE Arrangement WHERE ArrID = ?";
+                
+        PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, id);
+        
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to delete Event");
+        }
+        
     }
 }

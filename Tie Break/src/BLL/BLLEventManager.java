@@ -42,4 +42,9 @@ public class BLLEventManager extends BLLTieBreakManager
     {
         return db.updateEvent(m);
     }
+    
+    public void deleteEvent(int id) throws SQLException
+    {
+        db.deleteEvent(id);
+    }
 }

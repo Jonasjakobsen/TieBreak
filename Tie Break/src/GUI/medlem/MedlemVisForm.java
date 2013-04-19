@@ -27,7 +27,7 @@ public class MedlemVisForm extends javax.swing.JDialog
     {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(this);
+
         
         // disable update and remove buttons
         btnOpdater.setEnabled(false);

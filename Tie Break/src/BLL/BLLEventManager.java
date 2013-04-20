@@ -11,13 +11,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
- * @author Stoffer
+ * Event Manager
+ * The business logic layer
  */
 public class BLLEventManager
 {
-     private static BLLEventManager instance = null;
+    private static BLLEventManager instance = null;
     private DALEventDBManager db = null;
+    
+    /**
+     * Constructor for the BLLEventManager
+     * @throws Exception
+     */
     
     public BLLEventManager() throws Exception
     {
@@ -33,15 +38,33 @@ public class BLLEventManager
         return instance;
     }
     
+    /**
+     * Retrieves the visEvents method from the Data access layer
+     * @return showAll
+     * @throws SQLException, SQLServerException
+     */
+    
     public ArrayList<BEEvent> visEvents() throws SQLServerException, SQLException
     {
        return db.showAll(); 
     }
     
+     /**
+     * Retrieves the updateEvent method from the Data access layer
+     * @return updateEvents
+     * @throws SQLException
+     */
+    
     public BEEvent updateEvent(BEEvent m) throws SQLException
     {
         return db.updateEvent(m);
     }
+    
+     /**
+     * Retrieves the deleteEvent method from the Data access layer
+     * @return deleteEvent
+     * @throws SQLException
+     */
     
     public void deleteEvent(int id) throws SQLException
     {

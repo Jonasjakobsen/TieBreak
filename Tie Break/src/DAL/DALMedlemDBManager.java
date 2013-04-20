@@ -12,8 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 /**
- *
- * @author Stoffer
+ * Medlem DB Manager
+ * The data Access Layer
  */
 public class DALMedlemDBManager extends DALTieBreakDBManager
 {
@@ -24,7 +24,12 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
         super();
     }
     
-
+     /**
+     * Makes an ArrayList and adds the lines read from the file into the 
+     * members arrayList
+     * @return members
+     * @throws SQLServerException, SQLException
+     */
      public ArrayList<BEMedlem> showAll() throws SQLServerException, SQLException
     {
         try (Connection con = ds.getConnection())
@@ -57,7 +62,11 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
         }
         
     }
-     
+     /**
+     * Add member
+     * @return BEMedlem
+     * @throws SQLServerException, SQLException
+     */
 
     public BEMedlem addMember(BEMedlem m) throws SQLServerException, SQLException 
     {
@@ -91,7 +100,11 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
         return new BEMedlem(id, m);
 
     }
-    
+     /**
+     * Updates Member
+     * @return BEmedlem
+     * @throws SQLException
+     */
     public BEMedlem updateMember(BEMedlem m) throws SQLException
     {
         Connection con = ds.getConnection();
@@ -117,7 +130,10 @@ public class DALMedlemDBManager extends DALTieBreakDBManager
 
         return new BEMedlem(id, m);
     }
-    
+     /**
+     * Delete Member
+     * @throws SQLException
+     */
     public void deleteMember(int id) throws SQLException
     {
         Connection con = ds.getConnection();

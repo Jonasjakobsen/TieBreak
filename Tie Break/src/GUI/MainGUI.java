@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import GUI.events.EventAddForm;
 import GUI.events.EventVisForm;
 import GUI.medlem.MedlemAddForm;
 import GUI.medlem.MedlemVisForm;
@@ -86,6 +87,13 @@ public class MainGUI extends javax.swing.JFrame {
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnAddEvent.setText("Tilføj");
+        btnAddEvent.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnAddEventActionPerformed(evt);
+            }
+        });
         btnAddEvent.setBounds(200, 290, 95, 23);
         jLayeredPane1.add(btnAddEvent, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -160,6 +168,20 @@ public class MainGUI extends javax.swing.JFrame {
             Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnVisEventActionPerformed
+
+    private void btnAddEventActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAddEventActionPerformed
+    {//GEN-HEADEREND:event_btnAddEventActionPerformed
+        try
+        {
+        EventAddForm evtform = new EventAddForm(this, true);
+        evtform.pack();
+        evtform.setVisible(true);
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAddEventActionPerformed
 
     /**
      * @param args the command line arguments

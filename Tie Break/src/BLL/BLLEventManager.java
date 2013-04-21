@@ -70,4 +70,11 @@ public class BLLEventManager
     {
         db.deleteEvent(id);
     }
+
+    public void addEvent(BEEvent e) throws SQLException
+    {
+        db.addEvent(e);
+    }
+
+
 }

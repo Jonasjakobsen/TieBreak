@@ -66,12 +66,12 @@ public class DALEventDBManager extends DALTieBreakDBManager
     {
         Connection con = ds.getConnection();
 
-        String sql = "INSERT INTO Arrangement(ArrBeskrivelse, ArrID)"
-                + "VALUES(?,?)";
+        String sql = "INSERT INTO Arrangement(ArrBeskrivelse)"
+                + "VALUES(?)";
+        
 
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setString(1, m.getArrangementbeskrivelse());
-        ps.setInt(2, m.getId());
         
 
         int affectedRows = ps.executeUpdate();

@@ -5,6 +5,7 @@
 package GUI;
 
 import GUI.lager.LagerVisForm;
+import GUI.produktion.ProduktionForm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,6 +33,7 @@ public class GUIMain extends javax.swing.JFrame {
     private void initComponents() {
 
         btnLagerOversigt = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Belman");
@@ -43,20 +45,31 @@ public class GUIMain extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Produktion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addContainerGap()
                 .addComponent(btnLagerOversigt)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(266, Short.MAX_VALUE)
-                .addComponent(btnLagerOversigt)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLagerOversigt)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -65,17 +78,29 @@ public class GUIMain extends javax.swing.JFrame {
 
     private void btnLagerOversigtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerOversigtActionPerformed
         try
-        {
-            LagerVisForm lagForm = new LagerVisForm(this, true);
-//            medForm.setLocationRelativeTo(null);
-            lagForm.pack();
-            lagForm.setVisible(true);
-        }
+            {
+                LagerVisForm lagForm = new LagerVisForm(this, true);
+                lagForm.pack();
+                lagForm.setVisible(true);
+            }
         catch (Exception ex)
         {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnLagerOversigtActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try
+            {
+                ProduktionForm prodForm = new ProduktionForm(this, true);
+                prodForm.pack();
+                prodForm.setVisible(true);
+             }
+        catch (Exception ex)
+        {
+            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,5 +140,6 @@ public class GUIMain extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLagerOversigt;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

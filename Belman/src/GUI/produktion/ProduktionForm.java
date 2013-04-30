@@ -4,17 +4,25 @@
  */
 package GUI.produktion;
 
+import GUI.GUIMain;
+import GUI.lager.LagerVisForm;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Christoffer
  */
-public class ProduktionForm extends javax.swing.JFrame {
+public class ProduktionForm extends javax.swing.JDialog {
 
     /**
      * Creates new form ProduktionForm
      */
-    public ProduktionForm() {
+    public ProduktionForm(java.awt.Frame parent, boolean modal) throws Exception {
+
+        super(parent, modal);
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**
@@ -42,7 +50,8 @@ public class ProduktionForm extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Belman Produktion");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
 
@@ -55,8 +64,18 @@ public class ProduktionForm extends javax.swing.JFrame {
         jscrpVaelgOrdre.setViewportView(jtblVaelgOrdre);
 
         btnLageroversigt.setText("Lageroversigt");
+        btnLageroversigt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLageroversigtActionPerformed(evt);
+            }
+        });
 
         btnAfbyd.setText("Afbryd");
+        btnAfbyd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAfbydActionPerformed(evt);
+            }
+        });
 
         btnJobInd.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnJobInd.setText("Job Ind");
@@ -154,40 +173,58 @@ public class ProduktionForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAfbydActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAfbydActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnAfbydActionPerformed
+
+    private void btnLageroversigtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLageroversigtActionPerformed
+        dispose();
+//        try
+//            {
+//                LagerVisForm prodForm = new LagerVisForm(this, true);
+//                prodForm.pack();
+//                prodForm.setVisible(true);
+//            }
+//        catch (Exception ex)
+//        {
+//            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_btnLageroversigtActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProduktionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProduktionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProduktionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProduktionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ProduktionForm().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(ProduktionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(ProduktionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(ProduktionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(ProduktionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ProduktionForm().setVisible(true);
+//            }
+//        });
+//    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAfbyd;
     private javax.swing.JButton btnJobInd;

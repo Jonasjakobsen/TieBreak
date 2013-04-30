@@ -6,6 +6,15 @@ package GUI.lager;
 
 import BE.BELager;
 import BLL.BLLLagerManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -26,12 +35,12 @@ public class LagerVisForm extends javax.swing.JDialog
         initComponents();      
         
         
-//        // Reference for the BLL layer.
-//        lagmgr = new BLLLagerManager();
-//        
-//        // Set the table model for the JTable
-//        lagmodel = new LagerTableModel(lagmgr.visLager());
-//        tblLager.setModel(lagmodel);
+        // Reference for the BLL layer.
+        lagmgr = new BLLLagerManager();
+        
+        // Set the table model for the JTable
+        lagmodel = new LagerTableModel(lagmgr.visLager());
+        tblLager.setModel(lagmodel);
         }
 
     /**
@@ -47,7 +56,6 @@ public class LagerVisForm extends javax.swing.JDialog
         btnProduktion = new javax.swing.JToggleButton();
         btnAfbryd = new javax.swing.JToggleButton();
         pnlSortBy = new javax.swing.JPanel();
-        btnSearch = new javax.swing.JToggleButton();
         rbtnThickness = new javax.swing.JRadioButton();
         rbtnWidth = new javax.swing.JRadioButton();
         rbtnLength = new javax.swing.JRadioButton();
@@ -57,6 +65,8 @@ public class LagerVisForm extends javax.swing.JDialog
         txtSearch = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLager = new javax.swing.JTable();
+        btnClear = new javax.swing.JButton();
+        btnSearch = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Lageroversigt");
@@ -74,10 +84,13 @@ public class LagerVisForm extends javax.swing.JDialog
 
         pnlSortBy.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Sort by"));
 
-        btnSearch.setText("Search");
-
         buttonGroup1.add(rbtnThickness);
         rbtnThickness.setText("Thickness");
+        rbtnThickness.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnThicknessActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rbtnWidth);
         rbtnWidth.setText("Width");
@@ -98,16 +111,12 @@ public class LagerVisForm extends javax.swing.JDialog
             .addGroup(pnlSortByLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlSortByLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlSortByLayout.createSequentialGroup()
-                        .addGroup(pnlSortByLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnNone)
-                            .addComponent(rbtnMaterialeID)
-                            .addComponent(rbtnLength)
-                            .addComponent(rbtnWidth)
-                            .addComponent(rbtnThickness))
-                        .addGap(0, 10, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(rbtnNone)
+                    .addComponent(rbtnMaterialeID)
+                    .addComponent(rbtnLength)
+                    .addComponent(rbtnWidth)
+                    .addComponent(rbtnThickness))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         pnlSortByLayout.setVerticalGroup(
             pnlSortByLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,8 +130,6 @@ public class LagerVisForm extends javax.swing.JDialog
                 .addComponent(rbtnMaterialeID)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbtnNone)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSearch)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -134,18 +141,27 @@ public class LagerVisForm extends javax.swing.JDialog
             pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSearchLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlSearchLayout.setVerticalGroup(
             pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSearchLayout.createSequentialGroup()
                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(tblLager);
+
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        btnSearch.setText("Search");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,15 +171,19 @@ public class LagerVisForm extends javax.swing.JDialog
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnProduktion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAfbryd))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(pnlSortBy, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(pnlSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnProduktion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAfbryd)))
                 .addContainerGap())
         );
 
@@ -176,8 +196,12 @@ public class LagerVisForm extends javax.swing.JDialog
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(pnlSortBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClear))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -195,9 +219,32 @@ public class LagerVisForm extends javax.swing.JDialog
     private void btnAfbrydActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAfbrydActionPerformed
         dispose();
     }//GEN-LAST:event_btnAfbrydActionPerformed
+
+    private void rbtnThicknessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnThicknessActionPerformed
+        
+//        if (rbtnThickness.isSelected() == true)
+//            {
+//               try
+//                {
+//                    for 
+//                }
+//                catch (Exception ex)
+//                {
+//                    Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+        
+        
+        
+    }//GEN-LAST:event_rbtnThicknessActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        tblLager.setModel(new LagerTableModel());       
+    }//GEN-LAST:event_btnClearActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAfbryd;
+    private javax.swing.JButton btnClear;
     private javax.swing.JToggleButton btnProduktion;
     private javax.swing.JToggleButton btnSearch;
     private javax.swing.ButtonGroup buttonGroup1;

@@ -28,7 +28,7 @@ public class LagerVisForm extends javax.swing.JDialog
     public LagerVisForm(java.awt.Frame parent, boolean modal) throws Exception
     {
         super(parent, modal);
-        initComponents();
+        initComponents(); 
         setLocationRelativeTo(this);
         
         

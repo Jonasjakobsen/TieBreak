@@ -92,6 +92,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Produktion"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProduktionActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnAfbryd">
       <Properties>

@@ -6,15 +6,10 @@ package GUI.lager;
 
 import BE.BELager;
 import BLL.BLLLagerManager;
+import GUI.GUIMain;
+import GUI.produktion.ProduktionForm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.io.FileNotFoundException;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
 /**
  *
@@ -24,6 +19,7 @@ public class LagerVisForm extends javax.swing.JDialog
 {
     private BLLLagerManager lagmgr;
     private LagerTableModel lagmodel;
+    private ProduktionForm prodForm;
     private BELager lager = null;
 
     /**
@@ -32,8 +28,8 @@ public class LagerVisForm extends javax.swing.JDialog
     public LagerVisForm(java.awt.Frame parent, boolean modal) throws Exception
     {
         super(parent, modal);
-        setLocationRelativeTo(null);
-        initComponents();      
+        initComponents();
+        setLocationRelativeTo(this);
         
         
         // Reference for the BLL layer.
@@ -75,6 +71,11 @@ public class LagerVisForm extends javax.swing.JDialog
         setPreferredSize(new java.awt.Dimension(800, 600));
 
         btnProduktion.setText("Produktion");
+        btnProduktion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProduktionActionPerformed(evt);
+            }
+        });
 
         btnAfbryd.setText("Afbryd");
         btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
@@ -242,6 +243,19 @@ public class LagerVisForm extends javax.swing.JDialog
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         tblLager.setModel(new LagerTableModel());       
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnProduktionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProduktionActionPerformed
+//        try
+//            {
+//                ProduktionForm prodForm = new ProduktionForm(this, true);
+//                prodForm.pack();
+//                prodForm.setVisible(true);
+//             }
+//        catch (Exception ex)
+//        {
+//            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_btnProduktionActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAfbryd;

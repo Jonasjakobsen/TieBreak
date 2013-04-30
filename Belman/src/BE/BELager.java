@@ -22,21 +22,22 @@ public class BELager {
     private Float StockQuantity;
     private String kg;
 
-    public BELager(String Code, int MaterialID, String MaterialName, Float MaterialDensity, String ChargeNo, Float Length, Float Width, Float Thickness, Float StockQuantity, String kg) {
-        this(-1, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity, kg);
+    public BELager(String Code, int MaterialID, String MaterialName, Float MaterialDensity, String ChargeNo, Float Length, Float Width, Float Thickness, Float StockQuantity) {
+        this(-1, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
     }
 
-    public BELager(int id, String Code, int MaterialID, String MaterialName, Float MaterialDensity, String ChargeNo, Float Length, Float Width, Float Thickness, Float StockQuantity, String kg) {
+    public BELager(int id, String Code, int MaterialID, String MaterialName, Float MaterialDensity, String ChargeNo, Float Length, Float Width, Float Thickness, Float StockQuantity) {
         this.id = id;
         this.Code = Code;
         this.MaterialID = MaterialID;
         this.MaterialName = MaterialName;
+        this.MaterialDensity = MaterialDensity;
         this.ChargeNo = ChargeNo;
         this.Length = Length;
         this.Width = Width;
         this.Thickness = Thickness;
         this.StockQuantity = StockQuantity;
-        this.kg = kg;
+
     }
 
     /**

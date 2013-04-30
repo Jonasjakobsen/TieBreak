@@ -20,7 +20,7 @@ public class LagerTableModel extends AbstractTableModel
     private BLLLagerManager lm;
     private final String[] header =
     {
-        "ID", "Code", "MaterialID", "MaterialName", "MaterialDensity", "ChargeNo", "Length", "Width", "Thickness", "StockQuantity", "kg"
+        "ID", "Code", "MaterialID", "MaterialName", "MaterialDensity", "ChargeNo", "Length", "Width", "Thickness", "StockQuantity(kg)"
     };
     private final Class[] columnTypes =
     {
@@ -84,8 +84,8 @@ public class LagerTableModel extends AbstractTableModel
                     return l.getThickness();
                 case 9:
                     return l.getStockQuantity();
-                case 10:
-                    return l.getKg();
+//                case 10:
+//                    return l.getKg();
 
             }
             return null;

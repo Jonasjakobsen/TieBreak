@@ -49,9 +49,9 @@ public class DALLagerDBManager extends DALBelmanDBManager
                 Float Width = rs.getFloat("Width");
                 Float Thickness = rs.getFloat("Thickness");
                 Float StockQuantity = rs.getFloat("StockQuantity");
-                String kg = rs.getString("kg");
+//                String kg = rs.getString("kg");
 
-                BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity, kg);
+                BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
                 lageret.add(l);
             }
             return lageret;

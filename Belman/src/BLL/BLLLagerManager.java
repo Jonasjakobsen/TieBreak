@@ -40,7 +40,11 @@ public class BLLLagerManager
      */
     public ArrayList<BELager> visLager() throws SQLServerException, SQLException
     {
-        return db.showAll();
+        return db.visLager();
+    }
+    public ArrayList<BELager> orderByThickness() throws SQLServerException, SQLException
+    {
+        return db.orderByThickness();
     }
     
 }

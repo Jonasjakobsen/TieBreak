@@ -83,9 +83,7 @@ public class JobIndTableModel extends AbstractTableModel
                 case 8:
                     return l.getThickness();
                 case 9:
-                    return l.getStockQuantity();
-                case 10:
-                    return l.getKg();
+                    return l.getStockQuantity();   
 
             }
             return null;

@@ -19,8 +19,7 @@ public class BELager {
     private Float Length;
     private Float Width;
     private Float Thickness;
-    private Float StockQuantity;
-    private String kg;
+    private Float StockQuantity;    
 
     public BELager(String Code, int MaterialID, String MaterialName, Float MaterialDensity, String ChargeNo, Float Length, Float Width, Float Thickness, Float StockQuantity) {
         this(-1, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -108,12 +107,5 @@ public class BELager {
      */
     public Float getStockQuantity() {
         return StockQuantity;
-    }
-
-    /**
-     * @return the kg
-     */
-    public String getKg() {
-        return kg;
     }
 }

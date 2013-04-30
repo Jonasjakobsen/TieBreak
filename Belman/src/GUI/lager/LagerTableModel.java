@@ -84,9 +84,6 @@ public class LagerTableModel extends AbstractTableModel
                     return l.getThickness();
                 case 9:
                     return l.getStockQuantity();
-//                case 10:
-//                    return l.getKg();
-
             }
             return null;
         }

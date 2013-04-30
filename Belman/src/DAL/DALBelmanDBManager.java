@@ -12,7 +12,7 @@ import java.util.Properties;
  *
  * @author Jonas
  */
-public abstract class BelmanDBManager
+public abstract class DALBelmanDBManager
 {
      protected SQLServerDataSource ds;
 
@@ -22,7 +22,7 @@ public abstract class BelmanDBManager
      * in the code.
      * @throws Exception
      */
-    public BelmanDBManager() throws Exception
+    public DALBelmanDBManager() throws Exception
     {
         Properties props = new Properties();
         props.load(new FileReader("Belman.cfg"));

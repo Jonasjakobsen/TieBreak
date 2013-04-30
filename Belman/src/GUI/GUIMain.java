@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import GUI.lager.LagerVisForm;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Groggy
@@ -15,6 +19,7 @@ public class GUIMain extends javax.swing.JFrame {
      */
     public GUIMain() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -26,16 +31,15 @@ public class GUIMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        btnLagerOversigt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Belman");
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("BELMAN");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        btnLagerOversigt.setText("Lageroversigt");
+        btnLagerOversigt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                btnLagerOversigtActionPerformed(evt);
             }
         });
 
@@ -44,24 +48,34 @@ public class GUIMain extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addGap(115, 115, 115)
+                .addComponent(btnLagerOversigt)
+                .addContainerGap(186, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(266, Short.MAX_VALUE)
+                .addComponent(btnLagerOversigt)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void btnLagerOversigtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerOversigtActionPerformed
+        try
+        {
+            LagerVisForm lagForm = new LagerVisForm(this, true);
+//            medForm.setLocationRelativeTo(null);
+            lagForm.pack();
+            lagForm.setVisible(true);
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnLagerOversigtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -92,12 +106,14 @@ public class GUIMain extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            
             public void run() {
-                new GUIMain().setVisible(true);
+            new GUIMain().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton btnLagerOversigt;
     // End of variables declaration//GEN-END:variables
 }

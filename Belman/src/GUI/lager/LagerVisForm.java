@@ -26,12 +26,12 @@ public class LagerVisForm extends javax.swing.JDialog
         initComponents();      
         
         
-//        // Reference for the BLL layer.
-//        lagmgr = new BLLLagerManager();
-//        
-//        // Set the table model for the JTable
-//        lagmodel = new LagerTableModel(lagmgr.visLager());
-//        tblLager.setModel(lagmodel);
+        // Reference for the BLL layer.
+        lagmgr = new BLLLagerManager();
+        
+        // Set the table model for the JTable
+        lagmodel = new LagerTableModel(lagmgr.visLager());
+        tblLager.setModel(lagmodel);
         }
 
     /**

@@ -65,9 +65,7 @@ public class ProduktionForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Produktion");
-        setAutoRequestFocus(false);
-        setFocusCycleRoot(false);
-        setFocusableWindowState(false);
+        setFocusTraversalPolicyProvider(true);
         setIconImage(null);
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setName("Belman produktion"); // NOI18N
@@ -109,6 +107,11 @@ public class ProduktionForm extends javax.swing.JDialog {
 
         btngrpFilter.add(rbtnHaster);
         rbtnHaster.setText("Haster");
+        rbtnHaster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnHasterActionPerformed(evt);
+            }
+        });
 
         btngrpFilter.add(rbtnMateriale);
         rbtnMateriale.setText("Materiale");
@@ -233,6 +236,19 @@ public class ProduktionForm extends javax.swing.JDialog {
                 Logger.getLogger(ProduktionForm.class.getName()).log(Level.SEVERE, null, ex);
             }
     }//GEN-LAST:event_btnJobIndActionPerformed
+
+    private void rbtnHasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnHasterActionPerformed
+        if (rbtnHaster.isSelected() == true) {
+            promodel.clear();
+            try {
+
+                promodel = new ProduktionFormTableModel(promgr.orderByStockQuantity());
+                jtblVaelgOrdre.setModel(promodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_rbtnHasterActionPerformed
 
     /**
      * @param args the command line arguments

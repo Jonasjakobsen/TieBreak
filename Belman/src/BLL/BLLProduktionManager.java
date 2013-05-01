@@ -38,5 +38,9 @@ public class BLLProduktionManager
     {
         return db.visOrdrer();
     }
+
+    public ArrayList<BEProduktion> orderByStockQuantity() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
     
 }

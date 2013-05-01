@@ -107,6 +107,13 @@ public class LagerTableModel extends AbstractTableModel
         return (false);
     }
     
+    
+    public void clear()
+    {
+         lager.clear();
+    }
+    
+    
     public void setCollection(Collection<BELager> list)
     {
         lager = new ArrayList<>(list);

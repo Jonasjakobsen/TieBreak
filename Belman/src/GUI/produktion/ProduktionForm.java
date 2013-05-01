@@ -57,10 +57,12 @@ public class ProduktionForm extends javax.swing.JDialog {
 
         lblIgangvaerendeProduktion.setText("Igangværende ordreproduktion:");
 
+        jtblProdOrdre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jscrpProdOrdre.setViewportView(jtblProdOrdre);
 
         lblVaelgOrdre.setText("Vælg en produktionsordre:");
 
+        jtblVaelgOrdre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jscrpVaelgOrdre.setViewportView(jtblVaelgOrdre);
 
         btnLageroversigt.setText("Lageroversigt");
@@ -80,7 +82,7 @@ public class ProduktionForm extends javax.swing.JDialog {
         btnJobInd.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnJobInd.setText("Job Ind");
 
-        jpnlFilter.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtrér ordrer"));
+        jpnlFilter.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Filtrér"));
 
         btngrpFilter.add(rbtnHaster);
         rbtnHaster.setText("Haster");
@@ -105,11 +107,11 @@ public class ProduktionForm extends javax.swing.JDialog {
                     .addComponent(rbtnMateriale)
                     .addComponent(jRadioButton3)
                     .addComponent(jRadioButton4))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jpnlFilterLayout.setVerticalGroup(
             jpnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnlFilterLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlFilterLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rbtnHaster)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -117,7 +119,8 @@ public class ProduktionForm extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton4))
+                .addComponent(jRadioButton4)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -133,7 +136,7 @@ public class ProduktionForm extends javax.swing.JDialog {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblIgangvaerendeProduktion)
                                     .addComponent(lblVaelgOrdre))
-                                .addGap(0, 418, Short.MAX_VALUE))
+                                .addGap(0, 464, Short.MAX_VALUE))
                             .addComponent(jscrpProdOrdre)
                             .addComponent(jscrpVaelgOrdre, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
@@ -150,17 +153,21 @@ public class ProduktionForm extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblIgangvaerendeProduktion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblIgangvaerendeProduktion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jscrpProdOrdre, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblVaelgOrdre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jscrpVaelgOrdre))
+                        .addComponent(lblVaelgOrdre))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jpnlFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpnlFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(jscrpVaelgOrdre, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnJobInd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)

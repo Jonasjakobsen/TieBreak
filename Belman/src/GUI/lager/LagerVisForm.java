@@ -232,11 +232,11 @@ public class LagerVisForm extends javax.swing.JDialog
         
         if (rbtnThickness.isSelected() == true)
             {
-                
                try
                 {
-                    
-                    BLLLagerManager.getInstance().orderByThickness(); 
+                    lagmodel.clear();
+                    lagmodel = new LagerTableModel(lagmgr.orderByThickness());
+                    tblLager.setModel(lagmodel);
                 }
                 catch (Exception ex)
                 {

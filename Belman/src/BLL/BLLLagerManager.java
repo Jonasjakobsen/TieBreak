@@ -47,4 +47,24 @@ public class BLLLagerManager
         return db.orderByThickness();
     }
     
+    public ArrayList<BELager> orderByLength() throws SQLServerException, SQLException
+    {
+        return db.orderByLength();
+    }
+    
+    public ArrayList<BELager> orderByWidth() throws SQLServerException, SQLException
+    {
+        return db.orderByWidth();
+    }
+    
+    public ArrayList<BELager> orderByMaterialID() throws SQLServerException, SQLException
+    {
+        return db.orderByMaterialID();
+    }
+    
+    public ArrayList<BELager> orderByDensity() throws SQLServerException, SQLException
+    {
+        return db.orderByDensity();
+    }
+    
 }

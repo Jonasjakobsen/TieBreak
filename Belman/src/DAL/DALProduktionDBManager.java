@@ -37,18 +37,116 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
                 boolean Urgent = rs.getBoolean("Urgent");
                 Date DueDate = rs.getDate("DueDate");
                 Float Quantity = rs.getFloat("Quantity");
+                Float MaterialID = rs.getFloat("MaterialID");
                 Float Thickness = rs.getFloat("Thickness");
                 Float Width = rs.getFloat("Width");
                 Float Circumference = rs.getFloat("Circumference");
                 
 
 
-                BEProduktion l = new BEProduktion(SOrderID, SOrder, POrderID, POrder, Urgent, DueDate, Quantity, Thickness, Width, Circumference);
+                BEProduktion l = new BEProduktion(SOrderID, SOrder, POrderID, POrder, Urgent, DueDate, Quantity, MaterialID, Thickness, Width, Circumference);
                 ordrer.add(l);
             }
             return ordrer;
 
         }
     
+    }
+    
+    public ArrayList<BEProduktion> orderByUrgent() throws SQLServerException, SQLException {
+        try (Connection con = ds.getConnection()) {
+            String sql = "SELECT * FROM ProductionOrder ORDER BY Urgent DESC";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<BEProduktion> ordrer = new ArrayList<>();
+
+            while (rs.next()) {
+                int SOrderID = rs.getInt("SOrderID");
+                String SOrder = rs.getString("SOrder");
+                int POrderID = rs.getInt("POrderID");
+                String POrder = rs.getString("POrder");
+                boolean Urgent = rs.getBoolean("Urgent");
+                Date DueDate = rs.getDate("DueDate");
+                Float Quantity = rs.getFloat("Quantity");
+                Float MaterialID = rs.getFloat("MaterialID");
+                Float Thickness = rs.getFloat("Thickness");
+                Float Width = rs.getFloat("Width");
+                Float Circumference = rs.getFloat("Circumference");
+                
+
+
+                BEProduktion l = new BEProduktion(SOrderID, SOrder, POrderID, POrder, Urgent, DueDate, Quantity, MaterialID, Thickness, Width, Circumference);
+                ordrer.add(l);
+            }
+            return ordrer;
+
+        }
+    
+    }
+
+    public ArrayList<BEProduktion> orderByMaterial() throws SQLServerException, SQLException  {
+        try (Connection con = ds.getConnection()) {
+            String sql = "SELECT * FROM ProductionOrder ORDER BY MaterialID";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<BEProduktion> ordrer = new ArrayList<>();
+
+            while (rs.next()) {
+                int SOrderID = rs.getInt("SOrderID");
+                String SOrder = rs.getString("SOrder");
+                int POrderID = rs.getInt("POrderID");
+                String POrder = rs.getString("POrder");
+                boolean Urgent = rs.getBoolean("Urgent");
+                Date DueDate = rs.getDate("DueDate");
+                Float Quantity = rs.getFloat("Quantity");
+                Float MaterialID = rs.getFloat("MaterialID");
+                Float Thickness = rs.getFloat("Thickness");
+                Float Width = rs.getFloat("Width");
+                Float Circumference = rs.getFloat("Circumference");
+                
+
+
+                BEProduktion l = new BEProduktion(SOrderID, SOrder, POrderID, POrder, Urgent, DueDate, Quantity, MaterialID, Thickness, Width, Circumference);
+                ordrer.add(l);
+            }
+            return ordrer;
+
+        }
+    }
+
+    public ArrayList<BEProduktion> orderByDueDate() throws SQLServerException, SQLException {
+        try (Connection con = ds.getConnection()) {
+            String sql = "SELECT * FROM ProductionOrder ORDER BY DueDate";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<BEProduktion> ordrer = new ArrayList<>();
+
+            while (rs.next()) {
+                int SOrderID = rs.getInt("SOrderID");
+                String SOrder = rs.getString("SOrder");
+                int POrderID = rs.getInt("POrderID");
+                String POrder = rs.getString("POrder");
+                boolean Urgent = rs.getBoolean("Urgent");
+                Date DueDate = rs.getDate("DueDate");
+                Float Quantity = rs.getFloat("Quantity");
+                Float MaterialID = rs.getFloat("MaterialID");
+                Float Thickness = rs.getFloat("Thickness");
+                Float Width = rs.getFloat("Width");
+                Float Circumference = rs.getFloat("Circumference");
+                
+
+
+                BEProduktion l = new BEProduktion(SOrderID, SOrder, POrderID, POrder, Urgent, DueDate, Quantity, MaterialID, Thickness, Width, Circumference);
+                ordrer.add(l);
+            }
+            return ordrer;
+
+        }
     }
 }

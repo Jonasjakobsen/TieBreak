@@ -19,6 +19,7 @@ public class BEProduktion {
     private boolean Urgent;
     private Date DueDate;
     private float Quantity;
+    private float MaterialID;
     private float Thickness;
     private float Width;
     private float Circumference;
@@ -26,7 +27,8 @@ public class BEProduktion {
     
     public BEProduktion (int SOrderID, String SOrder, int POrderID, 
                         String POrder, boolean Urgent, Date DueDate, Float Quantity,
-                        Float Thickness, Float Width, Float Circumference)
+                        Float MaterialID, Float Thickness, Float Width,
+                        Float Circumference)
     {
         this.SOrderID = SOrderID;
         this.SOrder = SOrder;
@@ -35,6 +37,7 @@ public class BEProduktion {
         this.Urgent = Urgent;
         this.DueDate = DueDate;
         this.Quantity = Quantity;
+        this.MaterialID = MaterialID;
         this.Thickness = Thickness;
         this.Width = Width;
         this.Circumference = Circumference;
@@ -108,6 +111,13 @@ public class BEProduktion {
      */
     public boolean isUrgent() {
         return Urgent;
+    }
+
+    /**
+     * @return the MaterialID
+     */
+    public float getMaterialID() {
+        return MaterialID;
     }
     
 }

@@ -6,6 +6,7 @@ package GUI.lager;
 
 import BE.BELager;
 import BLL.BLLLagerManager;
+import GUI.GUIMain;
 import GUI.produktion.ProduktionForm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,7 +62,6 @@ public class LagerVisForm extends javax.swing.JDialog {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        btnProduktion = new javax.swing.JToggleButton();
         btnAfbryd = new javax.swing.JToggleButton();
         pnlSortBy = new javax.swing.JPanel();
         rbtnThickness = new javax.swing.JRadioButton();
@@ -75,18 +75,12 @@ public class LagerVisForm extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLager = new javax.swing.JTable();
         btnSearch = new javax.swing.JButton();
+        btnProduction = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Lageroversigt");
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setPreferredSize(new java.awt.Dimension(1200, 600));
-
-        btnProduktion.setText("Produktion");
-        btnProduktion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProduktionActionPerformed(evt);
-            }
-        });
 
         btnAfbryd.setText("Afbryd");
         btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
@@ -180,6 +174,13 @@ public class LagerVisForm extends javax.swing.JDialog {
             }
         });
 
+        btnProduction.setText("Production");
+        btnProduction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -197,13 +198,13 @@ public class LagerVisForm extends javax.swing.JDialog {
                                 .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                                 .addGap(115, 115, 115))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnProduktion)
+                        .addComponent(btnProduction)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAfbryd, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAfbryd, btnProduktion});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAfbryd, btnProduction});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,15 +221,12 @@ public class LagerVisForm extends javax.swing.JDialog {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnProduktion)
-                        .addGap(11, 11, 11))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAfbryd, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addComponent(btnAfbryd, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProduction))
+                .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAfbryd, btnProduktion});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAfbryd, btnProduction});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -239,19 +237,6 @@ public class LagerVisForm extends javax.swing.JDialog {
 
     private void rbtnThicknessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnThicknessActionPerformed
     }//GEN-LAST:event_rbtnThicknessActionPerformed
-
-    private void btnProduktionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProduktionActionPerformed
-//        try
-//            {
-//                ProduktionForm prodForm = new ProduktionForm(this, true);
-//                prodForm.pack();
-//                prodForm.setVisible(true);
-//             }
-//        catch (Exception ex)
-//        {
-//            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }//GEN-LAST:event_btnProduktionActionPerformed
     /*
      * Checks which radiobutton is active and searches with the conditions that the
      * radiobutton indicates
@@ -320,9 +305,24 @@ public class LagerVisForm extends javax.swing.JDialog {
 
         }
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnProductionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductionActionPerformed
+        dispose();
+        try
+            {
+                ProduktionForm prodForm = new ProduktionForm(this, true);
+                prodForm.pack();
+                prodForm.setVisible(true);
+            }
+        catch (Exception ex)
+        {
+            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnProductionActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAfbryd;
-    private javax.swing.JToggleButton btnProduktion;
+    private javax.swing.JButton btnProduction;
     private javax.swing.JButton btnSearch;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JScrollPane jScrollPane1;

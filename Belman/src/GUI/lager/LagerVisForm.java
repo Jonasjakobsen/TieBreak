@@ -6,6 +6,7 @@ package GUI.lager;
 
 import BE.BELager;
 import BLL.BLLLagerManager;
+import GUI.produktion.ProduktionForm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,6 +25,20 @@ public class LagerVisForm extends javax.swing.JDialog {
      */
     public LagerVisForm(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
+        initComponents();
+        setLocationRelativeTo(this);
+
+
+        // Reference for the BLL layer.
+        lagmgr = new BLLLagerManager();
+
+        // Set the table model for the JTable
+        lagmodel = new LagerTableModel(lagmgr.visLager());
+        tblLager.setModel(lagmodel);
+    }
+
+    public LagerVisForm(ProduktionForm aThis, boolean b) throws Exception {
+        super(aThis, b);
         initComponents();
         setLocationRelativeTo(this);
 
@@ -305,7 +320,6 @@ public class LagerVisForm extends javax.swing.JDialog {
 
         }
     }//GEN-LAST:event_btnSearchActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAfbryd;
     private javax.swing.JToggleButton btnProduktion;

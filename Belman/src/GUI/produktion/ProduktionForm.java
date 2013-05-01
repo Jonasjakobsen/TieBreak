@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class ProduktionForm extends javax.swing.JDialog {
 
-        private BLLProduktionManager promgr;
+    private BLLProduktionManager promgr;
     private ProduktionFormTableModel promodel;    
     private BELager lager = null;
     /**

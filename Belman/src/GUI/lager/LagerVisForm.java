@@ -64,17 +64,16 @@ public class LagerVisForm extends javax.swing.JDialog {
         buttonGroup1 = new javax.swing.ButtonGroup();
         btnAfbryd = new javax.swing.JToggleButton();
         pnlSortBy = new javax.swing.JPanel();
-        rbtnThickness = new javax.swing.JRadioButton();
         rbtnWidth = new javax.swing.JRadioButton();
         rbtnLength = new javax.swing.JRadioButton();
         rbtnMaterialeID = new javax.swing.JRadioButton();
         rbtnDensity = new javax.swing.JRadioButton();
         rbtnStockQuantity = new javax.swing.JRadioButton();
+        rbtnThickness = new javax.swing.JRadioButton();
         pnlSearch = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLager = new javax.swing.JTable();
-        btnSearch = new javax.swing.JButton();
         btnProduction = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -82,7 +81,7 @@ public class LagerVisForm extends javax.swing.JDialog {
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setPreferredSize(new java.awt.Dimension(1200, 600));
 
-        btnAfbryd.setText("Afbryd");
+        btnAfbryd.setText("Cancel");
         btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAfbrydActionPerformed(evt);
@@ -91,6 +90,46 @@ public class LagerVisForm extends javax.swing.JDialog {
 
         pnlSortBy.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Sort by"));
 
+        buttonGroup1.add(rbtnWidth);
+        rbtnWidth.setText("Width");
+        rbtnWidth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnWidthActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbtnLength);
+        rbtnLength.setText("Length");
+        rbtnLength.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnLengthActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbtnMaterialeID);
+        rbtnMaterialeID.setText("Materiale ID");
+        rbtnMaterialeID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnMaterialeIDActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbtnDensity);
+        rbtnDensity.setText("Material Density");
+        rbtnDensity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnDensityActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbtnStockQuantity);
+        rbtnStockQuantity.setText("Stock Quantity");
+        rbtnStockQuantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnStockQuantityActionPerformed(evt);
+            }
+        });
+
         buttonGroup1.add(rbtnThickness);
         rbtnThickness.setText("Thickness");
         rbtnThickness.addActionListener(new java.awt.event.ActionListener() {
@@ -98,22 +137,6 @@ public class LagerVisForm extends javax.swing.JDialog {
                 rbtnThicknessActionPerformed(evt);
             }
         });
-
-        buttonGroup1.add(rbtnWidth);
-        rbtnWidth.setText("Width");
-
-        buttonGroup1.add(rbtnLength);
-        rbtnLength.setText("Length");
-
-        buttonGroup1.add(rbtnMaterialeID);
-        rbtnMaterialeID.setText("Materiale ID");
-
-        buttonGroup1.add(rbtnDensity);
-        rbtnDensity.setText("Material Density");
-
-        buttonGroup1.add(rbtnStockQuantity);
-        rbtnStockQuantity.setSelected(true);
-        rbtnStockQuantity.setText("Stock Quantity");
 
         javax.swing.GroupLayout pnlSortByLayout = new javax.swing.GroupLayout(pnlSortBy);
         pnlSortBy.setLayout(pnlSortByLayout);
@@ -126,8 +149,8 @@ public class LagerVisForm extends javax.swing.JDialog {
                     .addComponent(rbtnMaterialeID)
                     .addComponent(rbtnLength)
                     .addComponent(rbtnWidth)
-                    .addComponent(rbtnThickness)
-                    .addComponent(rbtnStockQuantity))
+                    .addComponent(rbtnStockQuantity)
+                    .addComponent(rbtnThickness))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlSortByLayout.setVerticalGroup(
@@ -167,13 +190,6 @@ public class LagerVisForm extends javax.swing.JDialog {
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(tblLager);
 
-        btnSearch.setText("Search");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-
         btnProduction.setText("Production");
         btnProduction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,14 +205,11 @@ public class LagerVisForm extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1027, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pnlSortBy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                                .addGap(115, 115, 115))))
+                            .addComponent(pnlSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnProduction)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -215,8 +228,6 @@ public class LagerVisForm extends javax.swing.JDialog {
                         .addComponent(pnlSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(pnlSortBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -235,77 +246,6 @@ public class LagerVisForm extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnAfbrydActionPerformed
 
-    private void rbtnThicknessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnThicknessActionPerformed
-    }//GEN-LAST:event_rbtnThicknessActionPerformed
-    /*
-     * Checks which radiobutton is active and searches with the conditions that the
-     * radiobutton indicates
-     */
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-
-        if (rbtnStockQuantity.isSelected() == true) {
-            lagmodel.clear();
-            try {
-
-                lagmodel = new LagerTableModel(lagmgr.orderByStockQuantity());
-                tblLager.setModel(lagmodel);
-            } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if (rbtnDensity.isSelected() == true) {
-            lagmodel.clear();
-            try {
-
-                lagmodel = new LagerTableModel(lagmgr.orderByDensity());
-                tblLager.setModel(lagmodel);
-            } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if (rbtnMaterialeID.isSelected() == true) {
-            lagmodel.clear();
-            try {
-
-                lagmodel = new LagerTableModel(lagmgr.orderByMaterialID());
-                tblLager.setModel(lagmodel);
-            } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if (rbtnWidth.isSelected() == true) {
-            lagmodel.clear();
-            try {
-
-                lagmodel = new LagerTableModel(lagmgr.orderByWidth());
-                tblLager.setModel(lagmodel);
-            } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if (rbtnLength.isSelected() == true) {
-            lagmodel.clear();
-            try {
-
-                lagmodel = new LagerTableModel(lagmgr.orderByLength());
-                tblLager.setModel(lagmodel);
-            } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if (rbtnThickness.isSelected() == true) {
-            lagmodel.clear();
-            try {
-                lagmodel = new LagerTableModel(lagmgr.orderByThickness());
-                tblLager.setModel(lagmodel);
-            } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-
-        }
-    }//GEN-LAST:event_btnSearchActionPerformed
-
     private void btnProductionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductionActionPerformed
         dispose();
         try
@@ -320,10 +260,88 @@ public class LagerVisForm extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnProductionActionPerformed
 
+    private void rbtnWidthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnWidthActionPerformed
+        if (rbtnWidth.isSelected() == true) {
+            lagmodel.clear();
+            try {
+
+                lagmodel = new LagerTableModel(lagmgr.orderByWidth());
+                tblLager.setModel(lagmodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_rbtnWidthActionPerformed
+
+    private void rbtnThicknessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnThicknessActionPerformed
+        if (rbtnThickness.isSelected() == true) {
+            lagmodel.clear();
+            try {
+                lagmodel = new LagerTableModel(lagmgr.orderByThickness());
+                tblLager.setModel(lagmodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+        }
+    }//GEN-LAST:event_rbtnThicknessActionPerformed
+
+    private void rbtnLengthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnLengthActionPerformed
+        if (rbtnLength.isSelected() == true) {
+            lagmodel.clear();
+            try {
+
+                lagmodel = new LagerTableModel(lagmgr.orderByLength());
+                tblLager.setModel(lagmodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_rbtnLengthActionPerformed
+
+    private void rbtnMaterialeIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMaterialeIDActionPerformed
+        if (rbtnMaterialeID.isSelected() == true) {
+            lagmodel.clear();
+            try {
+
+                lagmodel = new LagerTableModel(lagmgr.orderByMaterialID());
+                tblLager.setModel(lagmodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_rbtnMaterialeIDActionPerformed
+
+    private void rbtnDensityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDensityActionPerformed
+        if (rbtnDensity.isSelected() == true) {
+            lagmodel.clear();
+            try {
+
+                lagmodel = new LagerTableModel(lagmgr.orderByDensity());
+                tblLager.setModel(lagmodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_rbtnDensityActionPerformed
+
+    private void rbtnStockQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnStockQuantityActionPerformed
+        if (rbtnStockQuantity.isSelected() == true) {
+            lagmodel.clear();
+            try {
+
+                lagmodel = new LagerTableModel(lagmgr.orderByStockQuantity());
+                tblLager.setModel(lagmodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_rbtnStockQuantityActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAfbryd;
     private javax.swing.JButton btnProduction;
-    private javax.swing.JButton btnSearch;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlSearch;

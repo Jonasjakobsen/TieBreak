@@ -60,7 +60,6 @@ public class LagerVisForm extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLager = new javax.swing.JTable();
         btnSearch = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Lageroversigt");
@@ -138,7 +137,7 @@ public class LagerVisForm extends javax.swing.JDialog {
                 .addComponent(rbtnStockQuantity))
         );
 
-        pnlSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Search"));
+        pnlSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Search ID"));
 
         javax.swing.GroupLayout pnlSearchLayout = new javax.swing.GroupLayout(pnlSearch);
         pnlSearch.setLayout(pnlSearchLayout);
@@ -166,8 +165,6 @@ public class LagerVisForm extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("Clear");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,8 +180,7 @@ public class LagerVisForm extends javax.swing.JDialog {
                             .addComponent(pnlSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(115, 115, 115))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnProduktion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -193,8 +189,6 @@ public class LagerVisForm extends javax.swing.JDialog {
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAfbryd, btnProduktion});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSearch, jButton1});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,9 +200,7 @@ public class LagerVisForm extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(pnlSortBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -245,52 +237,52 @@ public class LagerVisForm extends javax.swing.JDialog {
 //            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     }//GEN-LAST:event_btnProduktionActionPerformed
-/*
- * Checks which radiobutton is active and searches with the conditions that the
- * radiobutton indicates
- */
+    /*
+     * Checks which radiobutton is active and searches with the conditions that the
+     * radiobutton indicates
+     */
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        
+
         if (rbtnStockQuantity.isSelected() == true) {
-                lagmodel.clear();
-                try {
-                    
-                    lagmodel = new LagerTableModel(lagmgr.orderByStockQuantity());
-                    tblLager.setModel(lagmodel);
-                } catch (Exception ex) {
-                    Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            lagmodel.clear();
+            try {
+
+                lagmodel = new LagerTableModel(lagmgr.orderByStockQuantity());
+                tblLager.setModel(lagmodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
         if (rbtnDensity.isSelected() == true) {
-                lagmodel.clear();
-                try {
-                    
-                    lagmodel = new LagerTableModel(lagmgr.orderByDensity());
-                    tblLager.setModel(lagmodel);
-                } catch (Exception ex) {
-                    Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            lagmodel.clear();
+            try {
+
+                lagmodel = new LagerTableModel(lagmgr.orderByDensity());
+                tblLager.setModel(lagmodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
         if (rbtnMaterialeID.isSelected() == true) {
-                lagmodel.clear();
-                try {
-                    
-                    lagmodel = new LagerTableModel(lagmgr.orderByMaterialID());
-                    tblLager.setModel(lagmodel);
-                } catch (Exception ex) {
-                    Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            lagmodel.clear();
+            try {
+
+                lagmodel = new LagerTableModel(lagmgr.orderByMaterialID());
+                tblLager.setModel(lagmodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
         if (rbtnWidth.isSelected() == true) {
-                lagmodel.clear();
-                try {
-                    
-                    lagmodel = new LagerTableModel(lagmgr.orderByWidth());
-                    tblLager.setModel(lagmodel);
-                } catch (Exception ex) {
-                    Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            lagmodel.clear();
+            try {
+
+                lagmodel = new LagerTableModel(lagmgr.orderByWidth());
+                tblLager.setModel(lagmodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
         if (rbtnLength.isSelected() == true) {
             lagmodel.clear();
             try {
@@ -304,7 +296,6 @@ public class LagerVisForm extends javax.swing.JDialog {
         if (rbtnThickness.isSelected() == true) {
             lagmodel.clear();
             try {
-//                lagmodel.clear();
                 lagmodel = new LagerTableModel(lagmgr.orderByThickness());
                 tblLager.setModel(lagmodel);
             } catch (Exception ex) {
@@ -314,12 +305,12 @@ public class LagerVisForm extends javax.swing.JDialog {
 
         }
     }//GEN-LAST:event_btnSearchActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAfbryd;
     private javax.swing.JToggleButton btnProduktion;
     private javax.swing.JButton btnSearch;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlSearch;
     private javax.swing.JPanel pnlSortBy;

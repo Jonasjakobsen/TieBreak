@@ -5,7 +5,8 @@
 package GUI.produktion;
 
 import BE.BELager;
-import BLL.BLLLagerManager;
+import BE.BEProduktion;
+import BLL.BLLProduktionManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -15,10 +16,10 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Stoffer
  */
-public class JobIndTableModel extends AbstractTableModel
+public class ProduktionFormTableModel extends AbstractTableModel
 {
 
-    private BLLLagerManager lm;
+    private BLLProduktionManager pm;
     private final String[] header =
     {
         "SOrderID", "SOrder", "POrderID", "POrder", "Urgent", "DueDate", 
@@ -30,29 +31,29 @@ public class JobIndTableModel extends AbstractTableModel
         Date.class, Float.class, Float.class, Float.class, Float.class,
         Float.class
     };
-    private ArrayList<BELager> lager;
+    private ArrayList<BEProduktion> produktion;
 
-    public JobIndTableModel()
+    public ProduktionFormTableModel()
     {
         try
         {
-            lm = new BLLLagerManager();
+            pm = new BLLProduktionManager();
         }
         catch (Exception ex)
         {
             System.out.println("lol");
         }
     }
-    JobIndTableModel(ArrayList<BELager> AllLager)
+    ProduktionFormTableModel(ArrayList<BEProduktion> AllProduktion)
     {
         fireTableDataChanged();
-        lager = AllLager;
+        produktion = AllProduktion;
     }
 
     @Override
     public int getRowCount()
     {
-        return lager.size();
+        return produktion.size();
     }
 
     @Override
@@ -65,29 +66,29 @@ public class JobIndTableModel extends AbstractTableModel
     public Object getValueAt(int row, int col)
     {
         {
-            BELager l = lager.get(row);
+            BEProduktion p = produktion.get(row);
             switch (col)
             {
                 case 0:
-                    return l.getId();
+                    return p.getSOrderID();
                 case 1:
-                    return l.getCode();
+                    return p.getSOrder();
                 case 2:
-                    return l.getMaterialID();
+                    return p.getPOrderID();
                 case 3:
-                    return l.getMaterialName();
+                    return p.getPOrder();
                 case 4:
-                    return l.getMaterialDensity();
+                    return p.isUrgent();
                 case 5:
-                    return l.getChargeNo();
+                    return p.getDueDate();
                 case 6:
-                    return l.getLength();
+                    return p.getQuantity();
                 case 7:
-                    return l.getWidth();
+                    return p.getThickness();
                 case 8:
-                    return l.getThickness();
+                    return p.getWidth();
                 case 9:
-                    return l.getStockQuantity();   
+                    return p.getCircumference();   
 
             }
             return null;
@@ -112,14 +113,14 @@ public class JobIndTableModel extends AbstractTableModel
         return (false);
     }
     
-    public void setCollection(Collection<BELager> list)
+    public void setCollection(Collection<BEProduktion> list)
     {
-        lager = new ArrayList<>(list);
+        produktion = new ArrayList<>(list);
         fireTableDataChanged();
     }
 
-    BELager getMedlemByRow(int row)
+    BEProduktion getMedlemByRow(int row)
     {
-        return lager.get(row);
+        return produktion.get(row);
     }
 }

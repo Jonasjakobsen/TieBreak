@@ -5,9 +5,11 @@
 package GUI.produktion;
 
 import BE.BELager;
-import BLL.BLLLagerManager;
 import BLL.BLLProduktionManager;
-import GUI.lager.LagerTableModel;
+import GUI.GUIMain;
+import GUI.lager.LagerVisForm;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -63,6 +65,10 @@ public class ProduktionForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Produktion");
+        setAutoRequestFocus(false);
+        setFocusCycleRoot(false);
+        setFocusableWindowState(false);
+        setIconImage(null);
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setName("Belman produktion"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1200, 600));
@@ -93,6 +99,11 @@ public class ProduktionForm extends javax.swing.JDialog {
 
         btnJobInd.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnJobInd.setText("Job Ind");
+        btnJobInd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJobIndActionPerformed(evt);
+            }
+        });
 
         jpnlFilter.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Filtrér"));
 
@@ -198,17 +209,30 @@ public class ProduktionForm extends javax.swing.JDialog {
 
     private void btnLageroversigtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLageroversigtActionPerformed
         dispose();
-//        try
-//            {
-//                LagerVisForm prodForm = new LagerVisForm(this, true);
-//                prodForm.pack();
-//                prodForm.setVisible(true);
-//            }
-//        catch (Exception ex)
-//        {
-//            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try
+            {
+                LagerVisForm prodForm = new LagerVisForm(this, true);
+                prodForm.pack();
+                prodForm.setVisible(true);
+            }
+        catch (Exception ex)
+        {
+            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnLageroversigtActionPerformed
+
+    private void btnJobIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJobIndActionPerformed
+        try
+            {
+                JobIndForm jobForm = new JobIndForm(this, true);
+                jobForm.pack();
+                jobForm.setVisible(true);
+            }
+        catch (Exception ex)
+            {
+                Logger.getLogger(ProduktionForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_btnJobIndActionPerformed
 
     /**
      * @param args the command line arguments

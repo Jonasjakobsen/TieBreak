@@ -38,6 +38,20 @@ public class ProduktionForm extends javax.swing.JDialog {
         jtblVaelgOrdre.setModel(promodel);
         }
 
+    public ProduktionForm(LagerVisForm aThis, boolean b) throws Exception {
+       super(aThis, b);
+       initComponents(); 
+        setLocationRelativeTo(this);
+        
+        
+        // Reference for the BLL layer.
+        promgr = new BLLProduktionManager();
+        
+        // Set the table model for the JTable
+        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
+        jtblVaelgOrdre.setModel(promodel);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

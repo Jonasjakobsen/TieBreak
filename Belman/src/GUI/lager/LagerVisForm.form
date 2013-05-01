@@ -125,7 +125,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="rbtnDensity" min="-2" max="-2" attributes="0"/>
@@ -133,6 +133,7 @@
                       <Component id="rbtnLength" min="-2" max="-2" attributes="0"/>
                       <Component id="rbtnWidth" min="-2" max="-2" attributes="0"/>
                       <Component id="rbtnThickness" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="rbtnStockQuantity" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -150,7 +151,8 @@
                   <Component id="rbtnMaterialeID" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="rbtnDensity" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="4" max="32767" attributes="0"/>
+                  <Component id="rbtnStockQuantity" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -197,6 +199,15 @@
               <ComponentRef name="buttonGroup1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Material Density"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rbtnStockQuantity">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroup1"/>
+            </Property>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="Stock Quantity"/>
           </Properties>
         </Component>
       </SubComponents>

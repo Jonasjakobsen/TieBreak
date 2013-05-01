@@ -67,4 +67,9 @@ public class BLLLagerManager
         return db.orderByDensity();
     }
     
+    public ArrayList<BELager> orderByStockQuantity() throws SQLServerException, SQLException
+    {
+        return db.orderByStockQuantity();
+    }
+    
 }

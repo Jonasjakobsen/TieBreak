@@ -54,6 +54,7 @@ public class LagerVisForm extends javax.swing.JDialog {
         rbtnLength = new javax.swing.JRadioButton();
         rbtnMaterialeID = new javax.swing.JRadioButton();
         rbtnDensity = new javax.swing.JRadioButton();
+        rbtnStockQuantity = new javax.swing.JRadioButton();
         pnlSearch = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -102,6 +103,10 @@ public class LagerVisForm extends javax.swing.JDialog {
         buttonGroup1.add(rbtnDensity);
         rbtnDensity.setText("Material Density");
 
+        buttonGroup1.add(rbtnStockQuantity);
+        rbtnStockQuantity.setSelected(true);
+        rbtnStockQuantity.setText("Stock Quantity");
+
         javax.swing.GroupLayout pnlSortByLayout = new javax.swing.GroupLayout(pnlSortBy);
         pnlSortBy.setLayout(pnlSortByLayout);
         pnlSortByLayout.setHorizontalGroup(
@@ -113,7 +118,8 @@ public class LagerVisForm extends javax.swing.JDialog {
                     .addComponent(rbtnMaterialeID)
                     .addComponent(rbtnLength)
                     .addComponent(rbtnWidth)
-                    .addComponent(rbtnThickness))
+                    .addComponent(rbtnThickness)
+                    .addComponent(rbtnStockQuantity))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlSortByLayout.setVerticalGroup(
@@ -128,7 +134,8 @@ public class LagerVisForm extends javax.swing.JDialog {
                 .addComponent(rbtnMaterialeID)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbtnDensity)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
+                .addComponent(rbtnStockQuantity))
         );
 
         pnlSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Search"));
@@ -244,6 +251,16 @@ public class LagerVisForm extends javax.swing.JDialog {
  */
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         
+        if (rbtnStockQuantity.isSelected() == true) {
+                lagmodel.clear();
+                try {
+                    
+                    lagmodel = new LagerTableModel(lagmgr.orderByStockQuantity());
+                    tblLager.setModel(lagmodel);
+                } catch (Exception ex) {
+                    Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         if (rbtnDensity.isSelected() == true) {
                 lagmodel.clear();
                 try {
@@ -309,6 +326,7 @@ public class LagerVisForm extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbtnDensity;
     private javax.swing.JRadioButton rbtnLength;
     private javax.swing.JRadioButton rbtnMaterialeID;
+    private javax.swing.JRadioButton rbtnStockQuantity;
     private javax.swing.JRadioButton rbtnThickness;
     private javax.swing.JRadioButton rbtnWidth;
     private javax.swing.JTable tblLager;

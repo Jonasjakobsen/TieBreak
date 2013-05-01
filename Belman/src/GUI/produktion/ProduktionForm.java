@@ -5,9 +5,11 @@
 package GUI.produktion;
 
 import BE.BELager;
-import BLL.BLLLagerManager;
 import BLL.BLLProduktionManager;
-import GUI.lager.LagerTableModel;
+import GUI.GUIMain;
+import GUI.lager.LagerVisForm;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,7 +17,7 @@ import GUI.lager.LagerTableModel;
  */
 public class ProduktionForm extends javax.swing.JDialog {
 
-        private BLLProduktionManager promgr;
+    private BLLProduktionManager promgr;
     private ProduktionFormTableModel promodel;    
     private BELager lager = null;
     /**
@@ -198,16 +200,16 @@ public class ProduktionForm extends javax.swing.JDialog {
 
     private void btnLageroversigtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLageroversigtActionPerformed
         dispose();
-//        try
-//            {
-//                LagerVisForm prodForm = new LagerVisForm(this, true);
-//                prodForm.pack();
-//                prodForm.setVisible(true);
-//            }
-//        catch (Exception ex)
-//        {
-//            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try
+            {
+                LagerVisForm prodForm = new LagerVisForm(this, true);
+                prodForm.pack();
+                prodForm.setVisible(true);
+            }
+        catch (Exception ex)
+        {
+            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnLageroversigtActionPerformed
 
     /**

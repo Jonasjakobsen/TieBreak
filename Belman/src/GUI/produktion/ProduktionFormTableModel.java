@@ -123,4 +123,8 @@ public class ProduktionFormTableModel extends AbstractTableModel
     {
         return produktion.get(row);
     }
+
+    void clear() {
+        produktion.clear();
+    }
 }

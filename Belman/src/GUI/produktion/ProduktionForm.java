@@ -79,6 +79,8 @@ public class ProduktionForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Produktion");
+        setFocusTraversalPolicyProvider(true);
+        setIconImage(null);
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setName("Belman produktion"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1200, 600));
@@ -109,11 +111,21 @@ public class ProduktionForm extends javax.swing.JDialog {
 
         btnJobInd.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnJobInd.setText("Job Ind");
+        btnJobInd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJobIndActionPerformed(evt);
+            }
+        });
 
         jpnlFilter.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Filtrér"));
 
         btngrpFilter.add(rbtnHaster);
         rbtnHaster.setText("Haster");
+        rbtnHaster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnHasterActionPerformed(evt);
+            }
+        });
 
         btngrpFilter.add(rbtnMateriale);
         rbtnMateriale.setText("Materiale");
@@ -225,6 +237,32 @@ public class ProduktionForm extends javax.swing.JDialog {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnLageroversigtActionPerformed
+
+    private void btnJobIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJobIndActionPerformed
+        try
+            {
+                JobIndForm jobForm = new JobIndForm(this, true);
+                jobForm.pack();
+                jobForm.setVisible(true);
+            }
+        catch (Exception ex)
+            {
+                Logger.getLogger(ProduktionForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_btnJobIndActionPerformed
+
+    private void rbtnHasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnHasterActionPerformed
+        if (rbtnHaster.isSelected() == true) {
+            promodel.clear();
+            try {
+
+                promodel = new ProduktionFormTableModel(promgr.orderByStockQuantity());
+                jtblVaelgOrdre.setModel(promodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_rbtnHasterActionPerformed
 
     /**
      * @param args the command line arguments

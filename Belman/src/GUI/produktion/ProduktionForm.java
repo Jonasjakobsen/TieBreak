@@ -4,10 +4,10 @@
  */
 package GUI.produktion;
 
-import GUI.GUIMain;
-import GUI.lager.LagerVisForm;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import BE.BELager;
+import BLL.BLLLagerManager;
+import BLL.BLLProduktionManager;
+import GUI.lager.LagerTableModel;
 
 /**
  *
@@ -15,15 +15,26 @@ import java.util.logging.Logger;
  */
 public class ProduktionForm extends javax.swing.JDialog {
 
+        private BLLProduktionManager promgr;
+    private ProduktionFormTableModel promodel;    
+    private BELager lager = null;
     /**
      * Creates new form ProduktionForm
      */
     public ProduktionForm(java.awt.Frame parent, boolean modal) throws Exception {
 
-        super(parent, modal);
-        initComponents();
+         super(parent, modal);
+        initComponents(); 
         setLocationRelativeTo(this);
-    }
+        
+        
+        // Reference for the BLL layer.
+        promgr = new BLLProduktionManager();
+        
+        // Set the table model for the JTable
+        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
+        jtblVaelgOrdre.setModel(promodel);
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,8 +63,9 @@ public class ProduktionForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Produktion");
-        setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(1200, 600));
+        setName("Belman produktion"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1200, 600));
 
         lblIgangvaerendeProduktion.setText("Igangværende ordreproduktion:");
 

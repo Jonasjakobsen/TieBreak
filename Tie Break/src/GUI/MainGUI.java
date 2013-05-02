@@ -175,6 +175,7 @@ public class MainGUI extends javax.swing.JFrame {
         {
         EventAddForm evtform = new EventAddForm(this, true);
         evtform.pack();
+        setLocationRelativeTo(null);
         evtform.setVisible(true);
         }
         catch (Exception ex)

@@ -31,6 +31,7 @@ public class EventAddForm extends javax.swing.JDialog
     {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
         addEnterKeyListeners();
     }
 

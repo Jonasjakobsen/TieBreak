@@ -40,7 +40,7 @@ public class EventVisForm extends javax.swing.JDialog
         
         btnOpdater.setEnabled(false);
         btnFjern.setEnabled(false);
-        btnTilmeld.setEnabled(false);
+//        btnTilmeld.setEnabled(false);
         
         // ADD A LISTSELECTIONLISTENER TO THE SELECTIONMODEL OF THE JTABLE HERRE
         tblEvent.getSelectionModel().addListSelectionListener(new ListSelectionListener()
@@ -63,7 +63,7 @@ public class EventVisForm extends javax.swing.JDialog
 
                 btnOpdater.setEnabled(true);
                 btnFjern.setEnabled(true);
-                btnTilmeld.setEnabled(true);
+//                btnTilmeld.setEnabled(true);
                 }
             });
     }
@@ -86,7 +86,6 @@ public class EventVisForm extends javax.swing.JDialog
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnFjern = new javax.swing.JButton();
-        btnTilmeld = new javax.swing.JButton();
         btnAfbryd = new javax.swing.JButton();
         btnOpdater = new javax.swing.JButton();
         lblImg = new javax.swing.JLabel();
@@ -119,10 +118,6 @@ public class EventVisForm extends javax.swing.JDialog
         });
         btnFjern.setBounds(620, 90, 73, 23);
         jLayeredPane1.add(btnFjern, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        btnTilmeld.setText("Tilmeld");
-        btnTilmeld.setBounds(620, 130, 73, 23);
-        jLayeredPane1.add(btnTilmeld, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnAfbryd.setText("Afbryd");
         btnAfbryd.addActionListener(new java.awt.event.ActionListener()
@@ -257,7 +252,6 @@ public class EventVisForm extends javax.swing.JDialog
     private javax.swing.JButton btnAfbryd;
     private javax.swing.JButton btnFjern;
     private javax.swing.JButton btnOpdater;
-    private javax.swing.JButton btnTilmeld;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;

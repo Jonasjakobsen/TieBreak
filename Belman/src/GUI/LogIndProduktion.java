@@ -138,16 +138,20 @@ public class LogIndProduktion extends javax.swing.JDialog
                 {
                 int Id = Integer.parseInt(txtMedarbejderID.getText());
                 String Password = txtPassword.getText();
-                BLLMedarbejderManager.getInstance().isLoggedIn(Id, Password);
+                BLLMedarbejderManager.getInstance().logIn(Id, Password);
+                isLoggedIn = BLLMedarbejderManager.getInstance().isLoggedIn;
+                if (isLoggedIn == true)
+                {
                     try
                     {
                         GUI.produktion.ProduktionForm prodForm = new GUI.produktion.ProduktionForm(this, true);
                         prodForm.pack();
                         prodForm.setVisible(true);
                     }
-                catch (Exception ex)
-                {
-                    Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+                    catch (Exception ex)
+                    {
+                        Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
             catch (Exception ex)

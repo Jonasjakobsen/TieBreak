@@ -19,7 +19,7 @@ public class DALMedarbejderDBManager extends DALBelmanDBManager {
         super();
     }
     
-    public boolean isLoggedIn(int Id, String Password) throws Exception
+    public boolean logIn(int Id, String Password) throws Exception
     {
          try (Connection con = ds.getConnection()) {
             String sql = "SELECT isLoggedIn FROM Employee WHERE ID = ?, Password = ?";

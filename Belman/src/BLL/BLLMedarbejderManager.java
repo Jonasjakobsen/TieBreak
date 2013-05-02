@@ -10,6 +10,7 @@ public class BLLMedarbejderManager
 {
     private static BLLMedarbejderManager instance = null;
     private DALMedarbejderDBManager db = null;
+    public boolean isLoggedIn;
     
     /**
      * Constructor for the BLLLagerManager
@@ -31,7 +32,7 @@ public class BLLMedarbejderManager
     }
     
 
-    public boolean isLoggedIn(int Id, String Password) {
+    public boolean logIn(int Id, String Password) {
         return db.isLoggedIn;
     }
     

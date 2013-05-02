@@ -14,14 +14,16 @@ public class BEMedarbejder {
    private String firstname;
    private String lastname;
    private String password;
+   private boolean isLoggedIn;
 
    public BEMedarbejder (int id, String firstname, String lastname,
-                         String password)
+                         String password, boolean isLoggedIn)
    {
        this.id = id;
        this.firstname = firstname;
        this.lastname = lastname;
        this.password = password;
+       this.isLoggedIn = isLoggedIn;
    }
    
     /**
@@ -50,6 +52,20 @@ public class BEMedarbejder {
      */
     public String getPassword() {
         return password;
+    }
+
+    /**
+     * @return the isLoggedIn
+     */
+    public boolean isIsLoggedIn() {
+        return isLoggedIn;
+    }
+
+    /**
+     * @param isLoggedIn the isLoggedIn to set
+     */
+    public void setIsLoggedIn(boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
     }
    
 }

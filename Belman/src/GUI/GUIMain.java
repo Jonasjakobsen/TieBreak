@@ -111,7 +111,6 @@ public class GUIMain extends javax.swing.JFrame {
                 Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
     }//GEN-LAST:event_btnLagerOversigtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

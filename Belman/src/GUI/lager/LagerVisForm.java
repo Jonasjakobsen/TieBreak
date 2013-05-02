@@ -367,9 +367,8 @@ public class LagerVisForm extends javax.swing.JDialog {
          try
         {
             int id = Integer.parseInt(txtSearch.getText());
-            lagmodel = new LagerTableModel(lagmgr.searchById(id));
-                tblLager.setModel(lagmodel);
-            JOptionPane.showMessageDialog(this, "Medlem fjernet");
+            lagmodel = new LagerTableModel(lagmgr.getLagerById(id));
+                tblLager.setModel(lagmodel);            
         }
         catch (Exception ex)
         {

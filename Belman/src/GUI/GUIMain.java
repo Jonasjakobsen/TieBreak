@@ -114,33 +114,16 @@ public class GUIMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLagerOversigtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(isLoggedIn == false)
-        {
-            try
-                {
-                    LogIndProduktion proForm = new LogIndProduktion(this, true);
-                    proForm.pack();
-                    proForm.setVisible(true);
-                    isLoggedIn = true;
-                }
+        try
+            {
+                LogIndProduktion proForm = new LogIndProduktion(this, true);
+                proForm.pack();
+                proForm.setVisible(true);
+            }
             catch (Exception ex)
             {
                 Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else
-        {
-            try
-                {
-                    ProduktionForm proForm = new ProduktionForm(this, true);
-                    proForm.pack();
-                    proForm.setVisible(true);
-                }
-            catch (Exception ex)
-            {
-                Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

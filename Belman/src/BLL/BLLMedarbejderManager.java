@@ -6,7 +6,7 @@ import DAL.DALMedarbejderDBManager;
  * LagerManager
  * The Business logic layer
  */
-public class BLLMedarbejderManager
+public class BLLMedarbejderManager 
 {
     private static BLLMedarbejderManager instance = null;
     private DALMedarbejderDBManager db = null;
@@ -30,8 +30,8 @@ public class BLLMedarbejderManager
         return instance;
     }
     
-    public boolean isLoggedIn()
-    {
+
+    public boolean isLoggedIn(int Id, String Password) {
         return db.isLoggedIn;
     }
     

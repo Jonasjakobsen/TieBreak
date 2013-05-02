@@ -30,4 +30,9 @@ public class BLLMedarbejderManager
         return instance;
     }
     
+    public boolean isLoggedIn()
+    {
+        return db.isLoggedIn;
+    }
+    
 }

@@ -12,14 +12,14 @@ import java.util.logging.Logger;
  *
  * @author Stoffer
  */
-public class LogInd extends javax.swing.JDialog
+public class LogIndProduktion extends javax.swing.JDialog
 {
 
 
     /**
      * Creates new form GUIMedlemDialog
      */
-    public LogInd(java.awt.Frame parent, boolean modal) throws Exception
+    public LogIndProduktion(java.awt.Frame parent, boolean modal) throws Exception
     {
         super(parent, modal);
         initComponents();
@@ -129,7 +129,17 @@ public class LogInd extends javax.swing.JDialog
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        dispose();
+        try
+            {
+                GUI.produktion.ProduktionForm prodForm = new GUI.produktion.ProduktionForm(this, true);
+                prodForm.pack();
+                prodForm.setVisible(true);
+            }
+        catch (Exception ex)
+        {
+            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -84,7 +84,7 @@ public class GUIMain extends javax.swing.JFrame {
     private void btnLagerOversigtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerOversigtActionPerformed
         try
             {
-                LagerVisForm lagForm = new LagerVisForm(this, true);
+                LogIndLager lagForm = new LogIndLager(this, true);
                 lagForm.pack();
                 lagForm.setVisible(true);
             }
@@ -97,7 +97,7 @@ public class GUIMain extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
             {
-                LogInd logForm = new LogInd(this, true);
+                LogIndProduktion logForm = new LogIndProduktion(this, true);
                 logForm.pack();
                 logForm.setVisible(true);
              }

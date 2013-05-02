@@ -7,6 +7,7 @@ package GUI.lager;
 import BE.BELager;
 import BLL.BLLLagerManager;
 import GUI.GUIMain;
+import GUI.LogIndLager;
 import GUI.produktion.ProduktionForm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,6 +41,20 @@ public class LagerVisForm extends javax.swing.JDialog {
     }
 
     public LagerVisForm(ProduktionForm aThis, boolean b) throws Exception {
+        super(aThis, b);
+        initComponents();
+        setLocationRelativeTo(this);
+
+
+        // Reference for the BLL layer.
+        lagmgr = new BLLLagerManager();
+
+        // Set the table model for the JTable
+        lagmodel = new LagerTableModel(lagmgr.visLager());
+        tblLager.setModel(lagmodel);
+    }
+    
+    public LagerVisForm(LogIndLager aThis, boolean b) throws Exception {
         super(aThis, b);
         initComponents();
         setLocationRelativeTo(this);

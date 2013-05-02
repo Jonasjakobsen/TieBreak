@@ -7,6 +7,7 @@ package GUI.produktion;
 import BE.BELager;
 import BLL.BLLProduktionManager;
 import GUI.GUIMain;
+import GUI.LogIndProduktion;
 import GUI.lager.LagerVisForm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,6 +52,22 @@ public class ProduktionForm extends javax.swing.JDialog {
         promodel = new ProduktionFormTableModel(promgr.visOrdrer());
         jtblVaelgOrdre.setModel(promodel);
     }
+    
+    public ProduktionForm(LogIndProduktion aThis, boolean b) throws Exception {
+       super(aThis, b);
+       initComponents(); 
+        setLocationRelativeTo(this);
+        
+        
+        // Reference for the BLL layer.
+        promgr = new BLLProduktionManager();
+        
+        // Set the table model for the JTable
+        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
+        jtblVaelgOrdre.setModel(promodel);
+    }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.

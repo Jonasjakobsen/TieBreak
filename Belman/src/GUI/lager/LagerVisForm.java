@@ -10,6 +10,7 @@ import GUI.GUIMain;
 import GUI.produktion.ProduktionForm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -347,7 +348,19 @@ public class LagerVisForm extends javax.swing.JDialog {
     }//GEN-LAST:event_rbtnStockQuantityActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-        // TODO add your handling code here:
+
+         try
+        {
+            int id = Integer.parseInt(txtSearch.getText());
+            lagmodel = new LagerTableModel(lagmgr.searchById(id));
+                tblLager.setModel(lagmodel);
+            JOptionPane.showMessageDialog(this, "Medlem fjernet");
+        }
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+            System.out.println("ERROR - " + ex.getMessage());
+        }
     }//GEN-LAST:event_txtSearchActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

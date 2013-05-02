@@ -84,10 +84,12 @@ public class ProduktionFormTableModel extends AbstractTableModel
                 case 6:
                     return p.getQuantity();
                 case 7:
-                    return p.getThickness();
+                    return p.getMaterialID();
                 case 8:
-                    return p.getWidth();
+                    return p.getThickness();
                 case 9:
+                    return p.getWidth();
+                case 10:
                     return p.getCircumference();   
 
             }

@@ -39,8 +39,17 @@ public class BLLProduktionManager
         return db.visOrdrer();
     }
 
-    public ArrayList<BEProduktion> orderByStockQuantity() {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public ArrayList<BEProduktion> orderByUrgent()throws SQLServerException, SQLException 
+    {
+        return db.orderByUrgent();
+    }
+
+    public ArrayList<BEProduktion> orderByMaterial() throws SQLServerException, SQLException {
+        return db.orderByMaterial();
+    }
+
+    public ArrayList<BEProduktion> orderByDueDate() throws SQLServerException, SQLException {
+        return db.orderByDueDate();
     }
     
 }

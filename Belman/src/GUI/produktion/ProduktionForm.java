@@ -74,35 +74,36 @@ public class ProduktionForm extends javax.swing.JDialog {
         jpnlFilter = new javax.swing.JPanel();
         rbtnHaster = new javax.swing.JRadioButton();
         rbtnMateriale = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rbtnDueDate = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Produktion");
         setFocusTraversalPolicyProvider(true);
         setIconImage(null);
-        setMinimumSize(new java.awt.Dimension(1200, 600));
+        setMinimumSize(new java.awt.Dimension(1280, 800));
         setName("Belman produktion"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1200, 600));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1280, 800));
 
-        lblIgangvaerendeProduktion.setText("Igangværende ordreproduktion:");
+        lblIgangvaerendeProduktion.setText("Order in production:");
 
         jtblProdOrdre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jscrpProdOrdre.setViewportView(jtblProdOrdre);
 
-        lblVaelgOrdre.setText("Vælg en produktionsordre:");
+        lblVaelgOrdre.setText("Choose a production order:");
 
         jtblVaelgOrdre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jscrpVaelgOrdre.setViewportView(jtblVaelgOrdre);
 
-        btnLageroversigt.setText("Lageroversigt");
+        btnLageroversigt.setText("Stock");
         btnLageroversigt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLageroversigtActionPerformed(evt);
             }
         });
 
-        btnAfbyd.setText("Afbryd");
+        btnAfbyd.setText("Cancel");
         btnAfbyd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAfbydActionPerformed(evt);
@@ -110,7 +111,7 @@ public class ProduktionForm extends javax.swing.JDialog {
         });
 
         btnJobInd.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        btnJobInd.setText("Job Ind");
+        btnJobInd.setText("Job in");
         btnJobInd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJobIndActionPerformed(evt);
@@ -120,7 +121,7 @@ public class ProduktionForm extends javax.swing.JDialog {
         jpnlFilter.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Filtrér"));
 
         btngrpFilter.add(rbtnHaster);
-        rbtnHaster.setText("Haster");
+        rbtnHaster.setText("Urgent");
         rbtnHaster.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtnHasterActionPerformed(evt);
@@ -128,10 +129,20 @@ public class ProduktionForm extends javax.swing.JDialog {
         });
 
         btngrpFilter.add(rbtnMateriale);
-        rbtnMateriale.setText("Materiale");
+        rbtnMateriale.setText("Material");
+        rbtnMateriale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnMaterialeActionPerformed(evt);
+            }
+        });
 
-        btngrpFilter.add(jRadioButton3);
-        jRadioButton3.setText("jRadioButton3");
+        btngrpFilter.add(rbtnDueDate);
+        rbtnDueDate.setText("Due Date");
+        rbtnDueDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnDueDateActionPerformed(evt);
+            }
+        });
 
         btngrpFilter.add(jRadioButton4);
         jRadioButton4.setText("jRadioButton4");
@@ -145,7 +156,7 @@ public class ProduktionForm extends javax.swing.JDialog {
                 .addGroup(jpnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rbtnHaster)
                     .addComponent(rbtnMateriale)
-                    .addComponent(jRadioButton3)
+                    .addComponent(rbtnDueDate)
                     .addComponent(jRadioButton4))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
@@ -157,7 +168,7 @@ public class ProduktionForm extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbtnMateriale)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(rbtnDueDate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioButton4)
                 .addContainerGap())
@@ -176,7 +187,7 @@ public class ProduktionForm extends javax.swing.JDialog {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblIgangvaerendeProduktion)
                                     .addComponent(lblVaelgOrdre))
-                                .addGap(0, 464, Short.MAX_VALUE))
+                                .addGap(0, 488, Short.MAX_VALUE))
                             .addComponent(jscrpProdOrdre)
                             .addComponent(jscrpVaelgOrdre, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
@@ -256,13 +267,39 @@ public class ProduktionForm extends javax.swing.JDialog {
             promodel.clear();
             try {
 
-                promodel = new ProduktionFormTableModel(promgr.orderByStockQuantity());
+                promodel = new ProduktionFormTableModel(promgr.orderByUrgent());
                 jtblVaelgOrdre.setModel(promodel);
             } catch (Exception ex) {
                 Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_rbtnHasterActionPerformed
+
+    private void rbtnMaterialeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMaterialeActionPerformed
+        if (rbtnMateriale.isSelected() == true) {
+            promodel.clear();
+            try {
+
+                promodel = new ProduktionFormTableModel(promgr.orderByMaterial());
+                jtblVaelgOrdre.setModel(promodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_rbtnMaterialeActionPerformed
+
+    private void rbtnDueDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDueDateActionPerformed
+        if (rbtnDueDate.isSelected() == true) {
+            promodel.clear();
+            try {
+
+                promodel = new ProduktionFormTableModel(promgr.orderByDueDate());
+                jtblVaelgOrdre.setModel(promodel);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_rbtnDueDateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,7 +340,6 @@ public class ProduktionForm extends javax.swing.JDialog {
     private javax.swing.JButton btnJobInd;
     private javax.swing.JButton btnLageroversigt;
     private javax.swing.ButtonGroup btngrpFilter;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JPanel jpnlFilter;
     private javax.swing.JScrollPane jscrpProdOrdre;
@@ -312,6 +348,7 @@ public class ProduktionForm extends javax.swing.JDialog {
     private javax.swing.JTable jtblVaelgOrdre;
     private javax.swing.JLabel lblIgangvaerendeProduktion;
     private javax.swing.JLabel lblVaelgOrdre;
+    private javax.swing.JRadioButton rbtnDueDate;
     private javax.swing.JRadioButton rbtnHaster;
     private javax.swing.JRadioButton rbtnMateriale;
     // End of variables declaration//GEN-END:variables

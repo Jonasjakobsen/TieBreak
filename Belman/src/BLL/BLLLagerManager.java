@@ -71,5 +71,8 @@ public class BLLLagerManager
     {
         return db.orderByStockQuantity();
     }
-    
+    public ArrayList<BELager> searchById(int id) throws SQLServerException, SQLException
+    {
+        return db.searchById(id);
+    }
 }

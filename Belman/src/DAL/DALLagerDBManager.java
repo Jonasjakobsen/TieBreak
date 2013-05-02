@@ -245,43 +245,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
      * @return members
      * @throws SQLServerException, SQLException
      */
-    public ArrayList<BELager> searchById(int ID) throws SQLServerException, SQLException {
-        try (Connection con = ds.getConnection()) {
-            String sql = "SELECT * FROM StockItem WHERE ID = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ResultSet rs = ps.executeQuery();
-
-            ArrayList<BELager> lageret = new ArrayList<>();
-
-            while (rs.next()) {
-                int id = rs.getInt("ID");
-                String Code = rs.getString("Code");
-                int MaterialID = rs.getInt("MaterialID");
-                String MaterialName = rs.getString("MaterialName");
-                Float MaterialDensity = rs.getFloat("MaterialDensity");
-                String ChargeNo = rs.getString("ChargeNo");
-                Float Length = rs.getFloat("Length");
-                Float Width = rs.getFloat("Width");
-                Float Thickness = rs.getFloat("Thickness");
-                Float StockQuantity = rs.getFloat("StockQuantity");
-
-
-                BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
-                lageret.add(l);
-            }
-            return lageret;
-
-        }
-    }
+    
 
     public ArrayList<BELager> getLagerById(int Id) throws SQLException
     {
         Connection con = ds.getConnection();
 
-        String sql = "SELECT * FROM StockItem WHERE ID = ?";
+        String sql = "SELECT * FROM StockItem WHERE ID = ? OR MaterialName = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, Id);
+        ps.setInt(2, Id);
         ResultSet rs = ps.executeQuery();
 
         ArrayList<BELager> LagerID = new ArrayList<>();

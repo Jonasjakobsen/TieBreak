@@ -8,27 +8,25 @@ import BLL.BLLMedarbejderManager;
 import GUI.produktion.ProduktionForm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Stoffer
  */
-public class LogIndProduktion extends javax.swing.JDialog
-{
-    
-    boolean isLoggedIn = false;
+public class LogIndProduktion extends javax.swing.JDialog {
+
+    boolean isLoggedIn;
 
     /**
      * Creates new form GUIMedlemDialog
      */
-    public LogIndProduktion(java.awt.Frame parent, boolean modal) throws Exception
-    {
+    public LogIndProduktion(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(this);
-        
-    }
 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -132,36 +130,31 @@ public class LogIndProduktion extends javax.swing.JDialog
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
         dispose();
-        if(isLoggedIn == false)
-        {
-                try
-                {
+        if (isLoggedIn == false) {
+            try {
                 int Id = Integer.parseInt(txtMedarbejderID.getText());
                 String Password = txtPassword.getText();
-                BLLMedarbejderManager.getInstance().logIn(Id, Password);
-                isLoggedIn = BLLMedarbejderManager.getInstance().isLoggedIn;
-                if (isLoggedIn == true)
-                {
-                    try
-                    {
-                        GUI.produktion.ProduktionForm prodForm = new GUI.produktion.ProduktionForm(this, true);
-                        prodForm.pack();
-                        prodForm.setVisible(true);
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
+                if (isLoggedIn == false) {
+                    isLoggedIn = BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
+
                 }
-            }
-            catch (Exception ex)
-            {
-                Logger.getLogger(LogIndProduktion.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+                System.out.println("ERROR" + ex.getMessage());
             }
         }
-        
+        if (isLoggedIn == true) {
+            try {
+                GUI.produktion.ProduktionForm prodForm = new GUI.produktion.ProduktionForm(this, true);
+                prodForm.pack();
+                prodForm.setVisible(true);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+                System.out.println("ERROR" + ex.getMessage());
+            }
+        }
     }//GEN-LAST:event_btnLogInActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnLogIn;

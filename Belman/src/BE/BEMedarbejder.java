@@ -26,6 +26,12 @@ public class BEMedarbejder {
        this.isLoggedIn = isLoggedIn;
    }
    
+   public BEMedarbejder (int id, String password)
+   {
+       this.id = id;
+       this.password = password;
+   }
+   
     /**
      * @return the id
      */

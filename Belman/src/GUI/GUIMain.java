@@ -14,8 +14,8 @@ import java.util.logging.Logger;
  * @author Groggy
  */
 public class GUIMain extends javax.swing.JFrame {
-    
-     boolean isLoggedIn = false;
+
+    boolean isLoggedIn = false;
 
     /**
      * Creates new form Main
@@ -84,46 +84,34 @@ public class GUIMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLagerOversigtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerOversigtActionPerformed
-        if(isLoggedIn == false)
-        {
-            try
-                {
-                    LogIndLager lagForm = new LogIndLager(this, true);
-                    lagForm.pack();
-                    lagForm.setVisible(true);
-                    isLoggedIn = true;
-                }
-            catch (Exception ex)
-            {
+        if (isLoggedIn == false) {
+            try {
+                LogIndLager lagForm = new LogIndLager(this, true);
+                lagForm.pack();
+                lagForm.setVisible(true);
+                isLoggedIn = true;
+            } catch (Exception ex) {
                 Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else
-        {
-            try
-                {
-                    LagerVisForm lagForm = new LagerVisForm(this, true);
-                    lagForm.pack();
-                    lagForm.setVisible(true);
-                }
-            catch (Exception ex)
-            {
+        } else {
+            try {
+                LagerVisForm lagForm = new LagerVisForm(this, true);
+                lagForm.pack();
+                lagForm.setVisible(true);
+            } catch (Exception ex) {
                 Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btnLagerOversigtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try
-            {
-                LogIndProduktion proForm = new LogIndProduktion(this, true);
-                proForm.pack();
-                proForm.setVisible(true);
-            }
-            catch (Exception ex)
-            {
-                Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            LogIndProduktion proForm = new LogIndProduktion(this, true);
+            proForm.pack();
+            proForm.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -156,9 +144,8 @@ public class GUIMain extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
-            
             public void run() {
-            new GUIMain().setVisible(true);
+                new GUIMain().setVisible(true);
             }
         });
     }
@@ -166,6 +153,4 @@ public class GUIMain extends javax.swing.JFrame {
     private javax.swing.JButton btnLagerOversigt;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
-
-
 }

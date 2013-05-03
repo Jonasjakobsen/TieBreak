@@ -11,21 +11,16 @@ import java.util.logging.Logger;
  *
  * @author Stoffer
  */
-public class LogIndLager extends javax.swing.JDialog
-{
-
+public class LogIndLager extends javax.swing.JDialog {
 
     /**
      * Creates new form GUIMedlemDialog
      */
-    public LogIndLager(java.awt.Frame parent, boolean modal) throws Exception
-    {
+    public LogIndLager(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(this);
-        
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,18 +122,14 @@ public class LogIndLager extends javax.swing.JDialog
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
-        try
-            {
-                GUI.lager.LagerVisForm lagForm = new GUI.lager.LagerVisForm(this, true);
-                lagForm.pack();
-                lagForm.setVisible(true);
-            }
-        catch (Exception ex)
-        {
+        try {
+            GUI.lager.LagerVisForm lagForm = new GUI.lager.LagerVisForm(this, true);
+            lagForm.pack();
+            lagForm.setVisible(true);
+        } catch (Exception ex) {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

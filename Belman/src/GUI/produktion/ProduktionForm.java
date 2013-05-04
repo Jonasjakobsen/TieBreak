@@ -103,10 +103,9 @@ public class ProduktionForm extends javax.swing.JDialog {
         setTitle("Belman Produktion");
         setFocusTraversalPolicyProvider(true);
         setIconImage(null);
-        setMinimumSize(new java.awt.Dimension(1280, 800));
+        setMinimumSize(new java.awt.Dimension(1200, 600));
         setName("Belman produktion"); // NOI18N
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1280, 800));
+        setPreferredSize(new java.awt.Dimension(1200, 600));
 
         lblIgangvaerendeProduktion.setText("Order in production:");
 

@@ -9,8 +9,11 @@ import BLL.BLLProduktionManager;
 import GUI.GUIMain;
 import GUI.LogIndProduktion;
 import GUI.lager.LagerVisForm;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -19,55 +22,57 @@ import java.util.logging.Logger;
 public class ProduktionForm extends javax.swing.JDialog {
 
     private BLLProduktionManager promgr;
-    private ProduktionFormTableModel promodel;    
+    private ProduktionFormTableModel promodel;
     private BELager lager = null;
+
     /**
      * Creates new form ProduktionForm
      */
     public ProduktionForm(java.awt.Frame parent, boolean modal) throws Exception {
 
-         super(parent, modal);
-        initComponents(); 
+        super(parent, modal);
+        initComponents();
         setLocationRelativeTo(this);
-        
-        
+
+
         // Reference for the BLL layer.
         promgr = new BLLProduktionManager();
-        
+
         // Set the table model for the JTable
         promodel = new ProduktionFormTableModel(promgr.visOrdrer());
         jtblVaelgOrdre.setModel(promodel);
-        }
+        centerTables();
+    }
 
     public ProduktionForm(LagerVisForm aThis, boolean b) throws Exception {
-       super(aThis, b);
-       initComponents(); 
+        super(aThis, b);
+        initComponents();
         setLocationRelativeTo(this);
-        
-        
-        // Reference for the BLL layer.
-        promgr = new BLLProduktionManager();
-        
-        // Set the table model for the JTable
-        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
-        jtblVaelgOrdre.setModel(promodel);
-    }
-    
-    public ProduktionForm(LogIndProduktion aThis, boolean b) throws Exception {
-       super(aThis, b);
-       initComponents(); 
-        setLocationRelativeTo(this);
-        
-        
-        // Reference for the BLL layer.
-        promgr = new BLLProduktionManager();
-        
-        // Set the table model for the JTable
-        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
-        jtblVaelgOrdre.setModel(promodel);
-    }
-    
 
+
+        // Reference for the BLL layer.
+        promgr = new BLLProduktionManager();
+
+        // Set the table model for the JTable
+        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
+        jtblVaelgOrdre.setModel(promodel);
+        centerTables();
+    }
+
+    public ProduktionForm(LogIndProduktion aThis, boolean b) throws Exception {
+        super(aThis, b);
+        initComponents();
+        setLocationRelativeTo(this);
+
+
+        // Reference for the BLL layer.
+        promgr = new BLLProduktionManager();
+
+        // Set the table model for the JTable
+        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
+        jtblVaelgOrdre.setModel(promodel);
+        centerTables();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -262,29 +267,23 @@ public class ProduktionForm extends javax.swing.JDialog {
 
     private void btnLageroversigtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLageroversigtActionPerformed
         dispose();
-        try
-            {
-                LagerVisForm prodForm = new LagerVisForm(this, true);
-                prodForm.pack();
-                prodForm.setVisible(true);
-            }
-        catch (Exception ex)
-        {
+        try {
+            LagerVisForm prodForm = new LagerVisForm(this, true);
+            prodForm.pack();
+            prodForm.setVisible(true);
+        } catch (Exception ex) {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnLageroversigtActionPerformed
 
     private void btnJobIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJobIndActionPerformed
-        try
-            {
-                JobIndForm jobForm = new JobIndForm(this, true);
-                jobForm.pack();
-                jobForm.setVisible(true);
-            }
-        catch (Exception ex)
-            {
-                Logger.getLogger(ProduktionForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            JobIndForm jobForm = new JobIndForm(this, true);
+            jobForm.pack();
+            jobForm.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(ProduktionForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnJobIndActionPerformed
 
     private void rbtnHasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnHasterActionPerformed
@@ -325,7 +324,6 @@ public class ProduktionForm extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_rbtnDueDateActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -377,4 +375,16 @@ public class ProduktionForm extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbtnHaster;
     private javax.swing.JRadioButton rbtnMateriale;
     // End of variables declaration//GEN-END:variables
+
+    private void centerTables() {
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        jtblProdOrdre.setDefaultRenderer(String.class, centerRenderer);
+        jtblProdOrdre.setDefaultRenderer(Float.class, centerRenderer);
+        jtblProdOrdre.setDefaultRenderer(int.class, centerRenderer);
+        jtblVaelgOrdre.setDefaultRenderer(String.class, centerRenderer);
+        jtblVaelgOrdre.setDefaultRenderer(Float.class, centerRenderer);
+        jtblVaelgOrdre.setDefaultRenderer(int.class, centerRenderer);
+        jtblVaelgOrdre.setDefaultRenderer(Date.class, centerRenderer);
+    }
 }

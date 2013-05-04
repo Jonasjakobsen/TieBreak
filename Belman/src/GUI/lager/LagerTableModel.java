@@ -8,7 +8,10 @@ import BE.BELager;
 import BLL.BLLLagerManager;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.swing.JLabel;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,14 +23,14 @@ public class LagerTableModel extends AbstractTableModel
     private BLLLagerManager lm;
     private final String[] header =
     {
-        "ID", "Code", "MaterialID", "MaterialName", "MaterialDensity", "ChargeNo", "Length", "Width", "Thickness", "StockQuantity(kg)"
+        "StockItem ID", "Code", "MaterialID", "MaterialName", "MaterialDensity", "ChargeNo", "Length", "Width", "Thickness", "StockQuantity(kg)"
     };
     private final Class[] columnTypes =
     {
-        int.class, String.class, int.class, String.class,  Float.class, String.class, Float.class, Float.class, Float.class, String.class
+        int.class, String.class, int.class, String.class,  Float.class, String.class, Float.class, Float.class, Float.class, Float.class
     };
     private ArrayList<BELager> lager;
-
+    
     public LagerTableModel()
     {
         try

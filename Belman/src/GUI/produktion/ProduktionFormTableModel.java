@@ -22,14 +22,15 @@ public class ProduktionFormTableModel extends AbstractTableModel
     private BLLProduktionManager pm;
     private final String[] header =
     {
-        "SOrderID", "SOrder", "POrderID", "POrder", "Urgent", "DueDate", 
-        "Quantity", "MaterialID", "Thickness", "Width", "Circumference"
+        "SOrderID", "POrderID", "POrder", "Due Date", "Quantity", 
+        "Width", "Thickness", "Status", "Urgent"
+            
+           
     };
     private final Class[] columnTypes =
     {
-        int.class, String.class, int.class, String.class,  Boolean.class, 
-        Date.class, Float.class, Float.class, Float.class, Float.class,
-        Float.class
+        int.class, int.class, String.class, Date.class,  int.class, 
+        Float.class, Float.class, String.class, Boolean.class
     };
     private ArrayList<BEProduktion> produktion;
 
@@ -69,28 +70,26 @@ public class ProduktionFormTableModel extends AbstractTableModel
             BEProduktion p = produktion.get(row);
             switch (col)
             {
+                
+
                 case 0:
                     return p.getSOrderID();
                 case 1:
-                    return p.getSOrder();
-                case 2:
                     return p.getPOrderID();
+                case 2:
+                    return p.getPOrder(); 
                 case 3:
-                    return p.getPOrder();
-                case 4:
-                    return p.isUrgent();
-                case 5:
                     return p.getDueDate();
-                case 6:
+                case 4:
                     return p.getQuantity();
-                case 7:
-                    return p.getMaterialID();
-                case 8:
-                    return p.getThickness();
-                case 9:
+                case 5:
                     return p.getWidth();
-                case 10:
-                    return p.getCircumference();   
+                case 6:
+                    return p.getThickness();
+                case 7:
+                    return p.getStatus();
+                case 8:
+                    return p.isUrgent();
 
             }
             return null;

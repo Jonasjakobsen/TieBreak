@@ -11,7 +11,9 @@ import GUI.LogIndLager;
 import GUI.produktion.ProduktionForm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -38,6 +40,8 @@ public class LagerVisForm extends javax.swing.JDialog {
         // Set the table model for the JTable
         lagmodel = new LagerTableModel(lagmgr.visLager());
         tblLager.setModel(lagmodel);
+        
+        centerTables();
     }
 
     public LagerVisForm(ProduktionForm aThis, boolean b) throws Exception {
@@ -52,6 +56,8 @@ public class LagerVisForm extends javax.swing.JDialog {
         // Set the table model for the JTable
         lagmodel = new LagerTableModel(lagmgr.visLager());
         tblLager.setModel(lagmodel);
+        
+        centerTables();
     }
     
     public LagerVisForm(LogIndLager aThis, boolean b) throws Exception {
@@ -66,6 +72,8 @@ public class LagerVisForm extends javax.swing.JDialog {
         // Set the table model for the JTable
         lagmodel = new LagerTableModel(lagmgr.visLager());
         tblLager.setModel(lagmodel);
+        
+        centerTables();
     }
 
     /**
@@ -403,4 +411,12 @@ public class LagerVisForm extends javax.swing.JDialog {
     private javax.swing.JTable tblLager;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+
+    private void centerTables() {
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tblLager.setDefaultRenderer(String.class, centerRenderer);
+        tblLager.setDefaultRenderer(Float.class, centerRenderer);
+        tblLager.setDefaultRenderer(int.class, centerRenderer);
+    }
 }

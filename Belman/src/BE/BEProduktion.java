@@ -23,6 +23,7 @@ public class BEProduktion {
     private float Thickness;
     private float Width;
     private float Circumference;
+    private String status;
     
     
     public BEProduktion (int SOrderID, String SOrder, int POrderID, 
@@ -41,6 +42,19 @@ public class BEProduktion {
         this.Thickness = Thickness;
         this.Width = Width;
         this.Circumference = Circumference;
+    }
+
+    public BEProduktion(int sOrderId, int pOrderId, String pOrder, Date dueDate, Float quantity, Float width, Float thickness, String status, boolean urgent) {
+        this.SOrderID = sOrderId;       
+        this.POrderID = pOrderId;
+        this.POrder = pOrder;
+        this.DueDate = dueDate;
+        this.Quantity = quantity;
+        this.Width = width;
+        this.Thickness = thickness;
+        this.status = status;
+        this.Urgent = urgent;
+
     }
 
     /**
@@ -118,6 +132,20 @@ public class BEProduktion {
      */
     public float getMaterialID() {
         return MaterialID;
+    }
+
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
     }
     
 }

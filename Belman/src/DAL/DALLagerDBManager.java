@@ -28,12 +28,22 @@ public class DALLagerDBManager extends DALBelmanDBManager {
      */
     public ArrayList<BELager> visLager() throws SQLServerException, SQLException {
         try (Connection con = ds.getConnection()) {
+//            String sql = "SELECT StockItem.id, CoilType.code, CoilType.materialID, Material.name, Material.density, StockItem.chargeNo, StockItem.[length], CoilType.width, CoilType.thickness, StockItem.stockQuantity FROM Material as m " 
+//           + " INNER JOIN CoilType as c WITH c.materialId = m.id" 
+//           + "INNER JOIN StockItem as s WITH s.coilTypeId = c.id";
+            
+//            String sql = "SELECT StockItem.id, CoilType.code, CoilType.materialID, Material.name, Material.density, StockItem.chargeNo, StockItem.[length], CoilType.width, CoilType.thickness, StockItem.stockQuantity "
+//                        + "FROM Material"
+//                        + "INNER JOIN CoilType"
+//                        + "ON Material.id = CoilType.materialId"
+//                        + "INNER JOIN StockItem"
+//                        + "ON CoilType.id = StockItem.coilTypeId";
+            
             String sql = "SELECT StockItem.id, CoilType.code, CoilType.materialID, Material.name, Material.density, StockItem.chargeNo, StockItem.[length], CoilType.width, CoilType.thickness, StockItem.stockQuantity "
-                        + "FROM Material"
-                        + "INNER JOIN CoilType"
-                        + "ON Material.id = CoilType.materialId"
-                        + "INNER JOIN StockItem"
-                        + "ON CoilType.id = StockItem.coilTypeId";
+                        + "FROM Material, CoilType, StockItem "
+                        + "WHERE Material.id = CoilType.materialId "
+                        + "AND CoilType.id = StockItem.coilTypeId ";
+        
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();

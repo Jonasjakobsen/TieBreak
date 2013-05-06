@@ -13,12 +13,11 @@
       <ComponentRef name="null"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1280, 800]"/>
+      <Dimension value="[1200, 600]"/>
     </Property>
     <Property name="name" type="java.lang.String" value="Belman produktion" noResource="true"/>
-    <Property name="undecorated" type="boolean" value="true"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1280, 800]"/>
+      <Dimension value="[1200, 600]"/>
     </Property>
   </Properties>
   <SyntheticProperties>

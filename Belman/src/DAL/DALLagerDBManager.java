@@ -28,22 +28,17 @@ public class DALLagerDBManager extends DALBelmanDBManager {
      */
     public ArrayList<BELager> visLager() throws SQLServerException, SQLException {
         try (Connection con = ds.getConnection()) {
-//            String sql = "SELECT StockItem.id, CoilType.code, CoilType.materialID, Material.name, Material.density, StockItem.chargeNo, StockItem.[length], CoilType.width, CoilType.thickness, StockItem.stockQuantity FROM Material as m " 
-//           + " INNER JOIN CoilType as c WITH c.materialId = m.id" 
-//           + "INNER JOIN StockItem as s WITH s.coilTypeId = c.id";
-            
-//            String sql = "SELECT StockItem.id, CoilType.code, CoilType.materialID, Material.name, Material.density, StockItem.chargeNo, StockItem.[length], CoilType.width, CoilType.thickness, StockItem.stockQuantity "
-//                        + "FROM Material"
-//                        + "INNER JOIN CoilType"
-//                        + "ON Material.id = CoilType.materialId"
-//                        + "INNER JOIN StockItem"
-//                        + "ON CoilType.id = StockItem.coilTypeId";
-            
-            String sql = "SELECT StockItem.id, CoilType.code, CoilType.materialID, Material.name, Material.density, StockItem.chargeNo, StockItem.[length], CoilType.width, CoilType.thickness, StockItem.stockQuantity "
-                        + "FROM Material, CoilType, StockItem "
-                        + "WHERE Material.id = CoilType.materialId "
-                        + "AND CoilType.id = StockItem.coilTypeId ";
-        
+
+            String sql = "SELECT StockItem.id, CoilType.code, "
+                    + "CoilType.materialID, Material.name, "
+                    + "Material.density,"
+                    + " StockItem.chargeNo, StockItem.[length], "
+                    + "CoilType.width, CoilType.thickness, "
+                    + "StockItem.stockQuantity "
+                    + "FROM Material, CoilType, StockItem "
+                    + "WHERE Material.id = CoilType.materialId "
+                    + "AND CoilType.id = StockItem.coilTypeId ";
+
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -73,7 +68,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
 
     public ArrayList<BELager> orderByThickness() throws SQLServerException, SQLException {
         try (Connection con = ds.getConnection()) {
-            String sql = "SELECT * FROM StockItem, CoilType, Material ORDER BY Thickness";
+            String sql = "SELECT StockItem.id, CoilType.code, "
+                    + "CoilType.materialID, Material.name, "
+                    + "Material.density,"
+                    + " StockItem.chargeNo, StockItem.[length], "
+                    + "CoilType.width, CoilType.thickness, "
+                    + "StockItem.stockQuantity "
+                    + "FROM Material, CoilType, StockItem "
+                    + "WHERE Material.id = CoilType.materialId "
+                    + "AND CoilType.id = StockItem.coilTypeId "
+                    + "ORDER BY CoilType.thickness";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -81,16 +85,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("ID");
-                String Code = rs.getString("Code");
-                int MaterialID = rs.getInt("MaterialID");
-                String MaterialName = rs.getString("MaterialName");
-                Float MaterialDensity = rs.getFloat("MaterialDensity");
-                String ChargeNo = rs.getString("ChargeNo");
-                Float Length = rs.getFloat("Length");
-                Float Width = rs.getFloat("Width");
-                Float Thickness = rs.getFloat("Thickness");
-                Float StockQuantity = rs.getFloat("StockQuantity");
+                int id = rs.getInt("id");
+                String Code = rs.getString("code");
+                int MaterialID = rs.getInt("materialId");
+                String MaterialName = rs.getString("name");
+                Float MaterialDensity = rs.getFloat("density");
+                String ChargeNo = rs.getString("chargeNo");
+                Float Length = rs.getFloat("length");
+                Float Width = rs.getFloat("width");
+                Float Thickness = rs.getFloat("thickness");
+                Float StockQuantity = rs.getFloat("stockQuantity");
 
 
                 BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -103,7 +107,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
 
     public ArrayList<BELager> orderByLength() throws SQLServerException, SQLException {
         try (Connection con = ds.getConnection()) {
-            String sql = "SELECT * FROM StockItem, CoilType, Material ORDER BY Length";
+            String sql = "SELECT StockItem.id, CoilType.code, "
+                    + "CoilType.materialID, Material.name, "
+                    + "Material.density,"
+                    + " StockItem.chargeNo, StockItem.[length], "
+                    + "CoilType.width, CoilType.thickness, "
+                    + "StockItem.stockQuantity "
+                    + "FROM Material, CoilType, StockItem "
+                    + "WHERE Material.id = CoilType.materialId "
+                    + "AND CoilType.id = StockItem.coilTypeId "
+                    + "ORDER BY StockItem.length";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -111,16 +124,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("ID");
-                String Code = rs.getString("Code");
-                int MaterialID = rs.getInt("MaterialID");
-                String MaterialName = rs.getString("MaterialName");
-                Float MaterialDensity = rs.getFloat("MaterialDensity");
-                String ChargeNo = rs.getString("ChargeNo");
-                Float Length = rs.getFloat("Length");
-                Float Width = rs.getFloat("Width");
-                Float Thickness = rs.getFloat("Thickness");
-                Float StockQuantity = rs.getFloat("StockQuantity");
+                int id = rs.getInt("id");
+                String Code = rs.getString("code");
+                int MaterialID = rs.getInt("materialId");
+                String MaterialName = rs.getString("name");
+                Float MaterialDensity = rs.getFloat("density");
+                String ChargeNo = rs.getString("chargeNo");
+                Float Length = rs.getFloat("length");
+                Float Width = rs.getFloat("width");
+                Float Thickness = rs.getFloat("thickness");
+                Float StockQuantity = rs.getFloat("stockQuantity");
 
 
                 BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -133,7 +146,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
 
     public ArrayList<BELager> orderByWidth() throws SQLServerException, SQLException {
         try (Connection con = ds.getConnection()) {
-            String sql = "SELECT * FROM StockItem, CoilType, Material ORDER BY Width";
+            String sql = "SELECT StockItem.id, CoilType.code, "
+                    + "CoilType.materialID, Material.name, "
+                    + "Material.density,"
+                    + " StockItem.chargeNo, StockItem.[length], "
+                    + "CoilType.width, CoilType.thickness, "
+                    + "StockItem.stockQuantity "
+                    + "FROM Material, CoilType, StockItem "
+                    + "WHERE Material.id = CoilType.materialId "
+                    + "AND CoilType.id = StockItem.coilTypeId "
+                    + "ORDER BY CoilType.width";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -141,16 +163,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("ID");
-                String Code = rs.getString("Code");
-                int MaterialID = rs.getInt("MaterialID");
-                String MaterialName = rs.getString("MaterialName");
-                Float MaterialDensity = rs.getFloat("MaterialDensity");
-                String ChargeNo = rs.getString("ChargeNo");
-                Float Length = rs.getFloat("Length");
-                Float Width = rs.getFloat("Width");
-                Float Thickness = rs.getFloat("Thickness");
-                Float StockQuantity = rs.getFloat("StockQuantity");
+                int id = rs.getInt("id");
+                String Code = rs.getString("code");
+                int MaterialID = rs.getInt("materialId");
+                String MaterialName = rs.getString("name");
+                Float MaterialDensity = rs.getFloat("density");
+                String ChargeNo = rs.getString("chargeNo");
+                Float Length = rs.getFloat("length");
+                Float Width = rs.getFloat("width");
+                Float Thickness = rs.getFloat("thickness");
+                Float StockQuantity = rs.getFloat("stockQuantity");
 
 
                 BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -163,7 +185,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
 
     public ArrayList<BELager> orderByMaterialID() throws SQLServerException, SQLException {
         try (Connection con = ds.getConnection()) {
-            String sql = "SELECT * FROM StockItem, CoilType, Material ORDER BY MaterialID";
+            String sql = "SELECT StockItem.id, CoilType.code, "
+                    + "CoilType.materialID, Material.name, "
+                    + "Material.density,"
+                    + " StockItem.chargeNo, StockItem.[length], "
+                    + "CoilType.width, CoilType.thickness, "
+                    + "StockItem.stockQuantity "
+                    + "FROM Material, CoilType, StockItem "
+                    + "WHERE Material.id = CoilType.materialId "
+                    + "AND CoilType.id = StockItem.coilTypeId "
+                    + "ORDER BY CoilType.materialID";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -171,16 +202,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("ID");
-                String Code = rs.getString("Code");
-                int MaterialID = rs.getInt("MaterialID");
-                String MaterialName = rs.getString("MaterialName");
-                Float MaterialDensity = rs.getFloat("MaterialDensity");
-                String ChargeNo = rs.getString("ChargeNo");
-                Float Length = rs.getFloat("Length");
-                Float Width = rs.getFloat("Width");
-                Float Thickness = rs.getFloat("Thickness");
-                Float StockQuantity = rs.getFloat("StockQuantity");
+                int id = rs.getInt("id");
+                String Code = rs.getString("code");
+                int MaterialID = rs.getInt("materialId");
+                String MaterialName = rs.getString("name");
+                Float MaterialDensity = rs.getFloat("density");
+                String ChargeNo = rs.getString("chargeNo");
+                Float Length = rs.getFloat("length");
+                Float Width = rs.getFloat("width");
+                Float Thickness = rs.getFloat("thickness");
+                Float StockQuantity = rs.getFloat("stockQuantity");
 
 
                 BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -193,7 +224,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
 
     public ArrayList<BELager> orderByDensity() throws SQLServerException, SQLException {
         try (Connection con = ds.getConnection()) {
-            String sql = "SELECT * FROM StockItem, CoilType, Material ORDER BY MaterialDensity";
+            String sql = "SELECT StockItem.id, CoilType.code, "
+                    + "CoilType.materialID, Material.name, "
+                    + "Material.density,"
+                    + " StockItem.chargeNo, StockItem.[length], "
+                    + "CoilType.width, CoilType.thickness, "
+                    + "StockItem.stockQuantity "
+                    + "FROM Material, CoilType, StockItem "
+                    + "WHERE Material.id = CoilType.materialId "
+                    + "AND CoilType.id = StockItem.coilTypeId "
+                    + "ORDER BY Material.Density";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -201,16 +241,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("ID");
-                String Code = rs.getString("Code");
-                int MaterialID = rs.getInt("MaterialID");
-                String MaterialName = rs.getString("MaterialName");
-                Float MaterialDensity = rs.getFloat("MaterialDensity");
-                String ChargeNo = rs.getString("ChargeNo");
-                Float Length = rs.getFloat("Length");
-                Float Width = rs.getFloat("Width");
-                Float Thickness = rs.getFloat("Thickness");
-                Float StockQuantity = rs.getFloat("StockQuantity");
+                int id = rs.getInt("id");
+                String Code = rs.getString("code");
+                int MaterialID = rs.getInt("materialId");
+                String MaterialName = rs.getString("name");
+                Float MaterialDensity = rs.getFloat("density");
+                String ChargeNo = rs.getString("chargeNo");
+                Float Length = rs.getFloat("length");
+                Float Width = rs.getFloat("width");
+                Float Thickness = rs.getFloat("thickness");
+                Float StockQuantity = rs.getFloat("stockQuantity");
 
 
                 BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -223,7 +263,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
 
     public ArrayList<BELager> orderByStockQuantity() throws SQLServerException, SQLException {
         try (Connection con = ds.getConnection()) {
-            String sql = "SELECT * FROM StockItem, CoilType, Material ORDER BY StockQuantity";
+            String sql = "SELECT StockItem.id, CoilType.code, "
+                    + "CoilType.materialID, Material.name, "
+                    + "Material.density,"
+                    + "StockItem.chargeNo, StockItem.[length], "
+                    + "CoilType.width, CoilType.thickness, "
+                    + "StockItem.stockQuantity "
+                    + "FROM Material, CoilType, StockItem "
+                    + "WHERE Material.id = CoilType.materialId "
+                    + "AND CoilType.id = StockItem.coilTypeId "
+                    + "ORDER BY StockItem.stockQuantity";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -231,16 +280,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("ID");
-                String Code = rs.getString("Code");
-                int MaterialID = rs.getInt("MaterialID");
-                String MaterialName = rs.getString("MaterialName");
-                Float MaterialDensity = rs.getFloat("MaterialDensity");
-                String ChargeNo = rs.getString("ChargeNo");
-                Float Length = rs.getFloat("Length");
-                Float Width = rs.getFloat("Width");
-                Float Thickness = rs.getFloat("Thickness");
-                Float StockQuantity = rs.getFloat("StockQuantity");
+                int id = rs.getInt("id");
+                String Code = rs.getString("code");
+                int MaterialID = rs.getInt("materialId");
+                String MaterialName = rs.getString("name");
+                Float MaterialDensity = rs.getFloat("density");
+                String ChargeNo = rs.getString("chargeNo");
+                Float Length = rs.getFloat("length");
+                Float Width = rs.getFloat("width");
+                Float Thickness = rs.getFloat("thickness");
+                Float StockQuantity = rs.getFloat("stockQuantity");
 
 
                 BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -260,13 +309,19 @@ public class DALLagerDBManager extends DALBelmanDBManager {
      * @return members
      * @throws SQLServerException, SQLException
      */
-    
-
-    public ArrayList<BELager> getLagerById(int Id) throws SQLException
-    {
+    public ArrayList<BELager> getLagerById(int Id) throws SQLException {
         Connection con = ds.getConnection();
-
-        String sql = "SELECT * FROM StockItem, CoilType, Material WHERE ID = ? OR MaterialName = ?";
+        String sql = "SELECT StockItem.id, CoilType.code, "
+                    + "CoilType.materialID, Material.name, "
+                    + "Material.density, "
+                    + "StockItem.chargeNo, StockItem.[length], "
+                    + "CoilType.width, CoilType.thickness, "
+                    + "StockItem.stockQuantity "
+                    + "FROM Material, CoilType, StockItem "
+                    + "WHERE (StockItem.id = ? OR Material.name = ?)"
+                    + "AND Material.id = CoilType.materialId "
+                    + "AND CoilType.id = StockItem.coilTypeId";               
+ 
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, Id);
         ps.setInt(2, Id);
@@ -274,19 +329,19 @@ public class DALLagerDBManager extends DALBelmanDBManager {
 
         ArrayList<BELager> LagerID = new ArrayList<>();
         while (rs.next()) {
-                int id = rs.getInt("ID");
-                String Code = rs.getString("Code");
-                int MaterialID = rs.getInt("MaterialID");
-                String MaterialName = rs.getString("name");
-                Float MaterialDensity = rs.getFloat("MaterialDensity");
-                String ChargeNo = rs.getString("ChargeNo");
-                Float Length = rs.getFloat("Length");
-                Float Width = rs.getFloat("Width");
-                Float Thickness = rs.getFloat("Thickness");
-                Float StockQuantity = rs.getFloat("StockQuantity");
+            int id = rs.getInt("id");
+            String Code = rs.getString("code");
+            int MaterialID = rs.getInt("materialId");
+            String MaterialName = rs.getString("name");
+            Float MaterialDensity = rs.getFloat("density");
+            String ChargeNo = rs.getString("chargeNo");
+            Float Length = rs.getFloat("length");
+            Float Width = rs.getFloat("width");
+            Float Thickness = rs.getFloat("thickness");
+            Float StockQuantity = rs.getFloat("stockQuantity");
 
             BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
-                LagerID.add(l);
+            LagerID.add(l);
         }
         return LagerID;
 

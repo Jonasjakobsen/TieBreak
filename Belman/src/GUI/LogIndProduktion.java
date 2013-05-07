@@ -5,6 +5,9 @@
 package GUI;
 
 import BLL.BLLMedarbejderManager;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +25,7 @@ public class LogIndProduktion extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(this);
-
+        addEnterKeyListeners();
     }
 
     /**
@@ -161,4 +164,22 @@ public class LogIndProduktion extends javax.swing.JDialog {
     private javax.swing.JTextField txtMedarbejderID;
     private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
+    
+    private void addEnterKeyListeners()
+    {
+        KeyListener enterListener = new KeyAdapter()
+        {
+            @Override
+            public void keyPressed(KeyEvent ke)
+            {
+                if (ke.getKeyCode() == KeyEvent.VK_ENTER)
+                {
+                    btnLogIn.doClick();
+                }
+            }
+        };
+        txtMedarbejderID.addKeyListener(enterListener);
+        txtPassword.addKeyListener(enterListener);
+    }
+
 }

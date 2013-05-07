@@ -5,6 +5,9 @@
 package GUI;
 
 import BLL.BLLMedarbejderManager;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -24,6 +27,7 @@ public class LogIndLager extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(this);
+        addEnterKeyListeners();
     }
 
     /**
@@ -38,7 +42,7 @@ public class LogIndLager extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnLogIn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         txtMedarbejderID = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -59,10 +63,10 @@ public class LogIndLager extends javax.swing.JDialog {
 
         jLabel1.setText("EmployeeNo:");
 
-        jButton1.setText("Log in");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogIn.setText("Log in");
+        btnLogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLogInActionPerformed(evt);
             }
         });
 
@@ -86,7 +90,7 @@ public class LogIndLager extends javax.swing.JDialog {
                         .addGap(0, 167, Short.MAX_VALUE)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
+                        .addComponent(btnLogIn))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -98,7 +102,7 @@ public class LogIndLager extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnLogIn, jButton2});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +117,7 @@ public class LogIndLager extends javax.swing.JDialog {
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnLogIn)
                     .addComponent(jButton2))
                 .addContainerGap())
         );
@@ -123,7 +127,7 @@ public class LogIndLager extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
         dispose();
         if (isLoggedIn == false) {
             try {
@@ -148,9 +152,9 @@ public class LogIndLager extends javax.swing.JDialog {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnLogInActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLogIn;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -159,4 +163,22 @@ public class LogIndLager extends javax.swing.JDialog {
     private javax.swing.JTextField txtMedarbejderID;
     private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
+
+    private void addEnterKeyListeners()
+    {
+        KeyListener enterListener = new KeyAdapter()
+        {
+            @Override
+            public void keyPressed(KeyEvent ke)
+            {
+                if (ke.getKeyCode() == KeyEvent.VK_ENTER)
+                {
+                    btnLogIn.doClick();
+                }
+            }
+        };
+        txtMedarbejderID.addKeyListener(enterListener);
+        txtPassword.addKeyListener(enterListener);
+    }
+    
 }

@@ -5,9 +5,6 @@
 package GUI;
 
 import BLL.BLLMedarbejderManager;
-import GUI.produktion.ProduktionForm;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -57,7 +54,6 @@ public class LogIndProduktion extends javax.swing.JDialog {
         setMinimumSize(new java.awt.Dimension(325, 150));
         setModal(true);
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(325, 150));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
@@ -130,21 +126,21 @@ public class LogIndProduktion extends javax.swing.JDialog {
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
         dispose();
-//        if (isLoggedIn == false) {
-//            try {
-//                int Id = Integer.parseInt(txtMedarbejderID.getText());
-//                String Password = txtPassword.getText();
-//                BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
-//                if (isLoggedIn == false) {
-//                    isLoggedIn = BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
-//
-//                }
-//            } catch (Exception ex) {
-//                JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
-//                System.out.println("ERROR" + ex.getMessage());
-//            }
-//        }
-//        if (isLoggedIn == true) {
+        if (isLoggedIn == false) {
+            try {
+                int Id = Integer.parseInt(txtMedarbejderID.getText());
+                String Password = txtPassword.getText();
+                BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
+                if (isLoggedIn == false) {
+                    isLoggedIn = BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
+
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+                System.out.println("ERROR" + ex.getMessage());
+            }
+        }
+        if (isLoggedIn == true) {
             try {
                 GUI.produktion.ProduktionForm prodForm = new GUI.produktion.ProduktionForm(this, true);
                 prodForm.pack();
@@ -153,7 +149,7 @@ public class LogIndProduktion extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
                 System.out.println("ERROR" + ex.getMessage());
             }
-//        }
+        }
     }//GEN-LAST:event_btnLogInActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

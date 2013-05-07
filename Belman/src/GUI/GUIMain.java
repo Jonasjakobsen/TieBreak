@@ -23,6 +23,7 @@ public class GUIMain extends javax.swing.JFrame {
     public GUIMain() {
         initComponents();
         setLocationRelativeTo(null);
+        btnProduction.setEnabled(false);
     }
 
     /**
@@ -34,11 +35,17 @@ public class GUIMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        jLabel1 = new javax.swing.JLabel();
         btnLagerOversigt = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnProduction = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Belman");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/img/belle.png"))); // NOI18N
+        jLabel1.setBounds(20, -20, 400, 280);
+        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btnLagerOversigt.setText("Stock");
         btnLagerOversigt.addActionListener(new java.awt.event.ActionListener() {
@@ -47,10 +54,10 @@ public class GUIMain extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Production");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnProduction.setText("Production");
+        btnProduction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnProductionActionPerformed(evt);
             }
         });
 
@@ -62,23 +69,25 @@ public class GUIMain extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnLagerOversigt, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnProduction)
                 .addContainerGap())
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnLagerOversigt, jButton1});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnLagerOversigt, btnProduction});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(244, Short.MAX_VALUE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLagerOversigt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnProduction))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnLagerOversigt, jButton1});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnLagerOversigt, btnProduction});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -104,7 +113,7 @@ public class GUIMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLagerOversigtActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnProductionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductionActionPerformed
         try {
             LogIndProduktion proForm = new LogIndProduktion(this, true);
             proForm.pack();
@@ -112,7 +121,7 @@ public class GUIMain extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnProductionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,6 +160,8 @@ public class GUIMain extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLagerOversigt;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnProduction;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
 }

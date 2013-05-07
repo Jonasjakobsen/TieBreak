@@ -46,7 +46,7 @@ public class LogIndLager extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         txtMedarbejderID = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
 
         jLabel3.setText("Efternavn:");
 
@@ -97,8 +97,8 @@ public class LogIndLager extends javax.swing.JDialog {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPassword)
-                            .addComponent(txtMedarbejderID))))
+                            .addComponent(txtMedarbejderID)
+                            .addComponent(txtPassword))))
                 .addContainerGap())
         );
 
@@ -161,7 +161,7 @@ public class LogIndLager extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtMedarbejderID;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 
     private void addEnterKeyListeners()

@@ -392,7 +392,7 @@ public class LagerVisForm extends javax.swing.JDialog {
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void txtSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSearchMouseClicked
-        txtSearch.setText("");
+        txtSearch.setText("");        
     }//GEN-LAST:event_txtSearchMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

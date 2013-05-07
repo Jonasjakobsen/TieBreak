@@ -4,7 +4,6 @@
  */
 package GUI.produktion;
 
-import BE.BELager;
 import BE.BEProduktion;
 import BLL.BLLProduktionManager;
 import java.util.ArrayList;
@@ -16,68 +15,55 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Stoffer
  */
-public class ProduktionFormTableModel extends AbstractTableModel
-{
+public class ProduktionFormTableModel extends AbstractTableModel {
 
     private BLLProduktionManager pm;
-    private final String[] header =
-    {
-        "SOrderID", "POrderID", "POrder", "Due Date", "Quantity", 
+    private final String[] header = {
+        "SOrderID", "POrderID", "POrder", "Due Date", "Quantity",
         "Width", "Thickness", "Status", "Urgent"
-            
-           
     };
-    private final Class[] columnTypes =
-    {
-        int.class, int.class, String.class, Date.class,  int.class, 
+    private final Class[] columnTypes = {
+        int.class, int.class, String.class, Date.class, int.class,
         Float.class, Float.class, String.class, Boolean.class
     };
     private ArrayList<BEProduktion> produktion;
 
-    public ProduktionFormTableModel()
-    {
-        try
-        {
+    public ProduktionFormTableModel() {
+        try {
             pm = new BLLProduktionManager();
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             System.out.println("lol");
         }
     }
-    ProduktionFormTableModel(ArrayList<BEProduktion> AllProduktion)
-    {
+
+    ProduktionFormTableModel(ArrayList<BEProduktion> AllProduktion) {
         fireTableDataChanged();
         produktion = AllProduktion;
     }
 
     @Override
-    public int getRowCount()
-    {
+    public int getRowCount() {
         return produktion.size();
     }
 
     @Override
-    public int getColumnCount()
-    {
+    public int getColumnCount() {
         return header.length;
     }
 
     @Override
-    public Object getValueAt(int row, int col)
-    {
+    public Object getValueAt(int row, int col) {
         {
             BEProduktion p = produktion.get(row);
-            switch (col)
-            {
-                
+            switch (col) {
+
 
                 case 0:
                     return p.getSOrderID();
                 case 1:
                     return p.getPOrderID();
                 case 2:
-                    return p.getPOrder(); 
+                    return p.getPOrder();
                 case 3:
                     return p.getDueDate();
                 case 4:
@@ -90,38 +76,32 @@ public class ProduktionFormTableModel extends AbstractTableModel
                     return p.getStatus();
                 case 8:
                     return p.isUrgent();
-
             }
             return null;
         }
     }
 
     @Override
-    public String getColumnName(int col)
-    {
+    public String getColumnName(int col) {
         return header[col];
     }
 
     @Override
-    public Class<?> getColumnClass(int col)
-    {
+    public Class<?> getColumnClass(int col) {
         return columnTypes[col];
     }
 
     @Override
-    public boolean isCellEditable(int row, int col)
-    {
+    public boolean isCellEditable(int row, int col) {
         return (false);
     }
-    
-    public void setCollection(Collection<BEProduktion> list)
-    {
+
+    public void setCollection(Collection<BEProduktion> list) {
         produktion = new ArrayList<>(list);
         fireTableDataChanged();
     }
 
-    BEProduktion getMedlemByRow(int row)
-    {
+    BEProduktion getMedlemByRow(int row) {
         return produktion.get(row);
     }
 

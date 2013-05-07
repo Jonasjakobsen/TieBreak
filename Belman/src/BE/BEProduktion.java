@@ -24,6 +24,7 @@ public class BEProduktion {
     private float Width;
     private float Circumference;
     private String status;
+    private int sleeveID;
     
     
     public BEProduktion (int SOrderID, String SOrder, int POrderID, 
@@ -146,6 +147,13 @@ public class BEProduktion {
      */
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    /**
+     * @return the sleeveID
+     */
+    public int getSleeveID() {
+        return sleeveID;
     }
     
 }

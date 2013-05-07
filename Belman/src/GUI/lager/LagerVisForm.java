@@ -24,56 +24,31 @@ public class LagerVisForm extends javax.swing.JDialog {
     private BLLLagerManager lagmgr;
     private LagerTableModel lagmodel;
     private BELager lager = null;
+    
+    
 
     /**
      * Creates new form GUILagerDialog
      */
     public LagerVisForm(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
-        initComponents();
-        setLocationRelativeTo(this);
-
-
-        // Reference for the BLL layer.
-        lagmgr = new BLLLagerManager();
-
-        // Set the table model for the JTable
-        lagmodel = new LagerTableModel(lagmgr.visLager());
-        tblLager.setModel(lagmodel);
-        
+        constructTables();
         centerTables();
+        btnProduction.setEnabled(false);
     }
 
     public LagerVisForm(ProduktionForm aThis, boolean b) throws Exception {
         super(aThis, b);
-        initComponents();
-        setLocationRelativeTo(this);
-
-
-        // Reference for the BLL layer.
-        lagmgr = new BLLLagerManager();
-
-        // Set the table model for the JTable
-        lagmodel = new LagerTableModel(lagmgr.visLager());
-        tblLager.setModel(lagmodel);
-        
+        constructTables();
         centerTables();
+        btnProduction.setEnabled(false);
     }
     
     public LagerVisForm(LogIndLager aThis, boolean b) throws Exception {
         super(aThis, b);
-        initComponents();
-        setLocationRelativeTo(this);
-
-
-        // Reference for the BLL layer.
-        lagmgr = new BLLLagerManager();
-
-        // Set the table model for the JTable
-        lagmodel = new LagerTableModel(lagmgr.visLager());
-        tblLager.setModel(lagmodel);
-        
+        constructTables();
         centerTables();
+        btnProduction.setEnabled(false);
     }
 
     /**
@@ -418,5 +393,17 @@ public class LagerVisForm extends javax.swing.JDialog {
         tblLager.setDefaultRenderer(String.class, centerRenderer);
         tblLager.setDefaultRenderer(Float.class, centerRenderer);
         tblLager.setDefaultRenderer(int.class, centerRenderer);
+    }
+
+    private void constructTables() throws Exception {
+        initComponents();
+        setLocationRelativeTo(this);
+        
+        // Reference for the BLL layer.
+        lagmgr = new BLLLagerManager();
+        
+        // Set the table model for the JTable
+        lagmodel = new LagerTableModel(lagmgr.visLager());
+        tblLager.setModel(lagmodel);
     }
 }

@@ -89,7 +89,7 @@ public class ProduktionFormTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    BEProduktion getMedlemByRow(int row) {
+    BEProduktion getOrderByRow(int row) {
         return produktion.get(row);
     }
 

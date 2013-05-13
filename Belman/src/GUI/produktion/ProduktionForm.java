@@ -5,10 +5,13 @@
 package GUI.produktion;
 
 import BE.BELager;
+import BE.BEProduktion;
 import BLL.BLLProduktionManager;
 import GUI.LogIndProduktion;
 import java.util.Date;
 import javax.swing.JLabel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -63,11 +66,11 @@ public class ProduktionForm extends javax.swing.JDialog {
         jtblSortOrdre = new javax.swing.JTable();
         btnAfbyd = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtEmployeeNo = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtLength = new javax.swing.JTextField();
+        txtWidth = new javax.swing.JTextField();
+        txtQuantity = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Produktion");
@@ -96,13 +99,13 @@ public class ProduktionForm extends javax.swing.JDialog {
 
         jLabel1.setText("Order job in");
 
-        jTextField1.setText("EmployeeNo.");
+        txtEmployeeNo.setText("EmployeeNo.");
 
-        jTextField2.setText("Length");
+        txtLength.setText("Length");
 
-        jTextField3.setText("Width");
+        txtWidth.setText("Width");
 
-        jTextField4.setText("Quantity");
+        txtQuantity.setText("Quantity");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,11 +126,11 @@ public class ProduktionForm extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel1)
-                                .addComponent(jTextField1)
+                                .addComponent(txtEmployeeNo)
                                 .addComponent(jSeparator1)
-                                .addComponent(jTextField2)
-                                .addComponent(jTextField3)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtLength)
+                                .addComponent(txtWidth)
+                                .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnAfbyd))))
                 .addContainerGap())
         );
@@ -139,15 +142,15 @@ public class ProduktionForm extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmployeeNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAfbyd))
                     .addGroup(layout.createSequentialGroup()
@@ -207,17 +210,50 @@ public class ProduktionForm extends javax.swing.JDialog {
     private javax.swing.ButtonGroup btngrpFilter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JScrollPane jscrpProdOrdre;
     private javax.swing.JScrollPane jscrpVaelgOrdre;
     private javax.swing.JTable jtblSortOrdre;
     private javax.swing.JTable jtblVaelgOrdre;
     private javax.swing.JLabel lblIgangvaerendeProduktion;
     private javax.swing.JLabel lblVaelgOrdre;
+    private javax.swing.JTextField txtEmployeeNo;
+    private javax.swing.JTextField txtLength;
+    private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextField txtWidth;
     // End of variables declaration//GEN-END:variables
+
+    private void constructTables() throws Exception {
+        initComponents();
+        setLocationRelativeTo(this);
+        // Reference for the BLL layer.
+        promgr = BLLProduktionManager.getInstance();
+//        promgr.addObserver(this);
+        // Set the table model for the JTable
+        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
+        jtblSortOrdre.setModel(promodel);
+
+        jtblVaelgOrdre.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent evt) {
+                if (!evt.getValueIsAdjusting()) {
+                    sortOrderByMaterial();
+                }
+            }
+            
+            private void sortOrderByMaterial() {
+                // Does the selection work correctly here?
+                BEProduktion p = promodel.getOrderByRow(jtblVaelgOrdre.getSelectedRow());
+
+//                txtMedlemsNr.setText("" + e.getId());
+//                txtNavn.setText(e.getNavn());
+//                txtEfternavn.setText(e.getEfternavn());
+//                chkKontingent.setSelected(e.harBetalt());
+                
+                txtEmployeeNo.setText("" + p.getPOrder());
+                txtWidth.setText(p.getPOrder());
+            }
+        });
+    }
 
     private void centerTables() {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -232,17 +268,7 @@ public class ProduktionForm extends javax.swing.JDialog {
     }
 
     private void selectOrder() throws Exception {
-        promodel = new ProduktionFormTableModel (promgr.sortOrdrer());
+        promodel = new ProduktionFormTableModel(promgr.sortOrdrer());
         jtblVaelgOrdre.setModel(promodel);
-    }
-
-    private void constructTables() throws Exception {
-        initComponents();
-        setLocationRelativeTo(this);
-        // Reference for the BLL layer.
-        promgr = new BLLProduktionManager();
-        // Set the table model for the JTable
-        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
-        jtblSortOrdre.setModel(promodel);
     }
 }

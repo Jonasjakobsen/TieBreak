@@ -5,6 +5,7 @@
 package GUI;
 
 import GUI.produktion.ProduktionForm;
+import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -94,7 +95,13 @@ public class GUIMain extends javax.swing.JFrame {
 
     private void btnLagerOversigtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerOversigtActionPerformed
             try {
-                ProduktionForm lagForm = new ProduktionForm(this, true);
+                ProduktionForm lagForm = new ProduktionForm(this, true) {
+
+                    @Override
+                    public void update(Observable o, Object o1) {
+                        throw new UnsupportedOperationException("Not supported yet.");
+                    }
+                };
                 lagForm.pack();
                 lagForm.setVisible(true);
             } catch (Exception ex) {
@@ -105,7 +112,13 @@ public class GUIMain extends javax.swing.JFrame {
 
     private void btnProductionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductionActionPerformed
             try {
-                ProduktionForm prodForm = new ProduktionForm(this, true);
+                ProduktionForm prodForm = new ProduktionForm(this, true) {
+
+                    @Override
+                    public void update(Observable o, Object o1) {
+                        throw new UnsupportedOperationException("Not supported yet.");
+                    }
+                };
                 prodForm.pack();
                 prodForm.setVisible(true);
             } catch (Exception ex) {

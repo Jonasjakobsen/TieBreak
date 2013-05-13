@@ -9,6 +9,7 @@ import BE.BEProduktion;
 import BLL.BLLProduktionManager;
 import GUI.LogIndProduktion;
 import java.util.Date;
+import java.util.Observer;
 import javax.swing.JLabel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -18,7 +19,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author Christoffer
  */
-public class ProduktionForm extends javax.swing.JDialog {
+public abstract class ProduktionForm extends javax.swing.JDialog implements Observer {
 
     private BLLProduktionManager promgr;
     private ProduktionFormTableModel promodel;
@@ -227,7 +228,7 @@ public class ProduktionForm extends javax.swing.JDialog {
         setLocationRelativeTo(this);
         // Reference for the BLL layer.
         promgr = BLLProduktionManager.getInstance();
-//        promgr.addObserver(this);
+        promgr.addObserver(this);
         // Set the table model for the JTable
         promodel = new ProduktionFormTableModel(promgr.visOrdrer());
         jtblSortOrdre.setModel(promodel);
@@ -242,7 +243,21 @@ public class ProduktionForm extends javax.swing.JDialog {
             
             private void sortOrderByMaterial() {
                 // Does the selection work correctly here?
-                BEProduktion p = promodel.getOrderByRow(jtblVaelgOrdre.getSelectedRow());
+                int selectedRow = jtblVaelgOrdre.getSelectedRow();
+                BEProduktion p = promodel.getOrderByRow(selectedRow);
+                try
+                {
+                    if(!promgr.getOrderByMaterial(p).isEmpty());
+                    {
+                        promodel = new ProduktionFormTableModel(promgr.getOrderByMaterial(p));
+                        jtblSortOrdre.setModel(promodel);
+                    }
+                    
+                }
+                catch (Exception e)
+                {
+                    
+                }
 
 //                txtMedlemsNr.setText("" + e.getId());
 //                txtNavn.setText(e.getNavn());

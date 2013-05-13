@@ -78,6 +78,7 @@ public class LagerVisForm extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Lageroversigt");
         setMinimumSize(new java.awt.Dimension(1200, 600));
+        setPreferredSize(new java.awt.Dimension(1200, 600));
 
         btnAfbryd.setText("Cancel");
         btnAfbryd.addActionListener(new java.awt.event.ActionListener() {

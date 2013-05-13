@@ -5,12 +5,13 @@ import DAL.DALProduktionDBManager;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  * LagerManager
  * The Business logic layer
  */
-public class BLLProduktionManager
+public class BLLProduktionManager extends Observable
 {
     private static BLLProduktionManager instance = null;
     private DALProduktionDBManager db = null;
@@ -54,6 +55,10 @@ public class BLLProduktionManager
 
     public ArrayList<BEProduktion> sortOrdrer() throws SQLServerException, SQLException {
         return db.orderByMaterial();
+    }
+
+    public ArrayList<BEProduktion> getOrderByMaterial(BEProduktion p) throws SQLServerException, SQLException  {
+        return db.getOrderByMaterial(p);
     }
     
 }

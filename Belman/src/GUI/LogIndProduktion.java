@@ -144,16 +144,16 @@ public class LogIndProduktion extends javax.swing.JDialog {
 //                System.out.println("ERROR" + ex.getMessage());
 //            }
 //        }
-//        if (isLoggedIn == true) {
-            try {
-                ProduktionForm prodForm = new ProduktionForm(this, true);
-                prodForm.pack();
-                prodForm.setVisible(true);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
-                System.out.println("ERROR" + ex.getMessage());
-            }
-//        }
+////        if (isLoggedIn == true) {
+//            try {
+//                ProduktionForm prodForm = new ProduktionForm(this, true);
+//                prodForm.pack();
+//                prodForm.setVisible(true);
+//            } catch (Exception ex) {
+//                JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+//                System.out.println("ERROR" + ex.getMessage());
+//            }
+////        }
     }//GEN-LAST:event_btnLogInActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

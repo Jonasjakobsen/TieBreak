@@ -143,4 +143,37 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
 
         }
     }
+
+    public ArrayList<BEProduktion> getOrderByMaterial(BEProduktion p) throws SQLException
+    {
+        try (Connection con = ds.getConnection()) {
+        String sql = "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Material.name "
+                        + "FROM ProductionOrder, Material, Sleeve "
+                        + "WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
+                        + "AND Sleeve.materialId = Material.id "
+                        + "AND Material.name = ? " ;
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, p.getPOrderID());
+        
+        ResultSet rs = ps.executeQuery();
+
+        ArrayList<BEProduktion> ordrer = new ArrayList<>();
+
+            while (rs.next()) {
+                int sOrderID = rs.getInt("sOrderId");
+                String pOrder = rs.getString("pOrder");
+                Date dueDate = rs.getDate("dueDate");
+                Float quantity = rs.getFloat("quantity");
+                String materialName = rs.getString("name");
+                
+
+
+                BEProduktion l = new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName);
+                ordrer.add(l);
+        }
+        return ordrer;
+
+       }
+            
+    }
 }

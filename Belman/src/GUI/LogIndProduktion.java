@@ -5,6 +5,7 @@
 package GUI;
 
 import BLL.BLLMedarbejderManager;
+import GUI.produktion.ProduktionForm;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -128,31 +129,31 @@ public class LogIndProduktion extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
-        dispose();
-        if (isLoggedIn == false) {
+//        dispose();
+//        if (isLoggedIn == false) {
+//            try {
+//                int Id = Integer.parseInt(txtMedarbejderID.getText());
+//                String Password = txtPassword.getText();
+//                BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
+//                if (isLoggedIn == false) {
+//                    isLoggedIn = BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
+//
+//                }
+//            } catch (Exception ex) {
+//                JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+//                System.out.println("ERROR" + ex.getMessage());
+//            }
+//        }
+//        if (isLoggedIn == true) {
             try {
-                int Id = Integer.parseInt(txtMedarbejderID.getText());
-                String Password = txtPassword.getText();
-                BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
-                if (isLoggedIn == false) {
-                    isLoggedIn = BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
-
-                }
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
-                System.out.println("ERROR" + ex.getMessage());
-            }
-        }
-        if (isLoggedIn == true) {
-            try {
-                GUI.produktion.ProduktionForm prodForm = new GUI.produktion.ProduktionForm(this, true);
+                ProduktionForm prodForm = new ProduktionForm(this, true);
                 prodForm.pack();
                 prodForm.setVisible(true);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
                 System.out.println("ERROR" + ex.getMessage());
             }
-        }
+//        }
     }//GEN-LAST:event_btnLogInActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

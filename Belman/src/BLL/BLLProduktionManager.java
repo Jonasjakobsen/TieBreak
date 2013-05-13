@@ -51,5 +51,9 @@ public class BLLProduktionManager
     public ArrayList<BEProduktion> orderByDueDate() throws SQLServerException, SQLException {
         return db.orderByDueDate();
     }
+
+    public ArrayList<BEProduktion> sortOrdrer() throws SQLServerException, SQLException {
+        return db.orderByMaterial();
+    }
     
 }

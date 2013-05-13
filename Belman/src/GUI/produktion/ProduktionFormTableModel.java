@@ -19,12 +19,10 @@ public class ProduktionFormTableModel extends AbstractTableModel {
 
     private BLLProduktionManager pm;
     private final String[] header = {
-        "SOrderID", "POrderID", "POrder", "Due Date", "Quantity",
-        "Width", "Thickness", "Status", "Urgent"
+        "pOrder", "Due Date", "Quantity", "MaterialName"
     };
     private final Class[] columnTypes = {
-        int.class, int.class, String.class, Date.class, int.class,
-        Float.class, Float.class, String.class, Boolean.class
+        String.class, Date.class, Float.class, String.class
     };
     private ArrayList<BEProduktion> produktion;
 
@@ -59,23 +57,13 @@ public class ProduktionFormTableModel extends AbstractTableModel {
 
 
                 case 0:
-                    return p.getSOrderID();
-                case 1:
-                    return p.getPOrderID();
-                case 2:
                     return p.getPOrder();
-                case 3:
+                case 1:
                     return p.getDueDate();
-                case 4:
+                case 2:
                     return p.getQuantity();
-                case 5:
-                    return p.getWidth();
-                case 6:
-                    return p.getThickness();
-                case 7:
-                    return p.getStatus();
-                case 8:
-                    return p.isUrgent();
+                case 3:
+                    return p.getMaterialName();
             }
             return null;
         }

@@ -4,10 +4,11 @@
  */
 package GUI;
 
-import GUI.lager.LagerVisForm;
 import GUI.produktion.ProduktionForm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -23,7 +24,6 @@ public class GUIMain extends javax.swing.JFrame {
     public GUIMain() {
         initComponents();
         setLocationRelativeTo(null);
-        btnProduction.setEnabled(false);
     }
 
     /**
@@ -93,34 +93,24 @@ public class GUIMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLagerOversigtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerOversigtActionPerformed
-        if (isLoggedIn == false) {
             try {
-                LogIndLager lagForm = new LogIndLager(this, true);
-                lagForm.pack();
-                lagForm.setVisible(true);
-                isLoggedIn = true;
-            } catch (Exception ex) {
-                Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            try {
-                LagerVisForm lagForm = new LagerVisForm(this, true);
+                ProduktionForm lagForm = new ProduktionForm(this, true);
                 lagForm.pack();
                 lagForm.setVisible(true);
             } catch (Exception ex) {
                 Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+//        }
     }//GEN-LAST:event_btnLagerOversigtActionPerformed
 
     private void btnProductionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductionActionPerformed
-        try {
-            LogIndProduktion proForm = new LogIndProduktion(this, true);
-            proForm.pack();
-            proForm.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            try {
+                ProduktionForm prodForm = new ProduktionForm(this, true);
+                prodForm.pack();
+                prodForm.setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_btnProductionActionPerformed
 
     /**
@@ -154,6 +144,17 @@ public class GUIMain extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 new GUIMain().setVisible(true);
             }
         });

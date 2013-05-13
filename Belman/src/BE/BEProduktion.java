@@ -25,6 +25,7 @@ public class BEProduktion {
     private float Circumference;
     private String status;
     private int sleeveID;
+    private String materialName;
     
     
     public BEProduktion (int SOrderID, String SOrder, int POrderID, 
@@ -55,7 +56,15 @@ public class BEProduktion {
         this.Thickness = thickness;
         this.status = status;
         this.Urgent = urgent;
-
+    }
+    
+    public BEProduktion(int SOrderID, String pOrder, Date DueDate, Float quantity, String materialName)
+    {
+        this.SOrderID = SOrderID;
+        this.POrder = pOrder;
+        this.DueDate = DueDate;
+        this.Quantity = quantity;
+        this.materialName = materialName;
     }
 
     /**
@@ -154,6 +163,13 @@ public class BEProduktion {
      */
     public int getSleeveID() {
         return sleeveID;
+    }
+
+    /**
+     * @return the materialName
+     */
+    public String getMaterialName() {
+        return materialName;
     }
     
 }

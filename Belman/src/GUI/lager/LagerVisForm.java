@@ -78,7 +78,6 @@ public class LagerVisForm extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Lageroversigt");
         setMinimumSize(new java.awt.Dimension(1200, 600));
-        setPreferredSize(new java.awt.Dimension(1200, 600));
 
         btnAfbryd.setText("Cancel");
         btnAfbryd.addActionListener(new java.awt.event.ActionListener() {
@@ -259,17 +258,17 @@ public class LagerVisForm extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAfbrydActionPerformed
 
     private void btnProductionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductionActionPerformed
-        dispose();
-        try
-            {
-                ProduktionForm prodForm = new ProduktionForm(this, true);
-                prodForm.pack();
-                prodForm.setVisible(true);
-            }
-        catch (Exception ex)
-        {
-            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        dispose();
+//        try
+//            {
+//                ProduktionForm prodForm = new ProduktionForm(this, true);
+//                prodForm.pack();
+//                prodForm.setVisible(true);
+//            }
+//        catch (Exception ex)
+//        {
+//            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_btnProductionActionPerformed
 
     private void rbtnWidthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnWidthActionPerformed
@@ -280,7 +279,7 @@ public class LagerVisForm extends javax.swing.JDialog {
                 lagmodel = new LagerTableModel(lagmgr.orderByWidth());
                 tblLager.setModel(lagmodel);
             } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProduktionForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_rbtnWidthActionPerformed
@@ -292,7 +291,7 @@ public class LagerVisForm extends javax.swing.JDialog {
                 lagmodel = new LagerTableModel(lagmgr.orderByThickness());
                 tblLager.setModel(lagmodel);
             } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProduktionForm.class.getName()).log(Level.SEVERE, null, ex);
             }
 
 
@@ -307,7 +306,7 @@ public class LagerVisForm extends javax.swing.JDialog {
                 lagmodel = new LagerTableModel(lagmgr.orderByLength());
                 tblLager.setModel(lagmodel);
             } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProduktionForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_rbtnLengthActionPerformed
@@ -320,7 +319,7 @@ public class LagerVisForm extends javax.swing.JDialog {
                 lagmodel = new LagerTableModel(lagmgr.orderByMaterialID());
                 tblLager.setModel(lagmodel);
             } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProduktionForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_rbtnMaterialeIDActionPerformed
@@ -333,7 +332,7 @@ public class LagerVisForm extends javax.swing.JDialog {
                 lagmodel = new LagerTableModel(lagmgr.orderByDensity());
                 tblLager.setModel(lagmodel);
             } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProduktionForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_rbtnDensityActionPerformed
@@ -346,7 +345,7 @@ public class LagerVisForm extends javax.swing.JDialog {
                 lagmodel = new LagerTableModel(lagmgr.orderByStockQuantity());
                 tblLager.setModel(lagmodel);
             } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProduktionForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_rbtnStockQuantityActionPerformed

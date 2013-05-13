@@ -6,12 +6,8 @@ package GUI.produktion;
 
 import BE.BELager;
 import BLL.BLLProduktionManager;
-import GUI.GUIMain;
 import GUI.LogIndProduktion;
-import GUI.lager.LagerVisForm;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -29,48 +25,23 @@ public class ProduktionForm extends javax.swing.JDialog {
      * Creates new form ProduktionForm
      */
     public ProduktionForm(java.awt.Frame parent, boolean modal) throws Exception {
-
         super(parent, modal);
-        initComponents();
-        setLocationRelativeTo(this);
-
-
-        // Reference for the BLL layer.
-        promgr = new BLLProduktionManager();
-
-        // Set the table model for the JTable
-        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
-        jtblVaelgOrdre.setModel(promodel);
+        constructTables();
+        selectOrder();
         centerTables();
     }
 
-    public ProduktionForm(LagerVisForm aThis, boolean b) throws Exception {
+    public ProduktionForm(ProduktionForm aThis, boolean b) throws Exception {
         super(aThis, b);
-        initComponents();
-        setLocationRelativeTo(this);
-
-
-        // Reference for the BLL layer.
-        promgr = new BLLProduktionManager();
-
-        // Set the table model for the JTable
-        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
-        jtblVaelgOrdre.setModel(promodel);
+        constructTables();
+        selectOrder();
         centerTables();
     }
 
     public ProduktionForm(LogIndProduktion aThis, boolean b) throws Exception {
         super(aThis, b);
-        initComponents();
-        setLocationRelativeTo(this);
-
-
-        // Reference for the BLL layer.
-        promgr = new BLLProduktionManager();
-
-        // Set the table model for the JTable
-        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
-        jtblVaelgOrdre.setModel(promodel);
+        constructTables();
+        selectOrder();
         centerTables();
     }
 
@@ -86,18 +57,17 @@ public class ProduktionForm extends javax.swing.JDialog {
         btngrpFilter = new javax.swing.ButtonGroup();
         lblIgangvaerendeProduktion = new javax.swing.JLabel();
         jscrpProdOrdre = new javax.swing.JScrollPane();
-        jtblProdOrdre = new javax.swing.JTable();
+        jtblVaelgOrdre = new javax.swing.JTable();
         lblVaelgOrdre = new javax.swing.JLabel();
         jscrpVaelgOrdre = new javax.swing.JScrollPane();
-        jtblVaelgOrdre = new javax.swing.JTable();
-        btnLageroversigt = new javax.swing.JButton();
+        jtblSortOrdre = new javax.swing.JTable();
         btnAfbyd = new javax.swing.JButton();
-        btnJobInd = new javax.swing.JButton();
-        jpnlFilter = new javax.swing.JPanel();
-        rbtnHaster = new javax.swing.JRadioButton();
-        rbtnMateriale = new javax.swing.JRadioButton();
-        rbtnDueDate = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Produktion");
@@ -107,25 +77,15 @@ public class ProduktionForm extends javax.swing.JDialog {
         setName("Belman produktion"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1200, 600));
 
-        lblIgangvaerendeProduktion.setText("Order in production:");
-
-        jtblProdOrdre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jscrpProdOrdre.setViewportView(jtblProdOrdre);
-
-        lblVaelgOrdre.setText("Choose a production order:");
+        lblIgangvaerendeProduktion.setText("Choose an order to produce");
 
         jtblVaelgOrdre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jscrpVaelgOrdre.setViewportView(jtblVaelgOrdre);
+        jscrpProdOrdre.setViewportView(jtblVaelgOrdre);
 
-        btnLageroversigt.setText("Stock");
-        btnLageroversigt.setMaximumSize(new java.awt.Dimension(83, 23));
-        btnLageroversigt.setMinimumSize(new java.awt.Dimension(83, 23));
-        btnLageroversigt.setPreferredSize(new java.awt.Dimension(83, 23));
-        btnLageroversigt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLageroversigtActionPerformed(evt);
-            }
-        });
+        lblVaelgOrdre.setText("Orders matching material in guillotine");
+
+        jtblSortOrdre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jscrpVaelgOrdre.setViewportView(jtblSortOrdre);
 
         btnAfbyd.setText("Cancel");
         btnAfbyd.addActionListener(new java.awt.event.ActionListener() {
@@ -134,69 +94,15 @@ public class ProduktionForm extends javax.swing.JDialog {
             }
         });
 
-        btnJobInd.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        btnJobInd.setText("Job in");
-        btnJobInd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJobIndActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Order job in");
 
-        jpnlFilter.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Filtrér"));
+        jTextField1.setText("EmployeeNo.");
 
-        btngrpFilter.add(rbtnHaster);
-        rbtnHaster.setText("Urgent");
-        rbtnHaster.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnHasterActionPerformed(evt);
-            }
-        });
+        jTextField2.setText("Length");
 
-        btngrpFilter.add(rbtnMateriale);
-        rbtnMateriale.setText("Material");
-        rbtnMateriale.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnMaterialeActionPerformed(evt);
-            }
-        });
+        jTextField3.setText("Width");
 
-        btngrpFilter.add(rbtnDueDate);
-        rbtnDueDate.setText("Due Date");
-        rbtnDueDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnDueDateActionPerformed(evt);
-            }
-        });
-
-        btngrpFilter.add(jRadioButton4);
-        jRadioButton4.setText("jRadioButton4");
-
-        javax.swing.GroupLayout jpnlFilterLayout = new javax.swing.GroupLayout(jpnlFilter);
-        jpnlFilter.setLayout(jpnlFilterLayout);
-        jpnlFilterLayout.setHorizontalGroup(
-            jpnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnlFilterLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtnHaster)
-                    .addComponent(rbtnMateriale)
-                    .addComponent(rbtnDueDate)
-                    .addComponent(jRadioButton4))
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-        jpnlFilterLayout.setVerticalGroup(
-            jpnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlFilterLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rbtnHaster)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbtnMateriale)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbtnDueDate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton4)
-                .addContainerGap())
-        );
+        jTextField4.setText("Quantity");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,56 +112,55 @@ public class ProduktionForm extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblIgangvaerendeProduktion)
-                                    .addComponent(lblVaelgOrdre))
-                                .addGap(0, 488, Short.MAX_VALUE))
-                            .addComponent(jscrpProdOrdre)
-                            .addComponent(jscrpVaelgOrdre, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnJobInd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jpnlFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lblVaelgOrdre)
+                        .addGap(0, 1004, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnLageroversigt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAfbyd)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblIgangvaerendeProduktion, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jscrpProdOrdre, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                            .addComponent(jscrpVaelgOrdre))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addComponent(jTextField1)
+                                .addComponent(jSeparator1)
+                                .addComponent(jTextField2)
+                                .addComponent(jTextField3)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAfbyd))))
                 .addContainerGap())
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAfbyd, btnLageroversigt});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAfbyd))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(lblIgangvaerendeProduktion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jscrpProdOrdre, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jscrpProdOrdre, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblVaelgOrdre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblVaelgOrdre))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jpnlFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jscrpVaelgOrdre, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnJobInd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLageroversigt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAfbyd))
+                        .addComponent(jscrpVaelgOrdre, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)))
                 .addContainerGap())
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAfbyd, btnLageroversigt});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -263,66 +168,6 @@ public class ProduktionForm extends javax.swing.JDialog {
     private void btnAfbydActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAfbydActionPerformed
         dispose();
     }//GEN-LAST:event_btnAfbydActionPerformed
-
-    private void btnLageroversigtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLageroversigtActionPerformed
-        dispose();
-        try {
-            LagerVisForm prodForm = new LagerVisForm(this, true);
-            prodForm.pack();
-            prodForm.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnLageroversigtActionPerformed
-
-    private void btnJobIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJobIndActionPerformed
-        try {
-            JobIndForm jobForm = new JobIndForm(this, true);
-            jobForm.pack();
-            jobForm.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(ProduktionForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnJobIndActionPerformed
-
-    private void rbtnHasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnHasterActionPerformed
-        if (rbtnHaster.isSelected() == true) {
-            promodel.clear();
-            try {
-
-                promodel = new ProduktionFormTableModel(promgr.orderByUrgent());
-                jtblVaelgOrdre.setModel(promodel);
-            } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_rbtnHasterActionPerformed
-
-    private void rbtnMaterialeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMaterialeActionPerformed
-        if (rbtnMateriale.isSelected() == true) {
-            promodel.clear();
-            try {
-
-                promodel = new ProduktionFormTableModel(promgr.orderByMaterial());
-                jtblVaelgOrdre.setModel(promodel);
-            } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_rbtnMaterialeActionPerformed
-
-    private void rbtnDueDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDueDateActionPerformed
-        if (rbtnDueDate.isSelected() == true) {
-            promodel.clear();
-            try {
-
-                promodel = new ProduktionFormTableModel(promgr.orderByDueDate());
-                jtblVaelgOrdre.setModel(promodel);
-            } catch (Exception ex) {
-                Logger.getLogger(LagerVisForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_rbtnDueDateActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -359,31 +204,45 @@ public class ProduktionForm extends javax.swing.JDialog {
 //    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAfbyd;
-    private javax.swing.JButton btnJobInd;
-    private javax.swing.JButton btnLageroversigt;
     private javax.swing.ButtonGroup btngrpFilter;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JPanel jpnlFilter;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JScrollPane jscrpProdOrdre;
     private javax.swing.JScrollPane jscrpVaelgOrdre;
-    private javax.swing.JTable jtblProdOrdre;
+    private javax.swing.JTable jtblSortOrdre;
     private javax.swing.JTable jtblVaelgOrdre;
     private javax.swing.JLabel lblIgangvaerendeProduktion;
     private javax.swing.JLabel lblVaelgOrdre;
-    private javax.swing.JRadioButton rbtnDueDate;
-    private javax.swing.JRadioButton rbtnHaster;
-    private javax.swing.JRadioButton rbtnMateriale;
     // End of variables declaration//GEN-END:variables
 
     private void centerTables() {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        jtblProdOrdre.setDefaultRenderer(String.class, centerRenderer);
-        jtblProdOrdre.setDefaultRenderer(Float.class, centerRenderer);
-        jtblProdOrdre.setDefaultRenderer(int.class, centerRenderer);
         jtblVaelgOrdre.setDefaultRenderer(String.class, centerRenderer);
         jtblVaelgOrdre.setDefaultRenderer(Float.class, centerRenderer);
         jtblVaelgOrdre.setDefaultRenderer(int.class, centerRenderer);
-        jtblVaelgOrdre.setDefaultRenderer(Date.class, centerRenderer);
+        jtblSortOrdre.setDefaultRenderer(String.class, centerRenderer);
+        jtblSortOrdre.setDefaultRenderer(Float.class, centerRenderer);
+        jtblSortOrdre.setDefaultRenderer(int.class, centerRenderer);
+        jtblSortOrdre.setDefaultRenderer(Date.class, centerRenderer);
+    }
+
+    private void selectOrder() throws Exception {
+        promodel = new ProduktionFormTableModel (promgr.sortOrdrer());
+        jtblVaelgOrdre.setModel(promodel);
+    }
+
+    private void constructTables() throws Exception {
+        initComponents();
+        setLocationRelativeTo(this);
+        // Reference for the BLL layer.
+        promgr = new BLLProduktionManager();
+        // Set the table model for the JTable
+        promodel = new ProduktionFormTableModel(promgr.visOrdrer());
+        jtblSortOrdre.setModel(promodel);
     }
 }

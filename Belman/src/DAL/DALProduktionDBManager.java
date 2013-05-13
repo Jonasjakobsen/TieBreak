@@ -22,14 +22,11 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
 
     public ArrayList<BEProduktion> visOrdrer() throws SQLServerException, SQLException {
         try (Connection con = ds.getConnection()) {
-           String sql = "SELECT SalesOrder.sOrderId, ProductionOrder.pOrderId, ProductionOrder.pOrder, "
-            + "ProductionOrder.dueDate, ProductionOrder.quantity,"
-            + "ProductionOrder.width, ProductionOrder.thickness, ProductionOrder.[status], "
-            + "ProductionOrder.urgent "
-            + "FROM SalesOrder, ProductionOrder, Sleeve "
-            + "WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
-            + "AND ProductionOrder.sOrderId = SalesOrder.sOrderId ";
-            
+           String sql = "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Material.name "
+                        + "FROM ProductionOrder, Material, Sleeve "
+                        + "WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
+                        + "AND Sleeve.materialId = Material.id ";
+             
 
             
             PreparedStatement ps = con.prepareStatement(sql);
@@ -39,19 +36,15 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
             ArrayList<BEProduktion> ordrer = new ArrayList<>();
 
             while (rs.next()) {
-                int sOrderId = rs.getInt("sOrderId");
-                int pOrderId = rs.getInt("pOrderId");
+                int sOrderID = rs.getInt("sOrderId");
                 String pOrder = rs.getString("pOrder");
                 Date dueDate = rs.getDate("dueDate");
                 Float quantity = rs.getFloat("quantity");
-                Float width = rs.getFloat("width");
-                Float thickness = rs.getFloat("thickness");
-                String status = rs.getString("status");
-                boolean urgent = rs.getBoolean("urgent");
+                String materialName = rs.getString("name");
                 
 
 
-                BEProduktion l = new BEProduktion(sOrderId, pOrderId, pOrder, dueDate, quantity, width, thickness, status, urgent);
+                BEProduktion l = new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName);
                 ordrer.add(l);
             }
             return ordrer;
@@ -93,7 +86,11 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
 
     public ArrayList<BEProduktion> orderByMaterial() throws SQLServerException, SQLException  {
         try (Connection con = ds.getConnection()) {
-            String sql = "SELECT * FROM ProductionOrder ORDER BY quantity";
+            String sql = "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Material.name "
+                        + "FROM ProductionOrder, Material, Sleeve "
+                        + "WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
+                        + "AND Sleeve.materialId = Material.id ";
+//                        + "AND Material.name = ? " ;
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -101,19 +98,15 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
             ArrayList<BEProduktion> ordrer = new ArrayList<>();
 
             while (rs.next()) {
-                int sOrderId = rs.getInt("sOrderId");
-                int pOrderId = rs.getInt("pOrderId");
+                int sOrderID = rs.getInt("sOrderId");
                 String pOrder = rs.getString("pOrder");
                 Date dueDate = rs.getDate("dueDate");
                 Float quantity = rs.getFloat("quantity");
-                Float width = rs.getFloat("width");
-                Float thickness = rs.getFloat("thickness");
-                String status = rs.getString("status");
-                boolean urgent = rs.getBoolean("urgent");
+                String materialName = rs.getString("name");
                 
 
 
-                BEProduktion l = new BEProduktion(sOrderId, pOrderId, pOrder, dueDate, quantity, width, thickness, status, urgent);
+                BEProduktion l = new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName);
                 ordrer.add(l);
             }
             return ordrer;

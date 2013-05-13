@@ -5,6 +5,7 @@
 package GUI;
 
 import BLL.BLLMedarbejderManager;
+import GUI.lager.LagerVisForm;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -145,7 +146,7 @@ public class LogIndLager extends javax.swing.JDialog {
         }
         if (isLoggedIn == true) {
         try {
-            GUI.lager.LagerVisForm lagForm = new GUI.lager.LagerVisForm(this, true);
+            LagerVisForm lagForm = new LagerVisForm(this, true);
             lagForm.pack();
             lagForm.setVisible(true);
         } catch (Exception ex) {

@@ -38,6 +38,14 @@ public class BELager {
         this.StockQuantity = StockQuantity;
 
     }
+    
+    public BELager(int id, String MaterialName, Float MaterialDensity, Float StockQuantity) {
+        
+        this.id = id;
+        this.MaterialName = MaterialName;
+        this.MaterialDensity = MaterialDensity;        
+        this.StockQuantity = StockQuantity;
+    }
 
     /**
      * @return the id

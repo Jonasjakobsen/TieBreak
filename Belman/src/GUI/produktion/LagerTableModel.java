@@ -2,16 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI.lager;
+package GUI.produktion;
 
 import BE.BELager;
 import BLL.BLLLagerManager;
 import java.util.ArrayList;
 import java.util.Collection;
-import javax.swing.JLabel;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,11 +20,11 @@ public class LagerTableModel extends AbstractTableModel
     private BLLLagerManager lm;
     private final String[] header =
     {
-        "StockItem ID", "Code", "MaterialID", "MaterialName", "MaterialDensity", "ChargeNo", "Length", "Width", "Thickness", "StockQuantity(kg)"
+        "Material name", "Material density", "Stock quantity(kg)"
     };
     private final Class[] columnTypes =
     {
-        int.class, String.class, int.class, String.class,  Float.class, String.class, Float.class, Float.class, Float.class, Float.class
+        String.class, Float.class, Float.class
     };
     private ArrayList<BELager> lager;
     
@@ -68,24 +65,10 @@ public class LagerTableModel extends AbstractTableModel
             switch (col)
             {
                 case 0:
-                    return l.getId();
-                case 1:
-                    return l.getCode();
-                case 2:
-                    return l.getMaterialID();
-                case 3:
                     return l.getMaterialName();
-                case 4:
-                    return l.getMaterialDensity();
-                case 5:
-                    return l.getChargeNo();
-                case 6:
-                    return l.getLength();
-                case 7:
-                    return l.getWidth();
-                case 8:
-                    return l.getThickness();
-                case 9:
+                case 1:
+                    return l.getMaterialDensity();                
+                case 2:
                     return l.getStockQuantity();
             }
             return null;

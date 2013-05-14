@@ -29,12 +29,7 @@ public class DALLagerDBManager extends DALBelmanDBManager {
     public ArrayList<BELager> visLager() throws SQLServerException, SQLException {
         try (Connection con = ds.getConnection()) {
 
-            String sql = "SELECT StockItem.id, CoilType.code, "
-                    + "CoilType.materialID, Material.name, "
-                    + "Material.density,"
-                    + " StockItem.chargeNo, StockItem.[length], "
-                    + "CoilType.width, CoilType.thickness, "
-                    + "StockItem.stockQuantity "
+            String sql = "SELECT Material.name, Material.density, Stockitem.stockQuantity "                    
                     + "FROM Material, CoilType, StockItem "
                     + "WHERE Material.id = CoilType.materialId "
                     + "AND CoilType.id = StockItem.coilTypeId ";
@@ -46,23 +41,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String Code = rs.getString("code");
-                int MaterialID = rs.getInt("materialId");
+     
                 String MaterialName = rs.getString("name");
-                Float MaterialDensity = rs.getFloat("density");
-                String ChargeNo = rs.getString("chargeNo");
-                Float Length = rs.getFloat("length");
-                Float Width = rs.getFloat("width");
-                Float Thickness = rs.getFloat("thickness");
+                Float MaterialDensity = rs.getFloat("density");                
                 Float StockQuantity = rs.getFloat("stockQuantity");
 
 
-                BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
+                BELager l = new BELager(-1, MaterialName, MaterialDensity, StockQuantity);
                 lageret.add(l);
             }
             return lageret;
-
         }
     }
 

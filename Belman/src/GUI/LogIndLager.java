@@ -5,7 +5,6 @@
 package GUI;
 
 import BLL.BLLMedarbejderManager;
-import GUI.lager.LagerVisForm;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -129,30 +128,30 @@ public class LogIndLager extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
-        dispose();
-        if (isLoggedIn == false) {
-            try {
-                int Id = Integer.parseInt(txtMedarbejderID.getText());
-                String Password = txtPassword.getText();
-                BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
-                if (isLoggedIn == false) {
-                    isLoggedIn = BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
-
-                }
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
-                System.out.println("ERROR" + ex.getMessage());
-            }
-        }
-        if (isLoggedIn == true) {
-        try {
-            LagerVisForm lagForm = new LagerVisForm(this, true);
-            lagForm.pack();
-            lagForm.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//        dispose();
+//        if (isLoggedIn == false) {
+//            try {
+//                int Id = Integer.parseInt(txtMedarbejderID.getText());
+//                String Password = txtPassword.getText();
+//                BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
+//                if (isLoggedIn == false) {
+//                    isLoggedIn = BLLMedarbejderManager.getInstance().logIn(Id, Password, isLoggedIn);
+//
+//                }
+//            } catch (Exception ex) {
+//                JOptionPane.showMessageDialog(this, ex.getMessage(), getTitle(), JOptionPane.ERROR_MESSAGE);
+//                System.out.println("ERROR" + ex.getMessage());
+//            }
+//        }
+//        if (isLoggedIn == true) {
+//        try {
+//            LagerVisForm lagForm = new LagerVisForm(this, true);
+//            lagForm.pack();
+//            lagForm.setVisible(true);
+//        } catch (Exception ex) {
+//            Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     }//GEN-LAST:event_btnLogInActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogIn;

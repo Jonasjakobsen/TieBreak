@@ -6,6 +6,7 @@ package GUI.produktion;
 
 import BE.BELager;
 import BE.BEProduktion;
+import BLL.BLLLagerManager;
 import BLL.BLLProduktionManager;
 import GUI.LogIndProduktion;
 import java.util.Date;
@@ -23,6 +24,8 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
 
     private BLLProduktionManager promgr;
     private ProduktionFormTableModel promodel;
+    private BLLLagerManager lagmgr;
+    private LagerTableModel lagmodel;
     private BELager lager = null;
 
     /**
@@ -72,6 +75,9 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
         txtLength = new javax.swing.JTextField();
         txtWidth = new javax.swing.JTextField();
         txtQuantity = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtblLager = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Produktion");
@@ -79,7 +85,6 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
         setIconImage(null);
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setName("Belman produktion"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1200, 600));
 
         lblIgangvaerendeProduktion.setText("Choose an order to produce");
 
@@ -108,6 +113,18 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
 
         txtQuantity.setText("Quantity");
 
+        jtblLager.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jtblLager);
+
+        jLabel2.setText("Stock");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,14 +133,12 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblVaelgOrdre)
-                        .addGap(0, 1004, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1)
                             .addComponent(lblIgangvaerendeProduktion, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jscrpProdOrdre, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
                             .addComponent(jscrpVaelgOrdre))
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 430, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel1)
@@ -132,9 +147,17 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
                                 .addComponent(txtLength)
                                 .addComponent(txtWidth)
                                 .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnAfbyd))))
+                            .addComponent(btnAfbyd)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVaelgOrdre)
+                            .addComponent(jLabel2))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jScrollPane1, jscrpProdOrdre, jscrpVaelgOrdre});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -157,13 +180,17 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblIgangvaerendeProduktion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jscrpProdOrdre, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addComponent(jscrpProdOrdre, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblVaelgOrdre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jscrpVaelgOrdre, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)))
-                .addContainerGap())
+                        .addComponent(jscrpVaelgOrdre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)))
+                .addGap(11, 11, 11))
         );
 
         pack();
@@ -210,9 +237,12 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
     private javax.swing.JButton btnAfbyd;
     private javax.swing.ButtonGroup btngrpFilter;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JScrollPane jscrpProdOrdre;
     private javax.swing.JScrollPane jscrpVaelgOrdre;
+    private javax.swing.JTable jtblLager;
     private javax.swing.JTable jtblSortOrdre;
     private javax.swing.JTable jtblVaelgOrdre;
     private javax.swing.JLabel lblIgangvaerendeProduktion;
@@ -226,10 +256,15 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
     private void constructTables() throws Exception {
         initComponents();
         setLocationRelativeTo(this);
-        // Reference for the BLL layer.
+        
+        lagmgr = new BLLLagerManager();
+        lagmodel = new GUI.produktion.LagerTableModel(lagmgr.visLager());
+        jtblLager.setModel(lagmodel);
+       
+        
+        
         promgr = BLLProduktionManager.getInstance();
         promgr.addObserver(this);
-        // Set the table model for the JTable
         promodel = new ProduktionFormTableModel(promgr.visOrdrer());
         jtblSortOrdre.setModel(promodel);
 

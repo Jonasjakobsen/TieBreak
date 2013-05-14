@@ -166,6 +166,7 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
                         + "AND Sleeve.materialId = Material.id "
                         + "AND Material.name = ? " ;
         PreparedStatement ps = con.prepareStatement(sql);
+        
         ps.setString(1, p.getMaterialName());
         
         ResultSet rs = ps.executeQuery();

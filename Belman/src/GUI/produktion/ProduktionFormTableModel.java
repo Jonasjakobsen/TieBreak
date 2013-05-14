@@ -18,12 +18,8 @@ import javax.swing.table.AbstractTableModel;
 public class ProduktionFormTableModel extends AbstractTableModel {
 
     private BLLProduktionManager pm;
-    private final String[] header = {
-        "pOrder", "Due Date", "Quantity", "MaterialName"
-    };
-    private final Class[] columnTypes = {
-        String.class, Date.class, Float.class, String.class
-    };
+    private final String[] header = {"pOrder", "Due Date", "Quantity", "MaterialName"};
+    private final Class[] columnTypes = {String.class, Date.class, Float.class, String.class};
     private ArrayList<BEProduktion> produktion;
 
     public ProduktionFormTableModel() {

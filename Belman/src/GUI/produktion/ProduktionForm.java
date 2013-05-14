@@ -7,11 +7,9 @@ package GUI.produktion;
 import BE.BELager;
 import BE.BEProduktion;
 import BLL.BLLProduktionManager;
-import GUI.LogIndProduktion;
 import java.util.Date;
 import java.util.Observer;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -262,7 +260,7 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
 
             private void sortOrderByMaterial() {
                 // Does the selection work correctly here?
-                int selectedRow = jtblVaelgOrdre.getSelectedRow();
+                int selectedRow = jtblVaelgOrdre.getSelectedRow()+1;
                 BEProduktion p = promodel.getOrderByRow(selectedRow);
                 try {
                     if (!promgr.getOrderByMaterial(p).isEmpty());

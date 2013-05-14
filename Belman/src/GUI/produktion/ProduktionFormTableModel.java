@@ -57,7 +57,7 @@ public class ProduktionFormTableModel extends AbstractTableModel {
 
 
                 case 0:
-                    return p.getPOrder();
+                    return p.getPOrder(); 
                 case 1:
                     return p.getDueDate();
                 case 2:

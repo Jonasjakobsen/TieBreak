@@ -15,6 +15,19 @@ import java.util.Date;
 public class DALProduktionDBManager extends DALBelmanDBManager {
 
     private ArrayList<BEProduktion> ordrer;
+    
+    private static final String ID = "id";
+    private static final String SORDERID = "sOrderId";
+    private static final String SORDER = "sOrder";
+    private static final String PORDERID = "pOrderId";
+    private static final String PORDER = "pOrder";
+    private static final String DUEDATE = "dueDate";
+    private static final String QUANTITY = "quantity";
+    private static final String MATERIALNAME = "name";
+    private static final String THICKNESS = "thickness";
+    private static final String WIDTH = "width";
+    private static final String STATUS = "status";
+    private static final String URGENT = "urgent";
 
     public DALProduktionDBManager() throws Exception {
         super();
@@ -36,11 +49,11 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
             ArrayList<BEProduktion> ordrer = new ArrayList<>();
 
             while (rs.next()) {
-                int sOrderID = rs.getInt("sOrderId");
-                String pOrder = rs.getString("pOrder");
-                Date dueDate = rs.getDate("dueDate");
-                Float quantity = rs.getFloat("quantity");
-                String materialName = rs.getString("name");
+                int sOrderID = rs.getInt(SORDERID);
+                String pOrder = rs.getString(PORDER);
+                Date dueDate = rs.getDate(DUEDATE);
+                Float quantity = rs.getFloat(QUANTITY);
+                String materialName = rs.getString(MATERIALNAME);
                 
 
 
@@ -63,15 +76,15 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
             ArrayList<BEProduktion> ordrer = new ArrayList<>();
 
             while (rs.next()) {
-                int sOrderId = rs.getInt("sOrderId");
-                int pOrderId = rs.getInt("pOrderId");
-                String pOrder = rs.getString("pOrder");
-                Date dueDate = rs.getDate("dueDate");
-                Float quantity = rs.getFloat("quantity");
-                Float width = rs.getFloat("width");
-                Float thickness = rs.getFloat("thickness");
-                String status = rs.getString("status");
-                boolean urgent = rs.getBoolean("urgent");
+                int sOrderId = rs.getInt(SORDERID);
+                int pOrderId = rs.getInt(PORDERID);
+                String pOrder = rs.getString(PORDER);
+                Date dueDate = rs.getDate(DUEDATE);
+                Float quantity = rs.getFloat(QUANTITY);
+                Float width = rs.getFloat(WIDTH);
+                Float thickness = rs.getFloat(THICKNESS);
+                String status = rs.getString(STATUS);
+                boolean urgent = rs.getBoolean(URGENT);
                 
 
 
@@ -98,11 +111,11 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
             ArrayList<BEProduktion> ordrer = new ArrayList<>();
 
             while (rs.next()) {
-                int sOrderID = rs.getInt("sOrderId");
-                String pOrder = rs.getString("pOrder");
-                Date dueDate = rs.getDate("dueDate");
-                Float quantity = rs.getFloat("quantity");
-                String materialName = rs.getString("name");
+                int sOrderID = rs.getInt(SORDERID);
+                String pOrder = rs.getString(PORDER);
+                Date dueDate = rs.getDate(DUEDATE);
+                Float quantity = rs.getFloat(QUANTITY);
+                String materialName = rs.getString(MATERIALNAME);
                 
 
 
@@ -124,15 +137,15 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
             ArrayList<BEProduktion> ordrer = new ArrayList<>();
 
             while (rs.next()) {
-                int sOrderId = rs.getInt("sOrderId");
-                int pOrderId = rs.getInt("pOrderId");
-                String pOrder = rs.getString("pOrder");
-                Date dueDate = rs.getDate("dueDate");
-                Float quantity = rs.getFloat("quantity");
-                Float width = rs.getFloat("width");
-                Float thickness = rs.getFloat("thickness");
-                String status = rs.getString("status");
-                boolean urgent = rs.getBoolean("urgent");
+                int sOrderId = rs.getInt(SORDERID);
+                int pOrderId = rs.getInt(PORDERID);
+                String pOrder = rs.getString(PORDER);
+                Date dueDate = rs.getDate(DUEDATE);
+                Float quantity = rs.getFloat(QUANTITY);
+                Float width = rs.getFloat(WIDTH);
+                Float thickness = rs.getFloat(THICKNESS);
+                String status = rs.getString(STATUS);
+                boolean urgent = rs.getBoolean(URGENT);
                 
 
 
@@ -153,18 +166,18 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
                         + "AND Sleeve.materialId = Material.id "
                         + "AND Material.name = ? " ;
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, p.getPOrderID());
+        ps.setString(1, p.getMaterialName());
         
         ResultSet rs = ps.executeQuery();
 
         ArrayList<BEProduktion> ordrer = new ArrayList<>();
 
             while (rs.next()) {
-                int sOrderID = rs.getInt("sOrderId");
-                String pOrder = rs.getString("pOrder");
-                Date dueDate = rs.getDate("dueDate");
-                Float quantity = rs.getFloat("quantity");
-                String materialName = rs.getString("name");
+                int sOrderID = rs.getInt(SORDERID);
+                String pOrder = rs.getString(PORDER);
+                Date dueDate = rs.getDate(DUEDATE);
+                Float quantity = rs.getFloat(QUANTITY);
+                String materialName = rs.getString(MATERIALNAME);
                 
 
 

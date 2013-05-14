@@ -14,6 +14,17 @@ import java.util.ArrayList;
 public class DALLagerDBManager extends DALBelmanDBManager {
 
     private ArrayList<BELager> lager;
+    
+    private static final String STOCKITEMID = "id";
+    private static final String COILCODE = "code";
+    private static final String MATERIALID = "materialId";
+    private static final String MATERIALNAME = "name";
+    private static final String MATERIALDENSITY = "density";
+    private static final String CHARGENO = "chargeNo";
+    private static final String LENGTH = "lenght";
+    private static final String WIDTH = "width";
+    private static final String THICKNESS = "thickness";
+    private static final String STOCKQUANTITY = "stockQuantity";
 
     public DALLagerDBManager() throws Exception {
         super();
@@ -41,10 +52,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-     
-                String MaterialName = rs.getString("name");
-                Float MaterialDensity = rs.getFloat("density");                
-                Float StockQuantity = rs.getFloat("stockQuantity");
+                int id = rs.getInt(STOCKITEMID);
+                String Code = rs.getString(COILCODE);
+                int MaterialID = rs.getInt(MATERIALID);
+                String MaterialName = rs.getString(MATERIALNAME);
+                Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
+                String ChargeNo = rs.getString(CHARGENO);
+                Float Length = rs.getFloat(LENGTH);
+                Float Width = rs.getFloat(WIDTH);
+                Float Thickness = rs.getFloat(THICKNESS);
+                Float StockQuantity = rs.getFloat(STOCKQUANTITY);
 
 
                 BELager l = new BELager(-1, MaterialName, MaterialDensity, StockQuantity);
@@ -73,16 +90,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String Code = rs.getString("code");
-                int MaterialID = rs.getInt("materialId");
-                String MaterialName = rs.getString("name");
-                Float MaterialDensity = rs.getFloat("density");
-                String ChargeNo = rs.getString("chargeNo");
-                Float Length = rs.getFloat("length");
-                Float Width = rs.getFloat("width");
-                Float Thickness = rs.getFloat("thickness");
-                Float StockQuantity = rs.getFloat("stockQuantity");
+                int id = rs.getInt(STOCKITEMID);
+                String Code = rs.getString(COILCODE);
+                int MaterialID = rs.getInt(MATERIALID);
+                String MaterialName = rs.getString(MATERIALNAME);
+                Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
+                String ChargeNo = rs.getString(CHARGENO);
+                Float Length = rs.getFloat(LENGTH);
+                Float Width = rs.getFloat(WIDTH);
+                Float Thickness = rs.getFloat(THICKNESS);
+                Float StockQuantity = rs.getFloat(STOCKQUANTITY);
 
 
                 BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -112,16 +129,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String Code = rs.getString("code");
-                int MaterialID = rs.getInt("materialId");
-                String MaterialName = rs.getString("name");
-                Float MaterialDensity = rs.getFloat("density");
-                String ChargeNo = rs.getString("chargeNo");
-                Float Length = rs.getFloat("length");
-                Float Width = rs.getFloat("width");
-                Float Thickness = rs.getFloat("thickness");
-                Float StockQuantity = rs.getFloat("stockQuantity");
+                int id = rs.getInt(STOCKITEMID);
+                String Code = rs.getString(COILCODE);
+                int MaterialID = rs.getInt(MATERIALID);
+                String MaterialName = rs.getString(MATERIALNAME);
+                Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
+                String ChargeNo = rs.getString(CHARGENO);
+                Float Length = rs.getFloat(LENGTH);
+                Float Width = rs.getFloat(WIDTH);
+                Float Thickness = rs.getFloat(THICKNESS);
+                Float StockQuantity = rs.getFloat(STOCKQUANTITY);
 
 
                 BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -151,16 +168,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String Code = rs.getString("code");
-                int MaterialID = rs.getInt("materialId");
-                String MaterialName = rs.getString("name");
-                Float MaterialDensity = rs.getFloat("density");
-                String ChargeNo = rs.getString("chargeNo");
-                Float Length = rs.getFloat("length");
-                Float Width = rs.getFloat("width");
-                Float Thickness = rs.getFloat("thickness");
-                Float StockQuantity = rs.getFloat("stockQuantity");
+                int id = rs.getInt(STOCKITEMID);
+                String Code = rs.getString(COILCODE);
+                int MaterialID = rs.getInt(MATERIALID);
+                String MaterialName = rs.getString(MATERIALNAME);
+                Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
+                String ChargeNo = rs.getString(CHARGENO);
+                Float Length = rs.getFloat(LENGTH);
+                Float Width = rs.getFloat(WIDTH);
+                Float Thickness = rs.getFloat(THICKNESS);
+                Float StockQuantity = rs.getFloat(STOCKQUANTITY);
 
 
                 BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -190,16 +207,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String Code = rs.getString("code");
-                int MaterialID = rs.getInt("materialId");
-                String MaterialName = rs.getString("name");
-                Float MaterialDensity = rs.getFloat("density");
-                String ChargeNo = rs.getString("chargeNo");
-                Float Length = rs.getFloat("length");
-                Float Width = rs.getFloat("width");
-                Float Thickness = rs.getFloat("thickness");
-                Float StockQuantity = rs.getFloat("stockQuantity");
+                int id = rs.getInt(STOCKITEMID);
+                String Code = rs.getString(COILCODE);
+                int MaterialID = rs.getInt(MATERIALID);
+                String MaterialName = rs.getString(MATERIALNAME);
+                Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
+                String ChargeNo = rs.getString(CHARGENO);
+                Float Length = rs.getFloat(LENGTH);
+                Float Width = rs.getFloat(WIDTH);
+                Float Thickness = rs.getFloat(THICKNESS);
+                Float StockQuantity = rs.getFloat(STOCKQUANTITY);
 
 
                 BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -229,16 +246,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String Code = rs.getString("code");
-                int MaterialID = rs.getInt("materialId");
-                String MaterialName = rs.getString("name");
-                Float MaterialDensity = rs.getFloat("density");
-                String ChargeNo = rs.getString("chargeNo");
-                Float Length = rs.getFloat("length");
-                Float Width = rs.getFloat("width");
-                Float Thickness = rs.getFloat("thickness");
-                Float StockQuantity = rs.getFloat("stockQuantity");
+                int id = rs.getInt(STOCKITEMID);
+                String Code = rs.getString(COILCODE);
+                int MaterialID = rs.getInt(MATERIALID);
+                String MaterialName = rs.getString(MATERIALNAME);
+                Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
+                String ChargeNo = rs.getString(CHARGENO);
+                Float Length = rs.getFloat(LENGTH);
+                Float Width = rs.getFloat(WIDTH);
+                Float Thickness = rs.getFloat(THICKNESS);
+                Float StockQuantity = rs.getFloat(STOCKQUANTITY);
 
 
                 BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -268,16 +285,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String Code = rs.getString("code");
-                int MaterialID = rs.getInt("materialId");
-                String MaterialName = rs.getString("name");
-                Float MaterialDensity = rs.getFloat("density");
-                String ChargeNo = rs.getString("chargeNo");
-                Float Length = rs.getFloat("length");
-                Float Width = rs.getFloat("width");
-                Float Thickness = rs.getFloat("thickness");
-                Float StockQuantity = rs.getFloat("stockQuantity");
+                int id = rs.getInt(STOCKITEMID);
+                String Code = rs.getString(COILCODE);
+                int MaterialID = rs.getInt(MATERIALID);
+                String MaterialName = rs.getString(MATERIALNAME);
+                Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
+                String ChargeNo = rs.getString(CHARGENO);
+                Float Length = rs.getFloat(LENGTH);
+                Float Width = rs.getFloat(WIDTH);
+                Float Thickness = rs.getFloat(THICKNESS);
+                Float StockQuantity = rs.getFloat(STOCKQUANTITY);
 
 
                 BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
@@ -317,16 +334,16 @@ public class DALLagerDBManager extends DALBelmanDBManager {
 
         ArrayList<BELager> LagerID = new ArrayList<>();
         while (rs.next()) {
-            int id = rs.getInt("id");
-            String Code = rs.getString("code");
-            int MaterialID = rs.getInt("materialId");
-            String MaterialName = rs.getString("name");
-            Float MaterialDensity = rs.getFloat("density");
-            String ChargeNo = rs.getString("chargeNo");
-            Float Length = rs.getFloat("length");
-            Float Width = rs.getFloat("width");
-            Float Thickness = rs.getFloat("thickness");
-            Float StockQuantity = rs.getFloat("stockQuantity");
+                int id = rs.getInt(STOCKITEMID);
+                String Code = rs.getString(COILCODE);
+                int MaterialID = rs.getInt(MATERIALID);
+                String MaterialName = rs.getString(MATERIALNAME);
+                Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
+                String ChargeNo = rs.getString(CHARGENO);
+                Float Length = rs.getFloat(LENGTH);
+                Float Width = rs.getFloat(WIDTH);
+                Float Thickness = rs.getFloat(THICKNESS);
+                Float StockQuantity = rs.getFloat(STOCKQUANTITY);
 
             BELager l = new BELager(id, Code, MaterialID, MaterialName, MaterialDensity, ChargeNo, Length, Width, Thickness, StockQuantity);
             LagerID.add(l);

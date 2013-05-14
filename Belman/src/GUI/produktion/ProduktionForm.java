@@ -12,6 +12,7 @@ import GUI.LogIndProduktion;
 import java.util.Date;
 import java.util.Observer;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -24,8 +25,7 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
 
     private BLLProduktionManager promgr;
     private ProduktionFormTableModel promodel;
-    private BLLLagerManager lagmgr;
-    private LagerTableModel lagmodel;
+    private ProduktionFormTableModel promodel2;
     private BELager lager = null;
 
     /**
@@ -38,19 +38,19 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
         centerTables();
     }
 
-    public ProduktionForm(ProduktionForm aThis, boolean b) throws Exception {
-        super(aThis, b);
-        constructTables();
-        selectOrder();
-        centerTables();
-    }
-
-    public ProduktionForm(LogIndProduktion aThis, boolean b) throws Exception {
-        super(aThis, b);
-        constructTables();
-        selectOrder();
-        centerTables();
-    }
+//    public ProduktionForm(ProduktionForm aThis, boolean b) throws Exception {
+//        super(aThis, b);
+//        constructTables();
+//        selectOrder();
+//        centerTables();
+//    }
+//
+//    public ProduktionForm(LogIndProduktion aThis, boolean b) throws Exception {
+//        super(aThis, b);
+//        constructTables();
+//        selectOrder();
+//        centerTables();
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -266,43 +266,6 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
         promgr = BLLProduktionManager.getInstance();
         promgr.addObserver(this);
         promodel = new ProduktionFormTableModel(promgr.visOrdrer());
-        jtblSortOrdre.setModel(promodel);
-
-        jtblVaelgOrdre.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent evt) {
-                if (!evt.getValueIsAdjusting()) {
-                    sortOrderByMaterial();
-                }
-            }
-            
-            private void sortOrderByMaterial() {
-                // Does the selection work correctly here?
-                int selectedRow = jtblVaelgOrdre.getSelectedRow();
-                BEProduktion p = promodel.getOrderByRow(selectedRow);
-                try
-                {
-                    if(!promgr.getOrderByMaterial(p).isEmpty());
-                    {
-                        promodel = new ProduktionFormTableModel(promgr.getOrderByMaterial(p));
-                        jtblSortOrdre.setModel(promodel);
-                    }
-                    
-                }
-                catch (Exception e)
-                {
-                    
-                }
-
-//                txtMedlemsNr.setText("" + e.getId());
-//                txtNavn.setText(e.getNavn());
-//                txtEfternavn.setText(e.getEfternavn());
-//                chkKontingent.setSelected(e.harBetalt());
-                
-                txtEmployeeNo.setText("" + p.getPOrder());
-                txtWidth.setText(p.getPOrder());
-            }
-        });
     }
 
     private void centerTables() {
@@ -318,7 +281,37 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
     }
 
     private void selectOrder() throws Exception {
-        promodel = new ProduktionFormTableModel(promgr.sortOrdrer());
-        jtblVaelgOrdre.setModel(promodel);
+        promgr = BLLProduktionManager.getInstance();
+        promgr.addObserver(this);
+        promodel2 = new ProduktionFormTableModel(promgr.visOrdrer());
+        jtblVaelgOrdre.setModel(promodel2);
+        jtblVaelgOrdre.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent evt) {
+                if (!evt.getValueIsAdjusting()) {
+                    sortOrderByMaterial();
+                }
+            }
+
+            private void sortOrderByMaterial() {
+                // Does the selection work correctly here?
+                int selectedRow = jtblVaelgOrdre.getSelectedRow();
+                BEProduktion p = promodel.getOrderByRow(selectedRow);
+                try {
+                    if (!promgr.getOrderByMaterial(p).isEmpty());
+                    {
+                        promodel = new ProduktionFormTableModel(promgr.getOrderByMaterial(p));
+                        jtblSortOrdre.setModel(promodel);
+                    }
+
+                } catch (Exception e) {
+                System.out.println("ERROR" + e.getMessage());
+                }
+                txtEmployeeNo.setText("" + p.getMaterialID());
+                txtWidth.setText("" + p.getWidth());
+                txtLength.setText("" + p.getWidth());
+                txtQuantity.setText("" + p.getQuantity());
+            }
+        });
     }
 }

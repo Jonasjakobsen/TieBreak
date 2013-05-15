@@ -28,6 +28,20 @@ public class BEProduktion {
     private String materialName;
     
     
+    /**
+     * The constructor for the BEProduction class
+     * @param SOrderID - The salesorder ID to identify a specific sales order
+     * @param SOrder - The salesorder number.
+     * @param POrderID - The production ID to identify a specific production order
+     * @param POrder - The productionorder number.
+     * @param Urgent - Boolean to mark an order as urgent.
+     * @param DueDate - The duedate for an order to be finished.
+     * @param Quantity - The quantity of finished products needed to be produced.
+     * @param MaterialID - The id of the material needed to produce this order.
+     * @param Thickness - The thickness of the material.
+     * @param Width - The width of the material.
+     * @param Circumference - The circumference of the finished sleeve.
+     */
     public BEProduktion (int SOrderID, String SOrder, int POrderID, 
                         String POrder, boolean Urgent, Date DueDate, Float Quantity,
                         Float MaterialID, Float Thickness, Float Width,
@@ -46,6 +60,18 @@ public class BEProduktion {
         this.Circumference = Circumference;
     }
 
+    /**
+     * The constructor for the BEProduction class
+     * @param sOrderId  - The salesorder ID to identify a specific sales order
+     * @param pOrderId - The production ID to identify a specific production order
+     * @param pOrder - The productionorder number.
+     * @param dueDate  - The duedate for an order to be finished.
+     * @param quantity  - The quantity of finished products needed to be produced.
+     * @param width - The width of the material.
+     * @param thickness  - The thickness of the material.
+     * @param status - The status of the order in production
+     * @param urgent  - Boolean to mark an order as urgent.
+     */
     public BEProduktion(int sOrderId, int pOrderId, String pOrder, Date dueDate, Float quantity, Float width, Float thickness, String status, boolean urgent) {
         this.SOrderID = sOrderId;       
         this.POrderID = pOrderId;
@@ -58,6 +84,15 @@ public class BEProduktion {
         this.Urgent = urgent;
     }
     
+    /**
+     * The constructor for the BEProduction class
+     * used in sorting on material specific production orders.
+     * @param SOrderID   - The salesorder ID to identify a specific sales order
+     * @param pOrder- The productionorder number.
+     * @param DueDate   - The duedate for an order to be finished.
+     * @param quantity - The quantity of finished products needed to be produced.
+     * @param materialName - the name of the material used in the production order.
+     */
     public BEProduktion(int SOrderID, String pOrder, Date DueDate, Float quantity, String materialName)
     {
         this.SOrderID = SOrderID;

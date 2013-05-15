@@ -92,4 +92,19 @@ public class ProduktionFormTableModel extends AbstractTableModel {
     void clear() {
         produktion.clear();
     }
+    
+    @Override
+    public void setValueAt(Object o, int row, int col)
+    {
+            BEProduktion p = produktion.get(row);
+            switch (col) {
+
+
+                case 0: p.getPOrder(); break;
+                case 1: p.getDueDate(); break;
+                case 2: p.getQuantity(); break;
+                case 3: p.getMaterialName(); break;
+            }
+        }
+    
 }

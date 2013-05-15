@@ -52,15 +52,15 @@ public class DALLagerDBManager extends DALBelmanDBManager {
             ArrayList<BELager> lageret = new ArrayList<>();
 
             while (rs.next()) {
-                int id = rs.getInt(STOCKITEMID);
-                String Code = rs.getString(COILCODE);
-                int MaterialID = rs.getInt(MATERIALID);
+//                int id = rs.getInt(STOCKITEMID);
+//                String Code = rs.getString(COILCODE);
+//                int MaterialID = rs.getInt(MATERIALID);
                 String MaterialName = rs.getString(MATERIALNAME);
                 Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
-                String ChargeNo = rs.getString(CHARGENO);
-                Float Length = rs.getFloat(LENGTH);
-                Float Width = rs.getFloat(WIDTH);
-                Float Thickness = rs.getFloat(THICKNESS);
+//                String ChargeNo = rs.getString(CHARGENO);
+//                Float Length = rs.getFloat(LENGTH);
+//                Float Width = rs.getFloat(WIDTH);
+//                Float Thickness = rs.getFloat(THICKNESS);
                 Float StockQuantity = rs.getFloat(STOCKQUANTITY);
 
 

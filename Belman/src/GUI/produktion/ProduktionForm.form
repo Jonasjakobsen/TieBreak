@@ -12,8 +12,11 @@
     <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.ComponentChooserEditor">
       <ComponentRef name="null"/>
     </Property>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[780, 665]"/>
+    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1200, 600]"/>
+      <Dimension value="[780, 665]"/>
     </Property>
     <Property name="name" type="java.lang.String" value="Belman produktion" noResource="true"/>
   </Properties>
@@ -45,17 +48,23 @@
                           <Component id="jscrpProdOrdre" linkSize="1" alignment="1" pref="600" max="32767" attributes="0"/>
                           <Component id="jscrpVaelgOrdre" linkSize="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="430" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtEmployeeNo" max="32767" attributes="0"/>
-                              <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtLength" max="32767" attributes="0"/>
-                              <Component id="txtWidth" max="32767" attributes="0"/>
-                              <Component id="txtQuantity" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnAfbyd" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="btnAfbyd" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtEmployeeNo" max="32767" attributes="0"/>
+                                  <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtLength" max="32767" attributes="0"/>
+                                  <Component id="txtWidth" max="32767" attributes="0"/>
+                                  <Component id="txtQuantity" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">

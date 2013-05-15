@@ -8,40 +8,34 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 /**
- * LagerManager
- * The Business logic layer
+ * LagerManager The Business logic layer
  */
-public class BLLProduktionManager extends Observable
-{
+public class BLLProduktionManager extends Observable {
+
     private static BLLProduktionManager instance = null;
     private DALProduktionDBManager db = null;
-    
+
     /**
      * Constructor for the BLLLagerManager
+     *
      * @throws Exception
-     */   
-    
-    public BLLProduktionManager() throws Exception
-    {
+     */
+    public BLLProduktionManager() throws Exception {
         db = new DALProduktionDBManager();
     }
-    
-    public static BLLProduktionManager getInstance() throws Exception
-    {
-        if (instance == null)
-        {
+
+    public static BLLProduktionManager getInstance() throws Exception {
+        if (instance == null) {
             instance = new BLLProduktionManager();
         }
         return instance;
     }
-    
-        public ArrayList<BEProduktion> visOrdrer() throws SQLServerException, SQLException
-    {
+
+    public ArrayList<BEProduktion> visOrdrer() throws SQLServerException, SQLException {
         return db.visOrdrer();
     }
 
-    public ArrayList<BEProduktion> orderByUrgent()throws SQLServerException, SQLException 
-    {
+    public ArrayList<BEProduktion> orderByUrgent() throws SQLServerException, SQLException {
         return db.orderByUrgent();
     }
 
@@ -57,8 +51,7 @@ public class BLLProduktionManager extends Observable
         return db.orderByMaterial();
     }
 
-    public ArrayList<BEProduktion> getOrderByMaterial(BEProduktion p) throws SQLServerException, SQLException  {
+    public ArrayList<BEProduktion> getOrderByMaterial(BEProduktion p) throws SQLServerException, SQLException {
         return db.getOrderByMaterial(p);
     }
-    
 }

@@ -18,8 +18,8 @@ import javax.swing.table.AbstractTableModel;
 public class ProduktionFormTableModel extends AbstractTableModel {
 
     private BLLProduktionManager pm;
-    private final String[] header = {"pOrder", "Due Date", "Quantity", "MaterialName"};
-    private final Class[] columnTypes = {String.class, Date.class, Float.class, String.class};
+    private final String[] header = {"pOrder", "Due Date", "Quantity", "MaterialName", "Status"};
+    private final Class[] columnTypes = {String.class, Date.class, Float.class, String.class, String.class};
     private ArrayList<BEProduktion> produktion;
 
     public ProduktionFormTableModel() {
@@ -60,6 +60,8 @@ public class ProduktionFormTableModel extends AbstractTableModel {
                     return p.getQuantity();
                 case 3:
                     return p.getMaterialName();
+                case 4:
+                    return p.getStatus();
             }
             return null;
         }
@@ -106,5 +108,9 @@ public class ProduktionFormTableModel extends AbstractTableModel {
                 case 3: p.getMaterialName(); break;
             }
         }
+
+    BEProduktion getOrderByMaterial(int selectedRow2) {
+        return produktion.get(selectedRow2);
+    }
     
 }

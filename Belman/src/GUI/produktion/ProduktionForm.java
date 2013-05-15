@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author Christoffer
  */
-public abstract class ProduktionForm extends javax.swing.JDialog implements Observer {
+public class ProduktionForm extends javax.swing.JDialog implements Observer {
 
     private BLLProduktionManager promgr;
     private ProduktionFormTableModel promodel;
@@ -39,20 +39,6 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
         selectOrder();
         centerTables();
     }
-
-//    public ProduktionForm(ProduktionForm aThis, boolean b) throws Exception {
-//        super(aThis, b);
-//        constructTables();
-//        selectOrder();
-//        centerTables();
-//    }
-//
-//    public ProduktionForm(LogIndProduktion aThis, boolean b) throws Exception {
-//        super(aThis, b);
-//        constructTables();
-//        selectOrder();
-//        centerTables();
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -211,7 +197,7 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
      */
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        <editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 //        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
 //         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
 //         */
@@ -231,7 +217,7 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
 //            java.util.logging.Logger.getLogger(ProduktionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
-//        //</editor-fold>
+//        </editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
@@ -283,65 +269,85 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
         jtblVaelgOrdre.setDefaultRenderer(String.class, centerRenderer);
         jtblVaelgOrdre.setDefaultRenderer(Float.class, centerRenderer);
         jtblVaelgOrdre.setDefaultRenderer(int.class, centerRenderer);
+        jtblVaelgOrdre.setDefaultRenderer(Date.class, centerRenderer);
         jtblSortOrdre.setDefaultRenderer(String.class, centerRenderer);
         jtblSortOrdre.setDefaultRenderer(Float.class, centerRenderer);
         jtblSortOrdre.setDefaultRenderer(int.class, centerRenderer);
         jtblSortOrdre.setDefaultRenderer(Date.class, centerRenderer);
+        jtblLager.setDefaultRenderer(String.class, centerRenderer);
+        jtblLager.setDefaultRenderer(Float.class, centerRenderer);
+        jtblLager.setDefaultRenderer(int.class, centerRenderer);
     }
 
     @Override
-    public void update (Observable o, Object arg)
-    {
-        if (o instanceof BLLProduktionManager)
-        {
-            try
-            {
+    public void update(Observable o, Object arg) {
+        if (o instanceof BLLProduktionManager) {
+            try {
                 promodel.setCollection(promgr.visOrdrer());
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
             }
         }
     }
-    
+
     private void selectOrder() {
-            try
-            {
+        try {
             promgr = BLLProduktionManager.getInstance();
             promgr.addObserver(this);
             promodel = new ProduktionFormTableModel(promgr.visOrdrer());
             jtblVaelgOrdre.setModel(promodel);
 
-            jtblVaelgOrdre.getSelectionModel().addListSelectionListener(new ListSelectionListener() 
-            {
+            jtblVaelgOrdre.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
                 @Override
-                public void valueChanged(ListSelectionEvent evt) 
-                {
+                public void valueChanged(ListSelectionEvent evt) {
                     int selectedRow = jtblVaelgOrdre.getSelectedRow();
                     BEProduktion p = promodel.getOrderByRow(selectedRow);
-                    try 
-                    {
-                        if (!promgr.getOrderByMaterial(p).isEmpty());
-                        {
-                            promodel2 = new ProduktionFormTableModel(promgr.getOrderByMaterial(p));
-                            jtblSortOrdre.setModel(promodel2);
-                        }
-
-                    } catch (Exception e) 
-                    {
-                        System.out.println("ERROR - " + e.getMessage());
-                    }
                     txtEmployeeNo.setText("" + p.getMaterialID());
                     txtWidth.setText("" + p.getWidth());
                     txtLength.setText("" + p.getWidth());
                     txtQuantity.setText("" + p.getQuantity());
+                    
+                    try {
+                        if (!promgr.getOrderByMaterial(p).isEmpty());
+                        {
+                            promodel2 = new ProduktionFormTableModel(promgr.getOrderByMaterial(p));
+                            jtblSortOrdre.setModel(promodel2);
+//                            jtblSortOrdre.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+//                                @Override
+//                                public void valueChanged(ListSelectionEvent evt) {
+//                                    int selectedRow2 = jtblSortOrdre.getSelectedRow();
+//                                    BEProduktion q = promodel2.getOrderByMaterial(selectedRow2);
+//                                    clearFields();
+//                                    txtEmployeeNo.setText("" + q.getMaterialID());
+//                                    txtWidth.setText("" + q.getWidth());
+//                                    txtLength.setText("" + q.getWidth());
+//                                    txtQuantity.setText("" + q.getQuantity());
+//                                    
+//                                }
+//                            });
+                        }
+//                        int selectedRow2 = jtblLager.getSelectedRow();
+//                        BELager l = lagmodel.getMedlemByRow(selectedRow2);
+//                        if (!lagmgr.getMaterialByOrder(p).isEmpty());
+//                        {
+//                            lagmodel = new LagerTableModel(lagmgr.getMaterialByOrder(p));
+//                            jtblLager.setModel(lagmodel);
+//                        }     
+//                        
+
+                    } catch (Exception e) {
+                        System.out.println("ERROR - Line 337 " + e.getMessage());
+                    }
+                }
+
+                private void clearFields() {
+                    txtEmployeeNo.setText("");
+                    txtWidth.setText("");
+                    txtLength.setText("");
+                    txtQuantity.setText("");
                 }
             });
-        }
-
-        catch (Exception e)
-        {
-            System.out.println("ERROR - " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("ERROR - Line 349 " + e.getMessage());
         }
     }
 }

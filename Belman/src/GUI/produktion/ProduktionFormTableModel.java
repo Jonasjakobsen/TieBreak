@@ -108,5 +108,9 @@ public class ProduktionFormTableModel extends AbstractTableModel {
                 case 3: p.getMaterialName(); break;
             }
         }
+
+    BEProduktion getOrderByMaterial(int selectedRow2) {
+        return produktion.get(selectedRow2);
+    }
     
 }

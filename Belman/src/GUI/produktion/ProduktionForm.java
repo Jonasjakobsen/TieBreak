@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author Christoffer
  */
-public  class ProduktionForm extends javax.swing.JDialog implements Observer {
+public class ProduktionForm extends javax.swing.JDialog implements Observer {
 
     private BLLProduktionManager promgr;
     private ProduktionFormTableModel promodel;
@@ -297,11 +297,29 @@ public  class ProduktionForm extends javax.swing.JDialog implements Observer {
                 public void valueChanged(ListSelectionEvent evt) {
                     int selectedRow = jtblVaelgOrdre.getSelectedRow();
                     BEProduktion p = promodel.getOrderByRow(selectedRow);
+                    txtEmployeeNo.setText("" + p.getMaterialID());
+                    txtWidth.setText("" + p.getWidth());
+                    txtLength.setText("" + p.getWidth());
+                    txtQuantity.setText("" + p.getQuantity());
+                    
                     try {
                         if (!promgr.getOrderByMaterial(p).isEmpty());
                         {
                             promodel2 = new ProduktionFormTableModel(promgr.getOrderByMaterial(p));
                             jtblSortOrdre.setModel(promodel2);
+//                            jtblSortOrdre.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+//                                @Override
+//                                public void valueChanged(ListSelectionEvent evt) {
+//                                    int selectedRow2 = jtblSortOrdre.getSelectedRow();
+//                                    BEProduktion q = promodel2.getOrderByMaterial(selectedRow2);
+//                                    clearFields();
+//                                    txtEmployeeNo.setText("" + q.getMaterialID());
+//                                    txtWidth.setText("" + q.getWidth());
+//                                    txtLength.setText("" + q.getWidth());
+//                                    txtQuantity.setText("" + q.getQuantity());
+//                                    
+//                                }
+//                            });
                         }
 //                        int selectedRow2 = jtblLager.getSelectedRow();
 //                        BELager l = lagmodel.getMedlemByRow(selectedRow2);
@@ -309,15 +327,19 @@ public  class ProduktionForm extends javax.swing.JDialog implements Observer {
 //                        {
 //                            lagmodel = new LagerTableModel(lagmgr.getMaterialByOrder(p));
 //                            jtblLager.setModel(lagmodel);
-//                        }
+//                        }     
+//                        
 
                     } catch (Exception e) {
                         System.out.println("ERROR - Line 337 " + e.getMessage());
                     }
-                    txtEmployeeNo.setText("" + p.getMaterialID());
-                    txtWidth.setText("" + p.getWidth());
-                    txtLength.setText("" + p.getWidth());
-                    txtQuantity.setText("" + p.getQuantity());
+                }
+
+                private void clearFields() {
+                    txtEmployeeNo.setText("");
+                    txtWidth.setText("");
+                    txtLength.setText("");
+                    txtQuantity.setText("");
                 }
             });
         } catch (Exception e) {

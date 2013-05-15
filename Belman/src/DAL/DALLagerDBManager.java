@@ -1,12 +1,14 @@
 package DAL;
 
 import BE.BELager;
+import BE.BEProduktion;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Lager DB Manager The data Access Layer
@@ -25,6 +27,10 @@ public class DALLagerDBManager extends DALBelmanDBManager {
     private static final String WIDTH = "width";
     private static final String THICKNESS = "thickness";
     private static final String STOCKQUANTITY = "stockQuantity";
+    private static final String SORDERID = "sOrderId";
+    private static final String PORDER = "pOrder";
+    private static final String DUEDATE = "dueDate";
+    private static final String QUANTITY = "quantity";
 
     public DALLagerDBManager() throws Exception {
         super();
@@ -351,4 +357,43 @@ public class DALLagerDBManager extends DALBelmanDBManager {
         return LagerID;
 
     }
+
+//    public ArrayList<BEProduktion> getMaterialByOrder(BEProduktion p)throws SQLException
+//    {
+//        try (Connection con = ds.getConnection()) {
+//            String sql = "SELECT Material.name, Material.density, Stockitem.stockQuantity "                    
+//                    + "FROM Material, CoilType, StockItem, Sleeve, ProductionOrder "
+//                    + "WHERE Material.id = CoilType.materialId "
+//                    + "AND CoilType.id = StockItem.coilTypeId "
+//                    + "AND Sleeve.materialId = Material.id "
+//                    + "AND Sleeve.pOrderId = ProductionOrder.pOrderId";
+//
+//            PreparedStatement ps = con.prepareStatement(sql);
+//
+//            ResultSet rs = ps.executeQuery();
+//
+//            ArrayList<BEProduktion> material = new ArrayList<>();
+//
+//            while (rs.next()) {
+////                int id = rs.getInt(STOCKITEMID);
+////                String Code = rs.getString(COILCODE);
+////                int MaterialID = rs.getInt(MATERIALID);
+//                String MaterialName = rs.getString(MATERIALNAME);
+//                Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
+////                String ChargeNo = rs.getString(CHARGENO);
+////                Float Length = rs.getFloat(LENGTH);
+////                Float Width = rs.getFloat(WIDTH);
+////                Float Thickness = rs.getFloat(THICKNESS);
+//                Float StockQuantity = rs.getFloat(STOCKQUANTITY);
+//
+//
+//                BEProduktion la = new BEProduktion(-1, MaterialName, MaterialDensity, StockQuantity);
+//                material.add(la);
+//        }
+//        return material;
+//        
+//
+//       }
+//            
+//    }
 }

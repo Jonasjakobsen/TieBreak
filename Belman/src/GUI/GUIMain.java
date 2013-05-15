@@ -169,6 +169,7 @@ public class GUIMain extends javax.swing.JFrame {
                     Logger.getLogger(GUIMain.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 new GUIMain().setVisible(true);
+               
             }
         });
     }

@@ -35,7 +35,7 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
 
     public ArrayList<BEProduktion> visOrdrer() throws SQLServerException, SQLException {
         try (Connection con = ds.getConnection()) {
-           String sql = "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Material.name "
+           String sql = "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Material.name, ProductionOrder.status "
                         + "FROM ProductionOrder, Material, Sleeve "
                         + "WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
                         + "AND Sleeve.materialId = Material.id ";
@@ -63,8 +63,9 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
         Date dueDate = rs.getDate(DUEDATE);
         Float quantity = rs.getFloat(QUANTITY);
         String materialName = rs.getString(MATERIALNAME);
+        String status = rs.getString(STATUS);
         
-        return new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName);
+        return new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName, status);
     }
     
     public ArrayList<BEProduktion> orderByUrgent() throws SQLServerException, SQLException {
@@ -117,10 +118,11 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
                 Date dueDate = rs.getDate(DUEDATE);
                 Float quantity = rs.getFloat(QUANTITY);
                 String materialName = rs.getString(MATERIALNAME);
+                String status = rs.getString(STATUS);
                 
 
 
-                BEProduktion l = new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName);
+                BEProduktion l = new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName, status);
                 ordrer.add(l);
             }
             return ordrer;
@@ -181,10 +183,11 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
                 Date dueDate = rs.getDate(DUEDATE);
                 Float quantity = rs.getFloat(QUANTITY);
                 String materialName = rs.getString(MATERIALNAME);
+                String status = rs.getString(STATUS);
                 
 
 
-                BEProduktion l = new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName);
+                BEProduktion l = new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName, status);
                 ordrers.add(l);
         }
         return ordrers;

@@ -93,13 +93,14 @@ public class BEProduktion {
      * @param quantity - The quantity of finished products needed to be produced.
      * @param materialName - the name of the material used in the production order.
      */
-    public BEProduktion(int SOrderID, String pOrder, Date DueDate, Float quantity, String materialName)
+    public BEProduktion(int SOrderID, String pOrder, Date DueDate, Float quantity, String materialName, String status)
     {
         this.SOrderID = SOrderID;
         this.POrder = pOrder;
         this.DueDate = DueDate;
         this.Quantity = quantity;
         this.materialName = materialName;
+        this.status = status;
     }
 
     /**

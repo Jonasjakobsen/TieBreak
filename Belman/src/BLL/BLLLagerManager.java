@@ -10,7 +10,7 @@ import java.util.Observable;
 /**
  * LagerManager The Business logic layer
  */
-public class BLLLagerManager extends Observable {
+public class BLLLagerManager extends Observable{
 
     private static BLLLagerManager instance = null;
     private DALLagerDBManager db = null;

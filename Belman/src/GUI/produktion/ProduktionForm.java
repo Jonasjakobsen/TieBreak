@@ -266,9 +266,11 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
         lagmgr.addObserver(this);
         lagmodel2 = new LagerTableModel(lagmgr.visLager());
         jtblLager.setModel(lagmodel2);
-       
-        
-        
+
+        lagmgr = BLLLagerManager.getInstance();
+        lagmgr.addObserver(this);
+        lagmodel2 = new LagerTableModel(lagmgr.visLager());
+        jtblLager.setModel(lagmodel2);
 
         promgr = BLLProduktionManager.getInstance();
         promgr.addObserver(this);

@@ -7,9 +7,11 @@ package GUI.produktion;
 import BE.BELager;
 import BE.BEProduktion;
 import BLL.BLLLagerManager;
+import BLL.BLLMaterialeManager;
 import BLL.BLLProduktionManager;
+import BLL.BLLSleeveManager;
+import BLL.BLLStockItemManager;
 import java.util.Date;
-import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JLabel;
 import javax.swing.event.ListSelectionEvent;
@@ -20,13 +22,17 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author Christoffer
  */
-public class ProduktionForm extends javax.swing.JDialog implements Observer {
+public abstract class ProduktionForm extends javax.swing.JDialog implements Observer {
 
     private BLLProduktionManager promgr;
+    private BLLLagerManager lagmgr;
+    private BLLSleeveManager slmgr;
+    private BLLStockItemManager stmgr;
+    private BLLMaterialeManager mmgr;
     private ProduktionFormTableModel promodel;
     private ProduktionFormTableModel promodel2;
-    private BLLLagerManager lagmgr;
     private LagerTableModel lagmodel;
+    private LagerTableModel lagmodel2;
     private BELager lager = null;
 
     /**
@@ -250,8 +256,8 @@ public class ProduktionForm extends javax.swing.JDialog implements Observer {
         setLocationRelativeTo(this);
 
         lagmgr = new BLLLagerManager();
-        lagmodel = new GUI.produktion.LagerTableModel(lagmgr.visLager());
-        jtblLager.setModel(lagmodel);
+//        lagmodel = new GUI.produktion.LagerTableModel(lagmgr.visLager());
+//        jtblLager.setModel(lagmodel);
 
         promgr = BLLProduktionManager.getInstance();
         promgr.addObserver(this);
@@ -275,21 +281,25 @@ public class ProduktionForm extends javax.swing.JDialog implements Observer {
         jtblLager.setDefaultRenderer(int.class, centerRenderer);
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        if (o instanceof BLLProduktionManager) {
-            try {
-                promodel.setCollection(promgr.visOrdrer());
-            } catch (Exception e) {
-            }
-        }
-    }
+//    @Override
+//    public void update(Observable o, Object arg) {
+//        if (o instanceof BLLProduktionManager) {
+//            try {
+//                promodel.setCollection(promgr.visOrdrer());
+//            } catch (Exception e) {
+//            }
+//        }
+//    }
 
     private void selectOrder() {
         try {
             promgr = BLLProduktionManager.getInstance();
             promgr.addObserver(this);
             promodel = new ProduktionFormTableModel(promgr.visOrdrer());
+            
+            lagmgr = BLLLagerManager.getInstance();
+            lagmgr.addObserver(this);
+            lagmodel = new LagerTableModel(lagmgr.visLager());
             jtblVaelgOrdre.setModel(promodel);
 
             jtblVaelgOrdre.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -301,7 +311,7 @@ public class ProduktionForm extends javax.swing.JDialog implements Observer {
                     txtWidth.setText("" + p.getWidth());
                     txtLength.setText("" + p.getWidth());
                     txtQuantity.setText("" + p.getQuantity());
-                    
+
                     try {
                         if (!promgr.getOrderByMaterial(p).isEmpty());
                         {
@@ -310,8 +320,8 @@ public class ProduktionForm extends javax.swing.JDialog implements Observer {
 //                            jtblSortOrdre.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 //                                @Override
 //                                public void valueChanged(ListSelectionEvent evt) {
-//                                    int selectedRow2 = jtblSortOrdre.getSelectedRow();
-//                                    BEProduktion q = promodel2.getOrderByMaterial(selectedRow2);
+//                                    int selectedRow = jtblSortOrdre.getSelectedRow();
+//                                    BEProduktion q = promodel2.getOrderByMaterial(selectedRow);
 //                                    clearFields();
 //                                    txtEmployeeNo.setText("" + q.getMaterialID());
 //                                    txtWidth.setText("" + q.getWidth());
@@ -321,15 +331,13 @@ public class ProduktionForm extends javax.swing.JDialog implements Observer {
 //                                }
 //                            });
                         }
-//                        int selectedRow2 = jtblLager.getSelectedRow();
-//                        BELager l = lagmodel.getMedlemByRow(selectedRow2);
-//                        if (!lagmgr.getMaterialByOrder(p).isEmpty());
-//                        {
-//                            lagmodel = new LagerTableModel(lagmgr.getMaterialByOrder(p));
-//                            jtblLager.setModel(lagmodel);
-//                        }     
-//                        
-
+//                        int selectedRow = jtblVaelgOrdre.getSelectedRow();
+                        BELager l = lagmodel.getMedlemByRow(selectedRow);
+                        if (!lagmgr.materialeLager(l).isEmpty());
+                        {
+                            lagmodel2 = new LagerTableModel(lagmgr.materialeLager(l));
+                            jtblLager.setModel(lagmodel2);
+                        }
                     } catch (Exception e) {
                         System.out.println("ERROR - Line 337 " + e.getMessage());
                     }

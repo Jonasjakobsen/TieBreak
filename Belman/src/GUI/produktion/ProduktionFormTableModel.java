@@ -5,7 +5,9 @@
 package GUI.produktion;
 
 import BE.BEProduktion;
+import BE.BESleeve;
 import BLL.BLLProduktionManager;
+import BLL.BLLSleeveManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -53,7 +55,7 @@ public class ProduktionFormTableModel extends AbstractTableModel {
 
 
                 case 0:
-                    return p.getPOrder(); 
+                    return p.getPOrder();
                 case 1:
                     return p.getDueDate();
                 case 2:

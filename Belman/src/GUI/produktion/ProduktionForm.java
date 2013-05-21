@@ -15,6 +15,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Date;
+import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JLabel;
 import javax.swing.event.ListSelectionEvent;
@@ -25,7 +26,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author Christoffer
  */
-public abstract class ProduktionForm extends javax.swing.JDialog implements Observer {
+public class ProduktionForm extends javax.swing.JFrame implements Observer {
 
     private BLLProduktionManager promgr;
     private BLLLagerManager lagmgr;
@@ -37,17 +38,29 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
     private LagerTableModel lagmodel;
     private LagerTableModel lagmodel2;
     private BELager lager = null;
+    private static ProduktionForm instance = null;
 
     /**
      * Creates new form ProduktionForm
      */
-    public ProduktionForm(java.awt.Frame parent, boolean modal) throws Exception {
-        super(parent, modal);
+    public ProduktionForm() throws Exception {
+//        super(parent, modal);
         constructTables();
         selectOrder();
         centerTables();
         addEnterKeyListeners();
     }
+    
+        public static ProduktionForm getInstance() throws Exception
+    {
+        if (instance == null)
+        {
+            instance = new ProduktionForm();
+        }
+        return instance;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,7 +69,8 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         btngrpFilter = new javax.swing.ButtonGroup();
         lblIgangvaerendeProduktion = new javax.swing.JLabel();
@@ -102,8 +116,10 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
         jscrpVaelgOrdre.setViewportView(jtblSortOrdre);
 
         btnAfbyd.setText("Cancel");
-        btnAfbyd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAfbyd.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAfbydActionPerformed(evt);
             }
         });
@@ -111,10 +127,12 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
         jLabel1.setText("Order job in");
 
         jtblLager.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
 
             }
         ));
@@ -123,8 +141,10 @@ public abstract class ProduktionForm extends javax.swing.JDialog implements Obse
         jLabel2.setText("Stock");
 
         btnOk.setText("Ok");
-        btnOk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnOk.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnOkActionPerformed(evt);
             }
         });
@@ -448,6 +468,12 @@ private void addEnterKeyListeners()
         txtLength.addKeyListener(enterListener);
         txtWidth.addKeyListener(enterListener);
         txtQuantity.addKeyListener(enterListener);
+    }
+
+    @Override
+    public void update(Observable o, Object arg)
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }

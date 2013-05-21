@@ -43,14 +43,23 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
 //                        + "AND Sleeve.materialId = Material.id "
 //                        + "ORDER BY urgent DESC ";
                    
+//"SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Material.name, ProductionOrder.[status], ProductionOrder.urgent, Sleeve.Employeeid, StockItem.[length], CoilType.width "
+//+"FROM ProductionOrder, Material, Sleeve, StockItem, CoilType "
+//+"WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
+//+"AND Sleeve.materialId = Material.id "
+//+"AND Material.id = CoilType.materialId "
+//+"AND CoilType.id = StockItem.coilTypeId "
+//                   + "ORDER BY urgent DESC";
+           
 "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Material.name, ProductionOrder.[status], ProductionOrder.urgent, Sleeve.Employeeid, StockItem.[length], CoilType.width "
 +"FROM ProductionOrder, Material, Sleeve, StockItem, CoilType "
 +"WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
-+"AND Sleeve.materialId = Material.id "
++"AND Sleeve.materialId = Material.id  "
 +"AND Material.id = CoilType.materialId "
 +"AND CoilType.id = StockItem.coilTypeId "
-                   + "ORDER BY urgent DESC";
-             
++"AND CoilType.thickness = Sleeve.thickness "
+           + "ORDER BY urgent DESC";
+              
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -118,12 +127,14 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
         try (Connection con = ds.getConnection()) {
             String sql = 
                     
-                    "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Material.name "
-                        + "FROM ProductionOrder, Material, Sleeve "
-                        + "WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
-                        + "AND Sleeve.materialId = Material.id ";
+                        "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Material.name "
+                            + "FROM ProductionOrder, Material, Sleeve "
+                            + "WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
+                            + "AND Sleeve.materialId = Material.id ";
                     
 
+
+        
 
 
             PreparedStatement ps = con.prepareStatement(sql);
@@ -193,18 +204,35 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
 //                        + "AND Material.name = ? "
 //                        + "ORDER BY urgent DESC" ;
         
-                            "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Material.name, ProductionOrder.[status], ProductionOrder.urgent, Sleeve.Employeeid, StockItem.[length], CoilType.width "
-                            +"FROM ProductionOrder, Material, Sleeve, StockItem, CoilType "
-                            +"WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
-                            +"AND Sleeve.materialId = Material.id "
-                            +"AND Material.id = CoilType.materialId "
-                            +"AND CoilType.id = StockItem.coilTypeId "
-                            +"AND Material.name = ? "
-                            +"ORDER BY urgent DESC ";
+              "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, "
+            + "ProductionOrder.dueDate, ProductionOrder.quantity, Material.name, "
+            + "ProductionOrder.[status], ProductionOrder.urgent, "
+            + "Sleeve.Employeeid, StockItem.[length], CoilType.width "
+            + "FROM ProductionOrder, Material, Sleeve, StockItem, CoilType "
+            + "WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
+            + "AND Sleeve.materialId = Material.id "
+            + "AND Material.id = CoilType.materialId "
+            + "AND CoilType.id = StockItem.coilTypeId "
+            + "AND CoilType.thickness = Sleeve.thickness "
+            + "AND Material.name = ? "
+            + "EXCEPT "
+            + "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, "
+            + "ProductionOrder.dueDate, ProductionOrder.quantity, Material.name, "
+            + "ProductionOrder.[status], ProductionOrder.urgent, "
+            + "Sleeve.Employeeid, StockItem.[length], CoilType.width "
+            + "FROM ProductionOrder, Material, Sleeve, StockItem, CoilType "
+            + "WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
+            + "AND Sleeve.materialId = Material.id "
+            + "AND Material.id = CoilType.materialId "
+            + "AND CoilType.id = StockItem.coilTypeId "
+            + "AND CoilType.thickness = Sleeve.thickness "
+            + "AND ProductionOrder.pOrder = ? "
+            + "ORDER By urgent DESC";
         
         PreparedStatement ps = con.prepareStatement(sql);
         
         ps.setString(1, p.getMaterialName());
+        ps.setString(2, p.getPOrder());
         
         ResultSet rs = ps.executeQuery();
 

@@ -106,7 +106,7 @@ public class LagerTableModel extends AbstractTableModel
         fireTableDataChanged();
     }
 
-    BELager getMedlemByRow(int row)
+    BELager getLagerByRow(int row)
     {
         return lager.get(row);
     }

@@ -397,44 +397,45 @@ public class DALLagerDBManager extends DALBelmanDBManager {
 //            
 //    }
 
-    public ArrayList<BELager> materialeLager(BELager l) throws Exception {
-        try (Connection con = ds.getConnection()) {
-
-            String sql = 
-
-                        
-                        "SELECT Material.name, Material.density, StockItem.stockQuantity "
-+ "FROM Sleeve, [StockItem/Sleeve], StockItem, Material "
-+ "WHERE Sleeve.materialId = Material.id "
-+ "AND Sleeve.Id = [StockItem/Sleeve].sleeveId "
-+ "AND [StockItem/Sleeve].stockitemId = StockItem.id " 
-+ "AND Material.name = ? ";
-
-            PreparedStatement ps = con.prepareStatement(sql);
-            
-             ps.setString(1, l.getMaterialName());
-
-            ResultSet rs = ps.executeQuery();
-
-            ArrayList<BELager> lageret = new ArrayList<>();
-
-            while (rs.next()) {
-//                int id = rs.getInt(STOCKITEMID);
-//                String Code = rs.getString(COILCODE);
-//                int MaterialID = rs.getInt(MATERIALID);
-                String MaterialName = rs.getString(MATERIALNAME);
-                Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
-//                String ChargeNo = rs.getString(CHARGENO);
-//                Float Length = rs.getFloat(LENGTH);
-//                Float Width = rs.getFloat(WIDTH);
-//                Float Thickness = rs.getFloat(THICKNESS);
-                Float StockQuantity = rs.getFloat(STOCKQUANTITY);
-
-
-                BELager la = new BELager(-1, MaterialName, MaterialDensity, StockQuantity);
-                lageret.add(la);
-            }
-            return lageret;
-        }
-    }
+//    public ArrayList<BEProduktion> materialeLager(BELager l) throws Exception {
+//        try (Connection con = ds.getConnection()) {
+//
+//            String sql = 
+//
+//                        
+//                        "SELECT Material.name, Material.density, StockItem.stockQuantity "
+//+ "FROM Sleeve, [StockItem/Sleeve], StockItem, Material "
+//+ "WHERE Sleeve.materialId = Material.id "
+//+ "AND Sleeve.Id = [StockItem/Sleeve].sleeveId "
+//+ "AND [StockItem/Sleeve].stockitemId = StockItem.id " 
+//+ "AND Material.name = ? ";
+//
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            
+//             ps.setString(1, l.getMaterialName());
+//
+//            ResultSet rs = ps.executeQuery();
+//
+//            ArrayList<BEProduktion> lageret = new ArrayList<>();
+//
+//            while (rs.next()) {
+////                int id = rs.getInt(STOCKITEMID);
+////                String Code = rs.getString(COILCODE);
+////                int MaterialID = rs.getInt(MATERIALID);
+//                String MaterialName = rs.getString(MATERIALNAME);
+//                Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
+////                String ChargeNo = rs.getString(CHARGENO);
+////                Float Length = rs.getFloat(LENGTH);
+////                Float Width = rs.getFloat(WIDTH);
+////                Float Thickness = rs.getFloat(THICKNESS);
+//                Float StockQuantity = rs.getFloat(STOCKQUANTITY);
+//                String materialName = rs.getString(MATERIALNAME);
+//
+//
+//                BEProduktion la = new BEProduktion(-1, MaterialName, MaterialDensity, StockQuantity);
+//                lageret.add(la);
+//            }
+//            return lageret;
+//        }
+//    }
 }

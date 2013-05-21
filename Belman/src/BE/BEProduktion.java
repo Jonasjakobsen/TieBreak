@@ -26,6 +26,10 @@ public class BEProduktion {
     private String status;
     private int sleeveID;
     private String materialName;
+    private BEMateriale materiale;
+    private int employeeNo;
+    private Float coilLength;
+    
     
     
     /**
@@ -60,6 +64,7 @@ public class BEProduktion {
         this.Circumference = Circumference;
     }
 
+    
     /**
      * The constructor for the BEProduction class
      * @param sOrderId  - The salesorder ID to identify a specific sales order
@@ -93,7 +98,7 @@ public class BEProduktion {
      * @param quantity - The quantity of finished products needed to be produced.
      * @param materialName - the name of the material used in the production order.
      */
-    public BEProduktion(int SOrderID, String pOrder, Date DueDate, Float quantity, String materialName, String status)
+    public BEProduktion(int SOrderID, String pOrder, Date DueDate, Float quantity, String materialName, String status, Boolean urgent, int employeeNo, Float coilLength, Float coilWidth)
     {
         this.SOrderID = SOrderID;
         this.POrder = pOrder;
@@ -101,7 +106,14 @@ public class BEProduktion {
         this.Quantity = quantity;
         this.materialName = materialName;
         this.status = status;
-    }
+        this.Urgent = urgent;
+        this.employeeNo = employeeNo;
+        this.coilLength = coilLength;
+        this.Width = coilWidth;
+    }   
+    
+
+    
 
     /**
      * @return the SOrderID
@@ -207,5 +219,34 @@ public class BEProduktion {
     public String getMaterialName() {
         return materialName;
     }
+
+    /**
+     * @return the employeeNo
+     */
+    public int getEmployeeNo() {
+        return employeeNo;
+    }
+
+    /**
+     * @param employeeNo the employeeNo to set
+     */
+    public void setEmployeeNo(int employeeNo) {
+        this.employeeNo = employeeNo;
+    }
+
+    /**
+     * @return the coilLength
+     */
+    public Float getCoilLength() {
+        return coilLength;
+    }
+
+    /**
+     * @param coilLength the coilLength to set
+     */
+    public void setCoilLength(Float coilLength) {
+        this.coilLength = coilLength;
+    }
+
     
 }

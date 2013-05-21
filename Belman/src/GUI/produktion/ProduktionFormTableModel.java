@@ -20,8 +20,8 @@ import javax.swing.table.AbstractTableModel;
 public class ProduktionFormTableModel extends AbstractTableModel {
 
     private BLLProduktionManager pm;
-    private final String[] header = {"pOrder", "Due Date", "Quantity", "MaterialName", "Status"};
-    private final Class[] columnTypes = {String.class, Date.class, Float.class, String.class, String.class};
+    private final String[] header = {"pOrder", "Due Date", "Quantity", "MaterialName", "Status", "Urgent"};
+    private final Class[] columnTypes = {String.class, Date.class, Float.class, String.class, String.class, Boolean.class};
     private ArrayList<BEProduktion> produktion;
 
     public ProduktionFormTableModel() {
@@ -64,6 +64,8 @@ public class ProduktionFormTableModel extends AbstractTableModel {
                     return p.getMaterialName();
                 case 4:
                     return p.getStatus();
+                case 5:
+                    return p.isUrgent();
             }
             return null;
         }

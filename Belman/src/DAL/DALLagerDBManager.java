@@ -1,14 +1,12 @@
 package DAL;
 
 import BE.BELager;
-import BE.BEProduktion;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Lager DB Manager The data Access Layer
@@ -51,7 +49,7 @@ public class DALLagerDBManager extends DALBelmanDBManager {
                     + "WHERE Material.id = CoilType.materialId "
                     + "AND CoilType.id = StockItem.coilTypeId "
                     + "ORDER BY CoilType.code DESC";
-
+            System.out.println("loawdkaiowd");
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();

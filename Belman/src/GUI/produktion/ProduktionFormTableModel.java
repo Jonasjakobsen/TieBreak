@@ -5,9 +5,7 @@
 package GUI.produktion;
 
 import BE.BEProduktion;
-import BE.BESleeve;
 import BLL.BLLProduktionManager;
-import BLL.BLLSleeveManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -20,7 +18,7 @@ import javax.swing.table.AbstractTableModel;
 public class ProduktionFormTableModel extends AbstractTableModel {
 
     private BLLProduktionManager pm;
-    private final String[] header = {"pOrder", "Due Date", "Quantity", "MaterialName", "Status", "Urgent"};
+    private final String[] header = {"pOrder", "Due Date", "Quantity", "Coil Code", "Status", "Urgent"};
     private final Class[] columnTypes = {String.class, Date.class, Float.class, String.class, String.class, Boolean.class};
     private ArrayList<BEProduktion> produktion;
 
@@ -98,6 +96,7 @@ public class ProduktionFormTableModel extends AbstractTableModel {
     void clear() {
         produktion.clear();
     }
+    
     
     @Override
     public void setValueAt(Object o, int row, int col)

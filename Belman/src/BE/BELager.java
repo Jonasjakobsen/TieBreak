@@ -42,10 +42,10 @@ public class BELager {
     }
     
     
-    public BELager(int id, String MaterialName, Float MaterialDensity, Float StockQuantity) {
+    public BELager(int id, String Code, Float MaterialDensity, Float StockQuantity) {
         
         this.id = id;
-        this.MaterialName = MaterialName;
+        this.Code = Code;
         this.MaterialDensity = MaterialDensity;        
         this.StockQuantity = StockQuantity;
     }

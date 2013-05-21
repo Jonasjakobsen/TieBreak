@@ -100,7 +100,6 @@ public class ProduktionForm extends javax.swing.JFrame implements Observer {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Belman Produktion");
         setFocusTraversalPolicyProvider(true);
-        setIconImage(null);
         setMaximumSize(new java.awt.Dimension(780, 665));
         setMinimumSize(new java.awt.Dimension(780, 665));
         setName("Belman produktion"); // NOI18N
@@ -402,35 +401,37 @@ public class ProduktionForm extends javax.swing.JFrame implements Observer {
                 public void valueChanged(ListSelectionEvent evt) {
                     int selectedRow = jtblVaelgOrdre.getSelectedRow();
                     BEProduktion p = promodel.getOrderByRow(selectedRow);
+                    clearFields();
+                    lagmodel.clear();
                     txtEmployeeNo.setText("" + p.getEmployeeNo());
                     txtWidth.setText("" + p.getWidth());
                     txtLength.setText("" + p.getCoilLength());
                     txtQuantity.setText("" + p.getQuantity());
-
+                    
                     try {
                         if (!promgr.getOrderByMaterial(p).isEmpty());
                         {
                             promodel2 = new ProduktionFormTableModel(promgr.getOrderByMaterial(p));
                             jtblSortOrdre.setModel(promodel2);
-//                            jtblSortOrdre.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-//                                @Override
-//                                public void valueChanged(ListSelectionEvent evt) {
-//                                    int selectedRow = jtblSortOrdre.getSelectedRow();
-//                                    BEProduktion q = promodel2.getOrderByMaterial(selectedRow);
-//                                    clearFields();
-//                                    txtEmployeeNo.setText("" + q.getMaterialID());
-//                                    txtWidth.setText("" + q.getWidth());
-//                                    txtLength.setText("" + q.getWidth());
-//                                    txtQuantity.setText("" + q.getQuantity());
-//                                    
-//                                }
-//                            });
+                            jtblSortOrdre.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+                                @Override
+                                public void valueChanged(ListSelectionEvent evt) {
+                                    
+                                    int selectedRow = jtblSortOrdre.getSelectedRow();
+                                    BEProduktion q = promodel2.getOrderByMaterial(selectedRow);
+                                    clearFields();
+                                    txtEmployeeNo.setText("" + q.getMaterialID());
+                                    txtWidth.setText("" + q.getWidth());
+                                    txtLength.setText("" + q.getWidth());
+                                    txtQuantity.setText("" + q.getQuantity());
+                                }
+                            });
                         }
 //                        int selectedRow = jtblVaelgOrdre.getSelectedRow();
-//                        BELager l = promodel.getLagerByMaterial(selectedRow);
-//                        if (!lagmgr.materialeLager(p).isEmpty());
+//                        BELager l = lagmodel.getLagerByRow(selectedRow);
+//                        if (!lagmgr.getLagerById(selectedRow).isEmpty());
 //                        {
-//                            lagmodel2 = new LagerTableModel(lagmgr.materialeLager(p));
+//                            lagmodel2 = new LagerTableModel(lagmgr.getLagerById(selectedRow));
 //                            jtblLager.setModel(lagmodel2);
 //                        }
                     } catch (Exception e) {

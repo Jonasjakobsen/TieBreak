@@ -20,7 +20,7 @@ public class LagerTableModel extends AbstractTableModel
     private BLLLagerManager lm;
     private final String[] header =
     {
-        "Material name", "Material density", "Stock quantity(kg)"
+        "Coil Code", "Material density", "Stock quantity(kg)"
     };
     private final Class[] columnTypes =
     {
@@ -56,6 +56,7 @@ public class LagerTableModel extends AbstractTableModel
     {
         return header.length;
     }
+    
 
     @Override
     public Object getValueAt(int row, int col)
@@ -65,7 +66,7 @@ public class LagerTableModel extends AbstractTableModel
             switch (col)
             {
                 case 0:
-                    return l.getMaterialName();
+                    return l.getCode();
                 case 1:
                     return l.getMaterialDensity();                
                 case 2:
@@ -99,6 +100,12 @@ public class LagerTableModel extends AbstractTableModel
          lager.clear();
     }
     
+//    public void clearListSelection()
+//    {
+//        clearSelection();
+//    }
+    
+
     
     public void setCollection(Collection<BELager> list)
     {

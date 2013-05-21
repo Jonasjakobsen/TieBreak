@@ -29,6 +29,7 @@ public class BEProduktion {
     private BEMateriale materiale;
     private int employeeNo;
     private Float coilLength;
+    private String coilCode;
     
     
     
@@ -49,7 +50,7 @@ public class BEProduktion {
     public BEProduktion (int SOrderID, String SOrder, int POrderID, 
                         String POrder, boolean Urgent, Date DueDate, Float Quantity,
                         Float MaterialID, Float Thickness, Float Width,
-                        Float Circumference)
+                        Float Circumference, String coilCode)
     {
         this.SOrderID = SOrderID;
         this.SOrder = SOrder;
@@ -62,6 +63,7 @@ public class BEProduktion {
         this.Thickness = Thickness;
         this.Width = Width;
         this.Circumference = Circumference;
+        this.coilCode = coilCode;
     }
 
     
@@ -77,7 +79,7 @@ public class BEProduktion {
      * @param status - The status of the order in production
      * @param urgent  - Boolean to mark an order as urgent.
      */
-    public BEProduktion(int sOrderId, int pOrderId, String pOrder, Date dueDate, Float quantity, Float width, Float thickness, String status, boolean urgent) {
+    public BEProduktion(int sOrderId, int pOrderId, String pOrder, Date dueDate, Float quantity, Float width, Float thickness, String status, boolean urgent, String coilCode) {
         this.SOrderID = sOrderId;       
         this.POrderID = pOrderId;
         this.POrder = pOrder;
@@ -87,6 +89,7 @@ public class BEProduktion {
         this.Thickness = thickness;
         this.status = status;
         this.Urgent = urgent;
+        this.coilCode = coilCode;
     }
     
     /**
@@ -98,7 +101,7 @@ public class BEProduktion {
      * @param quantity - The quantity of finished products needed to be produced.
      * @param materialName - the name of the material used in the production order.
      */
-    public BEProduktion(int SOrderID, String pOrder, Date DueDate, Float quantity, String materialName, String status, Boolean urgent, int employeeNo, Float coilLength, Float coilWidth)
+    public BEProduktion(int SOrderID, String pOrder, Date DueDate, Float quantity, String materialName, String status, Boolean urgent, int employeeNo, Float coilLength, Float coilWidth, String coilCode)
     {
         this.SOrderID = SOrderID;
         this.POrder = pOrder;
@@ -110,6 +113,7 @@ public class BEProduktion {
         this.employeeNo = employeeNo;
         this.coilLength = coilLength;
         this.Width = coilWidth;
+        this.coilCode = coilCode;
     }   
     
 
@@ -246,6 +250,14 @@ public class BEProduktion {
      */
     public void setCoilLength(Float coilLength) {
         this.coilLength = coilLength;
+    }
+
+    /**
+     * @return the coilCode
+     */
+    public String getCoilCode()
+    {
+        return coilCode;
     }
 
     

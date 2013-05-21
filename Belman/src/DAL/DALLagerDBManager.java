@@ -46,10 +46,11 @@ public class DALLagerDBManager extends DALBelmanDBManager {
     public ArrayList<BELager> visLager() throws SQLServerException, SQLException {
         try (Connection con = ds.getConnection()) {
 
-            String sql = "SELECT Material.name, Material.density, Stockitem.stockQuantity "                    
+            String sql = "SELECT CoilType.code, Material.density, Stockitem.stockQuantity "                    
                     + "FROM Material, CoilType, StockItem "
                     + "WHERE Material.id = CoilType.materialId "
-                    + "AND CoilType.id = StockItem.coilTypeId ";
+                    + "AND CoilType.id = StockItem.coilTypeId "
+                    + "ORDER BY CoilType.code DESC";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -61,7 +62,7 @@ public class DALLagerDBManager extends DALBelmanDBManager {
 //                int id = rs.getInt(STOCKITEMID);
 //                String Code = rs.getString(COILCODE);
 //                int MaterialID = rs.getInt(MATERIALID);
-                String MaterialName = rs.getString(MATERIALNAME);
+                String Code = rs.getString(COILCODE);
                 Float MaterialDensity = rs.getFloat(MATERIALDENSITY);
 //                String ChargeNo = rs.getString(CHARGENO);
 //                Float Length = rs.getFloat(LENGTH);
@@ -70,7 +71,7 @@ public class DALLagerDBManager extends DALBelmanDBManager {
                 Float StockQuantity = rs.getFloat(STOCKQUANTITY);
 
 
-                BELager l = new BELager(-1, MaterialName, MaterialDensity, StockQuantity);
+                BELager l = new BELager(-1, Code, MaterialDensity, StockQuantity);
                 lageret.add(l);
             }
             return lageret;

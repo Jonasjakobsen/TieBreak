@@ -23,13 +23,14 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
     private static final String PORDER = "pOrder";
     private static final String DUEDATE = "dueDate";
     private static final String QUANTITY = "quantity";
-    private static final String MATERIALNAME = "name";
+    private static final String MATERIALNAME = "code";
     private static final String THICKNESS = "thickness";
     private static final String WIDTH = "width";
     private static final String STATUS = "status";
     private static final String URGENT = "urgent";
     private static final String EMPLOYEEID = "Employeeid";
     private static final String COILLENGTH = "length";
+    private static final String COILCODE = "code";
 
     public DALProduktionDBManager() throws Exception {
         super();
@@ -51,14 +52,14 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
 //+"AND CoilType.id = StockItem.coilTypeId "
 //                   + "ORDER BY urgent DESC";
            
-"SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Material.name, ProductionOrder.[status], ProductionOrder.urgent, Sleeve.Employeeid, StockItem.[length], CoilType.width "
-+"FROM ProductionOrder, Material, Sleeve, StockItem, CoilType "
-+"WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
-+"AND Sleeve.materialId = Material.id  "
-+"AND Material.id = CoilType.materialId "
-+"AND CoilType.id = StockItem.coilTypeId "
-+"AND CoilType.thickness = Sleeve.thickness "
-           + "ORDER BY urgent DESC";
+            "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Coiltype.code, ProductionOrder.[status], ProductionOrder.urgent, Sleeve.Employeeid, StockItem.[length], CoilType.width "
+            +"FROM ProductionOrder, Material, Sleeve, StockItem, CoilType "
+            +"WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
+            +"AND Sleeve.materialId = Material.id  "
+            +"AND Material.id = CoilType.materialId "
+            +"AND CoilType.id = StockItem.coilTypeId "
+            +"AND CoilType.thickness = Sleeve.thickness "
+            +"ORDER BY urgent DESC";
               
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -88,8 +89,9 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
         int employeeID = rs.getInt(EMPLOYEEID);
         Float coilLength = rs.getFloat(COILLENGTH);
         Float coilWidth = rs.getFloat(WIDTH);
+        String coilCode = rs.getString(COILCODE);
         
-        return new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName, status, urgent, employeeID, coilLength, coilWidth);
+        return new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName, status, urgent, employeeID, coilLength, coilWidth, coilCode);
     }
     
     public ArrayList<BEProduktion> orderByUrgent() throws SQLServerException, SQLException {
@@ -111,10 +113,11 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
                 Float thickness = rs.getFloat(THICKNESS);
                 String status = rs.getString(STATUS);
                 boolean urgent = rs.getBoolean(URGENT);
+                String code = rs.getString(COILCODE);
                 
 
 
-                BEProduktion l = new BEProduktion(sOrderId, pOrderId, pOrder, dueDate, quantity, width, thickness, status, urgent);
+                BEProduktion l = new BEProduktion(sOrderId, pOrderId, pOrder, dueDate, quantity, width, thickness, status, urgent, code);
                 ordrer.add(l);
             }
             return ordrer;
@@ -154,8 +157,9 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
                 int employeeID = rs.getInt(EMPLOYEEID);
                 Float coilLength = rs.getFloat(COILLENGTH);
                 Float coilWidth = rs.getFloat(WIDTH);
+                String coilCode = rs.getString(COILCODE);
         
-                BEProduktion l = new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName, status, urgent, employeeID, coilLength, coilWidth);
+                BEProduktion l = new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName, status, urgent, employeeID, coilLength, coilWidth, coilCode);
                 ordrer.add(l);
             }
             return ordrer;
@@ -182,10 +186,11 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
                 Float thickness = rs.getFloat(THICKNESS);
                 String status = rs.getString(STATUS);
                 boolean urgent = rs.getBoolean(URGENT);
+                String code = rs.getString(COILCODE);
                 
 
 
-                BEProduktion l = new BEProduktion(sOrderId, pOrderId, pOrder, dueDate, quantity, width, thickness, status, urgent);
+                BEProduktion l = new BEProduktion(sOrderId, pOrderId, pOrder, dueDate, quantity, width, thickness, status, urgent, code);
                 ordrer.add(l);
             }
             return ordrer;
@@ -196,16 +201,9 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
     public ArrayList<BEProduktion> getOrderByMaterial(BEProduktion p) throws SQLException
     {
         try (Connection con = ds.getConnection()) {
-        String sql = //"SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, ProductionOrder.dueDate, ProductionOrder.quantity, Material.name "
-//                      "SELECT * " 
-//                + "FROM ProductionOrder, Material, Sleeve "
-//                        + "WHERE ProductionOrder.pOrderId = Sleeve.pOrderId "
-//                        + "AND Sleeve.materialId = Material.id "
-//                        + "AND Material.name = ? "
-//                        + "ORDER BY urgent DESC" ;
-        
+        String sql =
               "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, "
-            + "ProductionOrder.dueDate, ProductionOrder.quantity, Material.name, "
+            + "ProductionOrder.dueDate, ProductionOrder.quantity, CoilType.code, "
             + "ProductionOrder.[status], ProductionOrder.urgent, "
             + "Sleeve.Employeeid, StockItem.[length], CoilType.width "
             + "FROM ProductionOrder, Material, Sleeve, StockItem, CoilType "
@@ -214,10 +212,10 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
             + "AND Material.id = CoilType.materialId "
             + "AND CoilType.id = StockItem.coilTypeId "
             + "AND CoilType.thickness = Sleeve.thickness "
-            + "AND Material.name = ? "
+            + "AND CoilType.code = ? "
             + "EXCEPT "
             + "SELECT ProductionOrder.sOrderId, ProductionOrder.pOrder, "
-            + "ProductionOrder.dueDate, ProductionOrder.quantity, Material.name, "
+            + "ProductionOrder.dueDate, ProductionOrder.quantity, CoilType.code, "
             + "ProductionOrder.[status], ProductionOrder.urgent, "
             + "Sleeve.Employeeid, StockItem.[length], CoilType.width "
             + "FROM ProductionOrder, Material, Sleeve, StockItem, CoilType "
@@ -231,7 +229,7 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
         
         PreparedStatement ps = con.prepareStatement(sql);
         
-        ps.setString(1, p.getMaterialName());
+        ps.setString(1, p.getCoilCode());
         ps.setString(2, p.getPOrder());
         
         ResultSet rs = ps.executeQuery();
@@ -249,8 +247,9 @@ public class DALProduktionDBManager extends DALBelmanDBManager {
                 int employeeID = rs.getInt(EMPLOYEEID);
                 Float coilLength = rs.getFloat(COILLENGTH);
                 Float coilWidth = rs.getFloat(WIDTH);
+                String coilCode = rs.getString(COILCODE);
         
-                BEProduktion l = new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName, status, urgent, employeeID, coilLength, coilWidth);
+                BEProduktion l = new BEProduktion(sOrderID, pOrder, dueDate, quantity, materialName, status, urgent, employeeID, coilLength, coilWidth, coilCode);
                 ordrers.add(l);
         }
         return ordrers;
